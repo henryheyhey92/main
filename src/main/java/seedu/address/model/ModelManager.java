@@ -68,7 +68,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     //Note FilteredList is unmodifiable hence sorting is done on internal list.
-    public void sortAddressBook(int option)throws UniquePersonList.AddressBookIsEmpty{
+    public void sortAddressBook(int option)throws UniquePersonList.AddressBookIsEmpty {
         addressBook.sort(option);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }

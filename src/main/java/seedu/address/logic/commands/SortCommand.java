@@ -29,17 +29,17 @@ public class SortCommand extends Command {
         switch (option) {
 
             case "/a":
-                Command address = new SortAddress(model);
-                result = address.execute();
-                break;
+            Command address = new SortAddress(model);
+            result = address.execute();
+            break;
 
             case "/n":
-                Command name = new SortName(model);
-                result = name.execute();
-                break;
+            Command name = new SortName(model);
+            result = name.execute();
+            break;
 
             default:
-                break;
+            break;
 
         }
 
