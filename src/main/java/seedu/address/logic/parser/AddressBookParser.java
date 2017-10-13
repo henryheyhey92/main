@@ -48,48 +48,47 @@ public class AddressBookParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
-
             case AddCommand.COMMAND_WORD:
-                return new AddCommandParser().parse(arguments);
+            return new AddCommandParser().parse(arguments);
 
             case EditCommand.COMMAND_WORD:
-                return new EditCommandParser().parse(arguments);
+            return new EditCommandParser().parse(arguments);
 
             case SelectCommand.COMMAND_WORD:
-                return new SelectCommandParser().parse(arguments);
+            return new SelectCommandParser().parse(arguments);
 
             case DeleteCommand.COMMAND_WORD:
-                return new DeleteCommandParser().parse(arguments);
+            return new DeleteCommandParser().parse(arguments);
 
             case ClearCommand.COMMAND_WORD:
-                return new ClearCommand();
+            return new ClearCommand();
 
             case FindCommand.COMMAND_WORD:
-                return new FindCommandParser().parse(arguments);
+            return new FindCommandParser().parse(arguments);
 
             case ListCommand.COMMAND_WORD:
-                return new ListCommand();
+            return new ListCommand();
 
             case HistoryCommand.COMMAND_WORD:
-                return new HistoryCommand();
+            return new HistoryCommand();
 
             case ExitCommand.COMMAND_WORD:
-                return new ExitCommand();
+            return new ExitCommand();
 
             case HelpCommand.COMMAND_WORD:
-                return new HelpCommand();
+            return new HelpCommand();
 
             case SortCommand.COMMAND_WORD:
-                return new SortCommand(arguments);
+            return new SortCommand(arguments);
 
             case UndoCommand.COMMAND_WORD:
-                return new UndoCommand();
+            return new UndoCommand();
 
             case RedoCommand.COMMAND_WORD:
-                return new RedoCommand();
+            return new RedoCommand();
 
             default:
-                throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 
