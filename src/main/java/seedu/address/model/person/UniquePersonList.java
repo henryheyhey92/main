@@ -1,7 +1,10 @@
 package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.commands.SortCommand.MESSAGE_EMPTY;
+import static seedu.address.logic.commands.SortName.OPTION_NAME;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,6 +13,9 @@ import org.fxmisc.easybind.EasyBind;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.CollectionUtil;
+import seedu.address.logic.commands.SortAddress;
+import seedu.address.logic.commands.SortName;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -26,6 +32,10 @@ public class UniquePersonList implements Iterable<Person> {
     private final ObservableList<Person> internalList = FXCollections.observableArrayList();
     // used by asObservableList()
     private final ObservableList<ReadOnlyPerson> mappedList = EasyBind.map(internalList, (person) -> person);
+
+    public static class AddressBookIsEmpty extends CommandException{
+         protected AddressBookIsEmpty() {super(MESSAGE_EMPTY);}
+     }
 
     /**
      * Returns true if the list contains an equivalent person as the given argument.
@@ -46,6 +56,16 @@ public class UniquePersonList implements Iterable<Person> {
             throw new DuplicatePersonException();
         }
         internalList.add(new Person(toAdd));
+    }
+    public void sort(int option) throws AddressBookIsEmpty{
+        if(!internalList.isEmpty()) {
+            if (option == OPTION_NAME) {
+                Collections.sort(internalList, new SortName());
+            } else
+                Collections.sort(internalList, new SortAddress());
+        }else{
+            throw new AddressBookIsEmpty();
+        }
     }
 
     /**
