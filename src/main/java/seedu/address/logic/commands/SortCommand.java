@@ -27,18 +27,18 @@ public class SortCommand extends Command {
         requireNonNull(model);
 
         switch (option) {
-            case "/a":
-            Command address = new SortAddress(model);
-            result = address.execute();
-            break;
+         case "/a":
+         Command address = new SortAddress(model);
+         result = address.execute();
+         break;
 
-            case "/n":
-            Command name = new SortName(model);
-            result = name.execute();
-            break;
+         case "/n":
+         Command name = new SortName(model);
+         result = name.execute();
+         break;
 
-            default:
-            break;
+         default:
+         break;
         }
 
         return result;
