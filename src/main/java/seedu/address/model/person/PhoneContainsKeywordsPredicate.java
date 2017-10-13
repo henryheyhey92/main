@@ -18,7 +18,7 @@ public class PhoneContainsKeywordsPredicate implements Predicate<ReadOnlyPerson>
     @Override
     public boolean test(ReadOnlyPerson person) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsAnyIgnoreCase(person.getPhone().value, keyword));
+                .anyMatch(keyword -> StringUtil.containsAny(person.getPhone().value, keyword));
     }
 
     @Override
