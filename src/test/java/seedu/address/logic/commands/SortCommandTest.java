@@ -22,34 +22,40 @@ public class SortCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_sortAddressBookByName_success()throws UniquePersonList.AddressBookIsEmpty{
-        SortCommand sortCommand = prepareCommand("/n",model);
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(),new UserPrefs());
+    public void execute_sortAddressBookByName_success() throws UniquePersonList.AddressBookIsEmpty {
+        SortCommand sortCommand = prepareCommand("/n", model);
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.sortAddressBook(1);
-        assertCommandSuccess(sortCommand,model,MESSAGE_SUCCESS_NAME,expectedModel);
+        assertCommandSuccess(sortCommand, model, MESSAGE_SUCCESS_NAME, expectedModel);
     }
+
     @Test
-    public void execute_sortAddressBookByAddress_success()throws UniquePersonList.AddressBookIsEmpty{
-        SortCommand sortCommand = prepareCommand("/a",model);
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(),new UserPrefs());
+    public void execute_sortAddressBookByAddress_success() throws UniquePersonList.AddressBookIsEmpty {
+        SortCommand sortCommand = prepareCommand("/a", model);
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.sortAddressBook(2);
-        assertCommandSuccess(sortCommand,model,MESSAGE_SUCCESS_ADDRESS,expectedModel);
+        assertCommandSuccess(sortCommand, model, MESSAGE_SUCCESS_ADDRESS, expectedModel);
     }
+
     @Test
-    public void execute_sortEmptyAddressBookByName_throwsAddressBookIsEmptyException() throws UniquePersonList.AddressBookIsEmpty{
-        ModelManager testModel = new ModelManager(model.getAddressBook(),new UserPrefs());
+    public void execute_sortEmptyAddressBookByName_throwsAddressBookIsEmptyException()
+            throws UniquePersonList.AddressBookIsEmpty {
+        ModelManager testModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         testModel.resetData(new AddressBook());
-        SortCommand sortCommand = prepareCommand("/n",testModel);
-        assertCommandFailure(sortCommand,testModel,MESSAGE_EMPTY);
+        SortCommand sortCommand = prepareCommand("/n", testModel);
+        assertCommandFailure(sortCommand, testModel, MESSAGE_EMPTY);
     }
+
     @Test
-    public void execute_sortEmptyAddressBookByAddress_throwsAddressBookIsEmptyException() throws UniquePersonList.AddressBookIsEmpty{
-        ModelManager testModel = new ModelManager(model.getAddressBook(),new UserPrefs());
+    public void execute_sortEmptyAddressBookByAddress_throwsAddressBookIsEmptyException()
+            throws UniquePersonList.AddressBookIsEmpty {
+        ModelManager testModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         testModel.resetData(new AddressBook());
-        SortCommand sortCommand = prepareCommand("/a",testModel);
-        assertCommandFailure(sortCommand,testModel,MESSAGE_EMPTY);
+        SortCommand sortCommand = prepareCommand("/a", testModel);
+        assertCommandFailure(sortCommand, testModel, MESSAGE_EMPTY);
     }
-    private SortCommand prepareCommand(String option,Model model) {
+
+    private SortCommand prepareCommand(String option, Model model) {
         SortCommand sortCommand = new SortCommand(option);
         sortCommand.setData(model, new CommandHistory(), new UndoRedoStack());
         return sortCommand;
