@@ -47,6 +47,11 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
+    /**
+     * method for giving a tag name to the person. Eg: family, friends...etc
+     * @param person
+     * @param displayedIndex
+     */
     public PersonCard(ReadOnlyPerson person, int displayedIndex) {
         super(FXML);
         this.person = person;
@@ -55,7 +60,11 @@ public class PersonCard extends UiPart<Region> {
         bindListeners(person);
     }
 
-
+    /**
+     * Add color tag to the category
+     * @param tagValue
+     * @return
+     */
     private static String getColorForTag(String tagValue) {
         if (!tagColors.containsKey(tagValue)) {
             tagColors.put(tagValue, colors[random.nextInt(colors.length)]);
