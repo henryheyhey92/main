@@ -45,9 +45,9 @@ public class StringUtil {
      * Returns true if the {@code sentence} contains the {@code word}.
      *   Ignores case, matches if sentence contains word.
      *   <br>examples:<pre>
-     *       containsAnyIgnoreCase("abcde", "abc") == true
-     *       containsAnyIgnoreCase("ABcdef", "def") == true
-     *       containsAnyIgnoreCase("ABcdef", "AC") == false //not a full word match
+     *       containsAny("abcde", "abc") == true
+     *       containsAny("ABcdef", "def") == true
+     *       containsAny("ABcdef", "AC") == false //not a full word match
      *       </pre>
      * @param sentence cannot be null
      * @param word cannot be null, cannot be empty, must be a single word

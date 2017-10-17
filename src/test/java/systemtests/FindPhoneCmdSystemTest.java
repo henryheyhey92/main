@@ -6,21 +6,16 @@ import static seedu.address.testutil.TypicalPersons.HOON;
 import static seedu.address.testutil.TypicalPersons.IDA;
 import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_84;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
 
-import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.FindPhoneCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
-import seedu.address.model.tag.Tag;
 
-public class FindPhoneCommandSystemTest extends AddressBookSystemTest {
+public class FindPhoneCmdSystemTest extends AddressBookSystemTest {
 
     @Test
     public void find() {

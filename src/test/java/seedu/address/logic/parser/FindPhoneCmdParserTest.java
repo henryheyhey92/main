@@ -11,7 +11,7 @@ import org.junit.Test;
 import seedu.address.logic.commands.FindPhoneCommand;
 import seedu.address.model.person.PhoneContainsKeywordsPredicate;
 
-public class FindPhoneCommandParserTest {
+public class FindPhoneCmdParserTest {
 
     private FindPhoneCommandParser parser = new FindPhoneCommandParser();
 

@@ -145,7 +145,7 @@ public class StringUtilTest {
      * The four test cases below test one invalid input at a time.
      */
     @Test
-    public void containsAny__validInputs_correctResult() {
+    public void containsAny_validInputs_correctResult() {
         // Matches multiple words in sentence
         assertTrue(StringUtil.containsAny("111 222 333  444", "222"));
     }

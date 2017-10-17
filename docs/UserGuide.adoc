@@ -129,7 +129,7 @@ Examples:
 * `find 111` +
 Returns `9111` and `01119`
 * `find 111 222 333` +
-Returns any person having names `0111`, `22234`, or `33311`
+Returns any person having phone number that containts `111`, `222`, or `333`
 
 === Deleting a person : `delete`
 
