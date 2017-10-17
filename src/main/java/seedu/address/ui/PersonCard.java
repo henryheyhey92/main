@@ -79,6 +79,10 @@ public class PersonCard extends UiPart<Region> {
         });
     }
 
+    /**
+     * to give a color tag to the person in the list
+     * @param person
+     */
     private void initTags(ReadOnlyPerson person) {
         /*person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName))); */
 
