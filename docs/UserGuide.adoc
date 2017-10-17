@@ -118,18 +118,17 @@ Finds persons whose names contain any of the given keywords. +
 Format: `findPhone KEYWORD [MORE_KEYWORDS]`
 
 ****
-* `findPhone 000` +
-Returns `10001` and `191000`
-* `find 111 222 333` +
-Returns any person having names `1111`, `0222`, or `9333`
+* Only the phone number is searched.
+* Numbers containing keywords will be matched e.g. `111` will match `911100`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `222 333` will return `0222`, `9333`
 ****
 
 Examples:
 
-* `find 111` +
-Returns `9111` and `01119`
+* `findPhone 000` +
+Returns `10001` and `191000`
 * `find 111 222 333` +
-Returns any person having phone number that containts `111`, `222`, or `333`
+Returns any person having names `1111`, `0222`, or `9333`
 
 === Deleting a person : `delete`
 
