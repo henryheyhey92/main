@@ -27,7 +27,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 /**
  * Contains integration tests (interaction with the Model) for {@code FindPhoneCommand}.
  */
-public class FindPhoneCommandTest {
+public class FindByPhoneTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
