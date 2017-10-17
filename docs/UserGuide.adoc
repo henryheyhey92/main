@@ -10,7 +10,7 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
 endif::[]
-:repoURL: https://github.com/CS2103AUG2017-F10-B3/main
+:repoURL: https://github.com/CS2103AUG2017-F10-B3/main.git
 
 By: `Team F10-B3`      Since: `Jun 2016`      Licence: `MIT`
 
@@ -118,10 +118,10 @@ Finds persons whose names contain any of the given keywords. +
 Format: `findPhone KEYWORD [MORE_KEYWORDS]`
 
 ****
-* The order of the keywords does not matter. e.g. `991 000` will match `0911` and `1000`
-* Only the phone is searched.
-* Any phone numbers containing keywords will be matched
-* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `991 000` will match `0911`, `1000`and return corresponding persons' details.
+* `findPhone 000` +
+Returns `10001` and `191000`
+* `find 111 222 333` +
+Returns any person having names `1111`, `0222`, or `9333`
 ****
 
 Examples:
