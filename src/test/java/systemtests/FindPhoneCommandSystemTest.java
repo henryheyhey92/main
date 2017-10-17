@@ -15,7 +15,7 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 
-public class FindByPhoneSystemTest extends AddressBookSystemTest {
+public class FindPhoneCommandSystemTest extends AddressBookSystemTest {
 
     @Test
     public void find() {

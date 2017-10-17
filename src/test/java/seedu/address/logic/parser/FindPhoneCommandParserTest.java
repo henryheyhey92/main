@@ -11,13 +11,14 @@ import org.junit.Test;
 import seedu.address.logic.commands.FindPhoneCommand;
 import seedu.address.model.person.PhoneContainsKeywordsPredicate;
 
-public class FindByPhoneParserTest {
+public class FindPhoneCommandParserTest {
 
     private FindPhoneCommandParser parser = new FindPhoneCommandParser();
 
     @Test
     public void parse_emptyArg_throwsParseException() {
-        assertParseFailure(parser, "     ", String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindPhoneCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "     ",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindPhoneCommand.MESSAGE_USAGE));
     }
 
     @Test
