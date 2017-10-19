@@ -24,6 +24,8 @@ public class BrowserPanel extends UiPart<Region> {
     public static final String GOOGLE_SEARCH_URL_PREFIX = "https://www.google.com.sg/search?safe=off&q=";
     public static final String GOOGLE_SEARCH_URL_SUFFIX = "&cad=h";
 
+    public static final String GOOGLE_MAPS_SEARCH_URL_PREFIX = "https://www.google.com.sg/maps/place/";
+
     private static final String FXML = "BrowserPanel.fxml";
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
@@ -40,10 +42,15 @@ public class BrowserPanel extends UiPart<Region> {
         loadDefaultPage();
         registerAsAnEventHandler(this);
     }
-
+/*
     private void loadPersonPage(ReadOnlyPerson person) {
         loadPage(GOOGLE_SEARCH_URL_PREFIX + person.getName().fullName.replaceAll(" ", "+")
                 + GOOGLE_SEARCH_URL_SUFFIX);
+    }
+*/
+
+    private void loadPersonPage(ReadOnlyPerson person) {
+        loadPage(GOOGLE_MAPS_SEARCH_URL_PREFIX + person.getAddress().value.replaceAll(" ", "+"));
     }
 
     public void loadPage(String url) {
