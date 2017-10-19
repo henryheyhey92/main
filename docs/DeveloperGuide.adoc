@@ -252,8 +252,17 @@ image::FindByLetterUML.png[width="350"]
 
 -`person number in list implementation`
 
+-`Passcode lock implementation`
 
+The following implementation is to add security features to the application
 
+initial draft idea:
+
+if user name & password matches the input, user get to access the application.
+
+-draft execution: will do a while loop in the MainApp class.
+
+image::passcodedraft1.png[width="300"]
 
 // tag::undoredo[]
 === Undo/Redo mechanism
