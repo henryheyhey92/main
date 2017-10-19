@@ -152,6 +152,26 @@ Selects the 2nd person in the address book.
 `select 1` +
 Selects the 1st person in the results of the `find` command.
 
+/***/
+=== Locating persons by name: `letter`
+
+Finds persons whose names contain any of the given keywords. +
+Format: `letter KEYWORD [1 alphabet character only]`
+
+****
+* The search is non-case insensitive. e.g `A` will match `Alan`(*for example)
+* Only the name is searched.
+* Only full words will be matched e.g. `h` will not match `Hans`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `H` will return `Hans Gruber`, `Ho Yang`
+****
+
+Examples:
+
+* `letter J` +
+Returns `John` and `John Doe`
+* `letter B` +
+Returns any person having names `Betsy`, `Bean`, or `Ben`
+
 === Listing entered commands : `history`
 
 Lists all the commands that you have entered in reverse chronological order. +
@@ -250,3 +270,4 @@ e.g.`select 2`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
+* *letter* : `letter KEYWORD [1 alphabet character only]`
