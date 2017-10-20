@@ -218,11 +218,10 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-
-// tag::findemail[]
-=== Find Email mechanism
+=== Add findEmail mechanism
 
 The find email mechanism is facilitated by regex. After finding matches, result will be stored in the filtered list that is showing on the UI.
+Further improvement might include allowing user to use flag(e.g. findEmail \f KEYWORD) to do advance search.
 
 -`The findByLetter Implementation`;
 
