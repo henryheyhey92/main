@@ -234,7 +234,7 @@ Format: `findPhone KEYWORD [MORE_KEYWORDS]`
 
 As long as contact has phone number that contains KEYWORD [MORE_KEYWORDS], it will be matched and displayed.
 
-Java files that have been modied:
+Java files that have been modified:
 - `PhoneContainsKeywordPredicate.java`
 - `AddressBookParser.java`
 - `FindPhoneCommand`
