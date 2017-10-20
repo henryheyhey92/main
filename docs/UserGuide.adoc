@@ -113,6 +113,22 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
+=== Locating persons by phone: `findEmail`
+
+Finds persons whose email contain any of the given keywords. +
+Format: `findEmail KEYWORD`
+
+****
+* The search is case insensitive. e.g. `hans` will match `Hans`
+* Partial word can also be searched. e.g. `john` will match `johndoe@example.com`
+* Only the email is searched.
+****
+
+Examples:
+
+* `findEmail jane` +
+Returns `janedoe@example.com`
+
 === Locating persons by phone: `findPhone`
 
 Finds persons whose names contain any of the given keywords. +
