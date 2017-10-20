@@ -218,6 +218,14 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+
+// tag::findemail[]
+=== Find Email mechanism
+
+The find email mechanism is facilitated by regex. After finding matches, result will be stored in the filtered list that is showing on the UI.
+
+-`The findByLetter Implementation`;
+
 === Add findPhone mechanism
 
 The findPhone mechanism is able to search for persons whose phone numbers contain any number being searched.
@@ -229,6 +237,7 @@ Further improvements might include using command line to search for address or j
 
 
 ===`The findByLetter Implementation`;
+
 
 Find all person that is related to the input character.
 Key idea:
