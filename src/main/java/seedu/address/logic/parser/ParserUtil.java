@@ -33,13 +33,20 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_OPTION = "sort option is invalid.";
     private static final HashSet<Character> choices = new HashSet<Character>();
 
-    static{
+    static {
         choices.add('n');
         choices.add('a');
     }
 
-    public static String parseSortOption(String args)throws IllegalValueException{
-        if(!choices.contains(args.trim().charAt(INDEX_OPTION))){
+    /**
+     * Parses {@code args} into a {@code String} and returns it. Leading and trailing whitespaces are already
+     * trimmed.
+     *
+     * @throws IllegalValueException if the specified sort option is invalid
+     * (input option is not found in HashSet<> choices).
+     */
+    public static String parseSortOption(String args) throws IllegalValueException {
+        if (!choices.contains(args.charAt(INDEX_OPTION))) {
             throw new IllegalValueException(MESSAGE_INVALID_OPTION);
         } else {
             return Character.toString(args.trim().charAt(INDEX_OPTION));
@@ -49,6 +56,7 @@ public class ParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws IllegalValueException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws IllegalValueException {
