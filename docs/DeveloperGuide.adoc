@@ -297,6 +297,8 @@ image::FindByLetterUML.png[width="800"]
 
 -`person number in list implementation`
 
+feature has implemented, but writeup still in progress...
+
 -`Passcode lock implementation`
 
 The following implementation is to add security features to the application
