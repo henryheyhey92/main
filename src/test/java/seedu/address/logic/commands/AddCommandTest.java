@@ -124,9 +124,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public void sortAddressBook(int option) {
+        public void sortAddressBook(int option,int saveOption) {
             fail("This method should not be called");
-
         }
 
         @Override
