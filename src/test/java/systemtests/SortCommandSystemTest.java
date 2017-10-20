@@ -18,16 +18,16 @@ public class SortCommandSystemTest extends AddCommandSystemTest{
     public void sort() throws UniquePersonList.AddressBookIsEmpty{
 
         /*Case: sort the addressbook by name, command with leading and trailing spaces -> sorted by name */
-       // Model expectedModelName = getModel();
-        //String commandSortName = " "  + SortCommand.COMMAND_WORD +" "+CHOICE_NAME;
-        //expectedModelName.sortAddressBook(1);
-        //assertCommandSuccess(commandSortName,expectedModelName,MESSAGE_SUCCESS_NAME);
+        Model expectedModelName = getModel();
+        String commandSortName = " "  + SortCommand.COMMAND_WORD +" "+CHOICE_NAME;
+        expectedModelName.sortAddressBook(1);
+        assertCommandSuccess(commandSortName,expectedModelName,MESSAGE_SUCCESS_NAME);
 
          /*Case: sort the addressbook by address, command with leading and trailing spaces -> sorted by address */
-        Model expectedModelAddress = getModel();
-        String commandSortAddress = " "  + SortCommand.COMMAND_WORD +" "+CHOICE_ADDRESS;
-        expectedModelAddress.sortAddressBook(2);
-        assertCommandSuccess(commandSortAddress,expectedModelAddress,MESSAGE_SUCCESS_ADDRESS);
+        //Model expectedModelAddress = getModel();
+        //String commandSortAddress = " "  + SortCommand.COMMAND_WORD +" "+CHOICE_ADDRESS;
+        //expectedModelAddress.sortAddressBook(2);
+        //assertCommandSuccess(commandSortAddress,expectedModelAddress,MESSAGE_SUCCESS_ADDRESS);
 
     }
 
