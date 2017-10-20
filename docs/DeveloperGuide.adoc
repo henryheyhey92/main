@@ -216,7 +216,20 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 == Implementation
 
-This section describes some noteworthy details on how certain features are implemented.
+******************
+Feature->Sort Command
+Overview: The sort command is able to sort by name or by address. Name is sorted alphabetically while
+addresses are sorted according to districts.
+
+How is it implemented: Sorting by name is done using the Java comparator with the compare method overridden
+in the SortName class using the method compareToIgnoreCase(). Sorting by address is done using a lookup table
+with the districts already pre-loaded.
+
+Why is it implemented this way: Sort by name is straightforward using the standard sorting approach however sorting
+by addresses is more complicated. Using a lookup table offers a definite sorting approach as compare to other approaches
+as for now standard user input for address cannot be guaranteed as of now. However if this should change in the later
+versions. The approach may be changed as well.
+*******************
 
 
 // tag::findemail[]
