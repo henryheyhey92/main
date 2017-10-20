@@ -1,4 +1,4 @@
- AddressBook Level 4 - Developer Guide
+= AddressBook Level 4 - Developer Guide
 :toc:
 :toc-title:
 :toc-placement: preamble
@@ -216,7 +216,20 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 == Implementation
 
-This section describes some noteworthy details on how certain features are implemented.
+******************
+Feature->Sort Command
+Overview: The sort command is able to sort by name or by address. Name is sorted alphabetically while
+addresses are sorted according to districts.
+
+How is it implemented: Sorting by name is done using the Java comparator with the compare method overridden
+in the SortName class using the method compareToIgnoreCase(). Sorting by address is done using a lookup table
+with the districts already pre-loaded.
+
+Why is it implemented this way: Sort by name is straightforward using the standard sorting approach however sorting
+by addresses is more complicated. Using a lookup table offers a definite sorting approach as compare to other approaches
+as for now standard user input for address cannot be guaranteed as of now. However if this should change in the later
+versions. The approach may be changed as well.
+*******************
 
 
 // tag::findemail[]
@@ -224,20 +237,32 @@ This section describes some noteworthy details on how certain features are imple
 
 The find email mechanism is facilitated by regex. After finding matches, result will be stored in the filtered list that is showing on the UI.
 
--`The findByLetter Implementation`;
 
-=== Add findPhone mechanism
+=== Add `findPhone mechanism`
 
 The findPhone mechanism is able to search for persons whose phone numbers contain any number being searched.
 
+Finds persons whose names contain any of the given keywords. +
+Format: `findPhone KEYWORD [MORE_KEYWORDS]`
+
+As long as contact has phone number that contains KEYWORD [MORE_KEYWORDS], it will be matched and displayed.
+
+Java files that have been modied:
+- `PhoneContainsKeywordPredicate.java`
+- `AddressBookParser.java`
+- `FindPhoneCommand`
+- Some test units have been updated.
+
+
 === Search for address on Google Maps
 
-Clicking on the person's contact will search for selected contact's address on Google Maps.
+Clicking on the person's contact will search for selected contact's address on Google Maps, as shown below.
+image::searchAddressUI.png[width="800"]
+
 Further improvements might include using command line to search for address or just clicking on address line in person's contact.
 
 
 === The findByLetter Implementation
-
 
 Find all person that is related to the input character.
 Key idea:

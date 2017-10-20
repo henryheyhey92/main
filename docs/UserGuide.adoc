@@ -295,6 +295,13 @@ There is no need to save manually.
 
 === Click on contact to search address
 
+
+Clicking on contact in list will search for its address in Google Maps.
+image::searchAddressUI.png[width="800"]
+
+=== Locating persons by name: `letter`
+
+
 Clicking on contact in list will search for its address in Google Maps.
 
 === Number of person in list
@@ -334,3 +341,10 @@ e.g.`select 2`
 * * Add birthdays
 * * Customize UI colour theme
 * * Passcode login
+* * findPhone
+* * findEmail v1.2
+* * letter v1.2
+* * Google search Address when contact is selected v1.2
+* * Sort by address v1.2
+* * Copy to clipboard
+
