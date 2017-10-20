@@ -17,23 +17,26 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.UniquePersonList;
 
+/**
+ * Contains integration tests (interaction with the Model) and unit tests for SortCommand.
+ */
 public class SortCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
     public void execute_sortAddressBookByName_success() throws UniquePersonList.AddressBookIsEmpty {
-        SortCommand sortCommand = prepareCommand("n", model);
+        SortCommand sortCommand = prepareCommand("n", 0, model);
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.sortAddressBook(1);
+        expectedModel.sortAddressBook(1, 0);
         assertCommandSuccess(sortCommand, model, MESSAGE_SUCCESS_NAME, expectedModel);
     }
 
     @Test
     public void execute_sortAddressBookByAddress_success() throws UniquePersonList.AddressBookIsEmpty {
-        SortCommand sortCommand = prepareCommand("a", model);
+        SortCommand sortCommand = prepareCommand("a", 0, model);
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.sortAddressBook(2);
+        expectedModel.sortAddressBook(2, 0);
         assertCommandSuccess(sortCommand, model, MESSAGE_SUCCESS_ADDRESS, expectedModel);
     }
 
@@ -42,7 +45,7 @@ public class SortCommandTest {
             throws UniquePersonList.AddressBookIsEmpty {
         ModelManager testModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         testModel.resetData(new AddressBook());
-        SortCommand sortCommand = prepareCommand("n", testModel);
+        SortCommand sortCommand = prepareCommand("n", 0, testModel);
         assertCommandFailure(sortCommand, testModel, MESSAGE_EMPTY);
     }
 
@@ -51,12 +54,15 @@ public class SortCommandTest {
             throws UniquePersonList.AddressBookIsEmpty {
         ModelManager testModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         testModel.resetData(new AddressBook());
-        SortCommand sortCommand = prepareCommand("a", testModel);
+        SortCommand sortCommand = prepareCommand("a", 0, testModel);
         assertCommandFailure(sortCommand, testModel, MESSAGE_EMPTY);
     }
 
-    private SortCommand prepareCommand(String option, Model model) {
-        SortCommand sortCommand = new SortCommand(option);
+    /**
+     * Returns a {@code SortCommand} with parameters {@code option} and {@code saveOption}.
+     */
+    private SortCommand prepareCommand(String option, int saveOption, Model model) {
+        SortCommand sortCommand = new SortCommand(option, saveOption);
         sortCommand.setData(model, new CommandHistory(), new UndoRedoStack());
         return sortCommand;
     }
