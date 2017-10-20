@@ -273,6 +273,9 @@ Format: `exit`
 Address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
+=== Click on contact to search address
+Clicking on contact in list will search for its address in Google Maps.
+
 === Locating persons by name: `letter`
 
 Finds persons whose names contain any of the given keywords. +
