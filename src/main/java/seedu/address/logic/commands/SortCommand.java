@@ -9,17 +9,25 @@ import seedu.address.logic.commands.exceptions.CommandException;
  */
 public class SortCommand extends Command {
 
-    public static final String COMMAND_WORD = "sort";
+    public static final String COMMAND_WORD = "s";
+    public static final String CHOICE_NAME = "n";
+    public static final String CHOICE_ADDRESS = "a";
+
+    public static final String OPTION_ADDRESS = "a";
+    public static final String OPTION_NAME = "n";
     public static final String
             MESSAGE_EMPTY = "Addressbook is currently empty please add at least 2 entries before sorting.";
+    public static final String POSSIBLE_CHOICES = "Invalid choice input,the valid choices to be sorted are:\n"
+                         + "1. " + CHOICE_NAME + " (name)\n"
+                         + "2. " + CHOICE_ADDRESS + " (address)\n";
+
     private String option;
     private CommandResult result;
 
+    public SortCommand(){}
+
     public SortCommand(String argument) {
         this.option = argument.trim();
-    }
-
-    public SortCommand() {
     }
 
     @Override
@@ -27,12 +35,12 @@ public class SortCommand extends Command {
         requireNonNull(model);
 
         switch (option) {
-        case "/a":
+        case OPTION_ADDRESS:
             Command address = new SortAddress(model);
             result = address.execute();
             break;
 
-        case "/n":
+        case OPTION_NAME:
             Command name = new SortName(model);
             result = name.execute();
             break;

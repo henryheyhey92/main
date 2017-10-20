@@ -23,7 +23,7 @@ public class SortCommandTest {
 
     @Test
     public void execute_sortAddressBookByName_success() throws UniquePersonList.AddressBookIsEmpty {
-        SortCommand sortCommand = prepareCommand("/n", model);
+        SortCommand sortCommand = prepareCommand("n", model);
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.sortAddressBook(1);
         assertCommandSuccess(sortCommand, model, MESSAGE_SUCCESS_NAME, expectedModel);
@@ -31,7 +31,7 @@ public class SortCommandTest {
 
     @Test
     public void execute_sortAddressBookByAddress_success() throws UniquePersonList.AddressBookIsEmpty {
-        SortCommand sortCommand = prepareCommand("/a", model);
+        SortCommand sortCommand = prepareCommand("a", model);
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.sortAddressBook(2);
         assertCommandSuccess(sortCommand, model, MESSAGE_SUCCESS_ADDRESS, expectedModel);
@@ -42,7 +42,7 @@ public class SortCommandTest {
             throws UniquePersonList.AddressBookIsEmpty {
         ModelManager testModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         testModel.resetData(new AddressBook());
-        SortCommand sortCommand = prepareCommand("/n", testModel);
+        SortCommand sortCommand = prepareCommand("n", testModel);
         assertCommandFailure(sortCommand, testModel, MESSAGE_EMPTY);
     }
 
@@ -51,7 +51,7 @@ public class SortCommandTest {
             throws UniquePersonList.AddressBookIsEmpty {
         ModelManager testModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         testModel.resetData(new AddressBook());
-        SortCommand sortCommand = prepareCommand("/a", testModel);
+        SortCommand sortCommand = prepareCommand("a", testModel);
         assertCommandFailure(sortCommand, testModel, MESSAGE_EMPTY);
     }
 

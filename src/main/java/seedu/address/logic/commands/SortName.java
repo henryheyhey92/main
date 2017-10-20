@@ -12,12 +12,11 @@ import seedu.address.model.person.UniquePersonList;
 public class SortName extends SortCommand implements Comparator<ReadOnlyPerson> {
 
     public static final String
-            MESSAGE_SUCCESS_NAME = "The address book has been sorted alphabetically according to name!";
+            MESSAGE_SUCCESS_NAME = "The address book has been sorted alphabetically according to name";
     public static final int OPTION_NAME = 1;
     private Model model;
 
-    public SortName() {
-    }
+    public SortName(){}
 
     public SortName(Model target) {
         this.model = target;
