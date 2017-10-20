@@ -227,6 +227,9 @@ Format: `exit`
 Address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
+=== Click on contact to search address
+Clicking on contact in list will search for its address in Google Maps.
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +

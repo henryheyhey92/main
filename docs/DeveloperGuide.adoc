@@ -218,6 +218,15 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+=== Add findPhone mechanism
+
+The findPhone mechanism is able to search for persons whose phone numbers contain any number being searched.
+
+=== Search for address on Google Maps
+
+Clicking on the person's contact will search for selected contact's address on Google Maps.
+Further improvements might include using command line to search for address or just clicking on address line in person's contact.
+
 // tag::undoredo[]
 === Undo/Redo mechanism
 
