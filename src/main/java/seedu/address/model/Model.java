@@ -51,6 +51,6 @@ public interface Model {
      *  option = 1 {sorts by name}
      *  option = 2 {sorts by address}
      */
-    void sortAddressBook (int option,int saveOption) throws UniquePersonList.AddressBookIsEmpty;
+    void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty;
 
 }

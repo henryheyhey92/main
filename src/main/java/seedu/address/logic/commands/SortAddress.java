@@ -24,7 +24,7 @@ public class SortAddress extends SortCommand implements Comparator<ReadOnlyPerso
     private Model model;
     private int saveOption;
 
-    static{
+    static {
         table.add("ang mo kio");
         table.add("geylang");
         table.add("tampines");
