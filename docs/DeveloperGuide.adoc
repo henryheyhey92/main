@@ -215,7 +215,6 @@ The `Storage` component,
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
 == Implementation
-
 == Sort Command mechanism
 
 Overview: The sort command is able to sort by name or by address. Name is sorted alphabetically while
