@@ -19,11 +19,12 @@ public class SortAddress extends SortCommand implements Comparator<ReadOnlyPerso
     /*
      * Look up table of addresses for comparison
      */
-    private static final ArrayList <CharSequence> table = new ArrayList();
+    private static final ArrayList<CharSequence> table = new ArrayList();
 
     private Model model;
+    private int saveOption;
 
-    public SortAddress(){
+    static{
         table.add("ang mo kio");
         table.add("geylang");
         table.add("tampines");
@@ -35,33 +36,36 @@ public class SortAddress extends SortCommand implements Comparator<ReadOnlyPerso
         table.add("bukit batok");
     }
 
-    public SortAddress(Model target) {
+    public SortAddress() {}
+
+    public SortAddress(Model target, int saveOption) {
         this.model = target;
+        this.saveOption = saveOption;
     }
 
     @Override
     public CommandResult execute() throws UniquePersonList.AddressBookIsEmpty {
-        model.sortAddressBook(OPTION_ADDRESS);
+        model.sortAddressBook(OPTION_ADDRESS, saveOption);
         return new CommandResult(MESSAGE_SUCCESS_ADDRESS);
     }
 
     @Override
     public int compare(ReadOnlyPerson a, ReadOnlyPerson b) {
         int index = 0;
-        for(CharSequence compare: table){
-            if(a.getAddress().value.toLowerCase().contains(compare)){
-                index=table.indexOf(compare);
+        for (CharSequence compare : table) {
+            if (a.getAddress().value.toLowerCase().contains(compare)) {
+                index = table.indexOf(compare);
             }
         }
-        String compareFirst = (String)table.get(index);
+        String compareFirst = (String) table.get(index);
 
-        for(CharSequence compare: table){
-            if(b.getAddress().value.toLowerCase().contains(compare)){
-                index=table.indexOf(compare);
+        for (CharSequence compare : table) {
+            if (b.getAddress().value.toLowerCase().contains(compare)) {
+                index = table.indexOf(compare);
             }
         }
 
-        String compareSecond = (String)table.get(index);
+        String compareSecond = (String) table.get(index);
 
         return compareFirst.compareToIgnoreCase(compareSecond);
     }
