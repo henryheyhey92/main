@@ -342,9 +342,8 @@ e.g.`select 2`
 * * Customize UI colour theme
 * * Passcode login
 * * findPhone
-* * findEmail v1.2
-* * letter v1.2
-* * Google search Address when contact is selected v1.2
-* * Sort by address v1.2
+* * findEmail `Since v1.2`
+* * letter `Since v1.2`
+* * Google search Address when contact is selected `Since v1.2`
+* * Sort by address `Since v1.2`
 * * Copy to clipboard
-

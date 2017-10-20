@@ -248,7 +248,7 @@ Format: `findPhone KEYWORD [MORE_KEYWORDS]`
 
 As long as contact has phone number that contains KEYWORD [MORE_KEYWORDS], it will be matched and displayed.
 
-Java files that have been modied:
+Java files that have been modified:
 - `PhoneContainsKeywordPredicate.java`
 - `AddressBookParser.java`
 - `FindPhoneCommand`
@@ -258,7 +258,7 @@ Java files that have been modied:
 === Search for address on Google Maps
 
 Clicking on the person's contact will search for selected contact's address on Google Maps, as shown below.
-image::searchAddressUI.png[width="800"]
+image::searchAddressUI.png[width="700"]
 
 Further improvements might include using command line to search for address or just clicking on address line in person's contact.
 
