@@ -249,7 +249,7 @@ image::searchAddressUI.png[width="800"]
 Further improvements might include using command line to search for address or just clicking on address line in person's contact.
 
 
-===`The findByLetter Implementation`;
+=== `The findByLetter Implementation`;
 
 Find all person that is related to the input character.
 Key idea:
