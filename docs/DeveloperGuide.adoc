@@ -228,7 +228,7 @@ with the districts already pre-loaded.
 
 Why is it implemented this way: Sort by name is straightforward using the standard sorting approach however sorting
 by addresses is more complicated. Using a lookup table offers a definite sorting approach as compare to other approaches
-as for now standard user input for address cannot be guaranteed as of now. However if this should change in the later
+as for now standard user input for address cannot be guaranteed. However if this should change in the later
 versions. The approach may be changed as well.
 *******************
 
