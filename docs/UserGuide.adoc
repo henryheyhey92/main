@@ -158,6 +158,26 @@ Returns `10001` and `191000`
 * `find 111 222 333` +
 Returns any person having names `1111`, `0222`, or `9333`
 
+=== Locating persons by name: `letter`
+
+Finds persons whose names contain any of the given keywords. +
+
+Format: `letter KEYWORD [1 alphabet character only]`
+
+****
+* The search is non-case insensitive. e.g `A` will match `Alan`(*for example)
+* Only the name is searched.
+* Only full words will be matched e.g. `h` will not match `Hans`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `H` will return `Hans Gruber`, `Ho Yang`
+****
+
+Examples:
+
+* `letter J` +
+Returns `John` and `John Doe`
+* `letter B` +
+Returns any person having names `Betsy`, `Bean`, or `Ben`
+
 === Deleting a person : `delete`
 
 Deletes the specified person from the address book. +
@@ -274,41 +294,19 @@ Address book data are saved in the hard disk automatically after any command tha
 There is no need to save manually.
 
 === Click on contact to search address
+
+
 Clicking on contact in list will search for its address in Google Maps.
 image::searchAddressUI.png[width="800"]
 
 === Locating persons by name: `letter`
 
-Finds persons whose names contain any of the given keywords. +
 
-Format: `letter KEYWORD [1 alphabet character only]`
+Clicking on contact in list will search for its address in Google Maps.
 
-****
-* The search is non-case insensitive. e.g `A` will match `Alan`(*for example)
-* Only the name is searched.
-* Only full words will be matched e.g. `h` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `H` will return `Hans Gruber`, `Ho Yang`
-****
+=== Number of person in list
 
-Examples:
-
-* `letter J` +
-Returns `John` and `John Doe`
-* `letter B` +
-Returns any person having names `Betsy`, `Bean`, or `Ben`
-=======
-Format: `letter KEYWORD [One Capital letter character]`
-
-****
-* The search is not case insensitive. e.g `A` will only match `A`
-* Only the name is searched.
-* Only first character of the word will be matched e.g. `A` will match `Alan`
-*****
-
-Examples:
-
-* `letter A` +
-Returns `Alan` and `Alex Doe`
+At the bottom of the addressbook, application will display the number of person in list.
 
 == FAQ
 
@@ -342,6 +340,7 @@ e.g.`select 2`
 == Coming soon in V2.0
 * * Add birthdays
 * * Customize UI colour theme
+* * Passcode login
 * * findPhone
 * * findEmail `Since v1.2`
 * * letter `Since v1.2`

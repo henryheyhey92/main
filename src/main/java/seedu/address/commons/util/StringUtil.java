@@ -48,7 +48,7 @@ public class StringUtil {
         String preppedChars = chars.trim();
         checkArgument(!preppedChars.isEmpty(), "Word parameter cannot be empty");
         checkArgument(preppedChars.split("\\s+").length == 1, "Word parameter should be a single word");
-        String regex = String.format("^%s.*$", chars);
+        String regex = String.format("^" + chars + ".*$");
 
         if (sentence.matches(regex)) {
             return true;

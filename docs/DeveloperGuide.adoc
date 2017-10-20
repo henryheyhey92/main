@@ -216,7 +216,21 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 == Implementation
 
-This section describes some noteworthy details on how certain features are implemented.
+******************
+==Sort Command mechanism
+
+Overview: The sort command is able to sort by name or by address. Name is sorted alphabetically while
+addresses are sorted according to districts.
+
+How is it implemented: Sorting by name is done using the Java comparator with the compare method overridden
+in the SortName class using the method compareToIgnoreCase(). Sorting by address is done using a lookup table
+with the districts already pre-loaded.
+
+Why is it implemented this way: Sort by name is straightforward using the standard sorting approach however sorting
+by addresses is more complicated. Using a lookup table offers a definite sorting approach as compare to other approaches
+as for now standard user input for address cannot be guaranteed. However if this should change in the later
+versions. The approach may be changed as well.
+*******************
 
 
 // tag::findemail[]
@@ -249,7 +263,7 @@ image::searchAddressUI.png[width="700"]
 Further improvements might include using command line to search for address or just clicking on address line in person's contact.
 
 
-=== `The findByLetter Implementation`;
+=== The findByLetter Implementation
 
 Find all person that is related to the input character.
 Key idea:
@@ -279,9 +293,11 @@ The result of the command execution is encapsulated as a CommandResult object wh
 
 Given below is the Sequence Diagram for interactions within the Logic component for the execute("Letter A") API call.
 
-image::FindByLetterUML.png[width="350"]
+image::FindByLetterUML.png[width="800"]
 
 -`person number in list implementation`
+
+feature has implemented, but writeup still in progress...
 
 -`Passcode lock implementation`
 
@@ -293,7 +309,7 @@ if user name & password matches the input, user get to access the application.
 
 -draft execution: will do a while loop in the MainApp class.
 
-image::passcodedraft1.png[width="300"]
+image::passcodedraft1.png[width="800"]
 
 // tag::undoredo[]
 === Undo/Redo mechanism

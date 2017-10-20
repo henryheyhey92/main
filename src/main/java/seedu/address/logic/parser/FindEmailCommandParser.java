@@ -25,8 +25,9 @@ public class FindEmailCommandParser implements Parser<FindEmailCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindEmailCommand.MESSAGE_USAGE));
         }
 
-        String[] emailKeyword = {args};
-        return new FindEmailCommand(new EmailContainsKeywordsPredicate(Arrays.asList(emailKeyword)));
+        String[] nameKeywords = trimmedArgs.split("\\s+");
+
+        return new FindEmailCommand(new EmailContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
     }
 
 }
