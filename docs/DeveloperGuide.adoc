@@ -244,7 +244,7 @@ Java files that have been modified:
 === Search for address on Google Maps
 
 Clicking on the person's contact will search for selected contact's address on Google Maps, as shown below.
-image::searchAddressUI.png[width="800"]
+image::searchAddressUI.png[width="400"]
 
 Further improvements might include using command line to search for address or just clicking on address line in person's contact.
 
