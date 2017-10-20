@@ -217,7 +217,8 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 == Implementation
 
 ******************
-Feature->Sort Command
+==Sort Command mechanism
+
 Overview: The sort command is able to sort by name or by address. Name is sorted alphabetically while
 addresses are sorted according to districts.
 
