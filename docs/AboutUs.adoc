@@ -31,7 +31,7 @@ Responsibilities: UI; Testing; Scheduling
 '''
 
 === Ng Ki Kan
-image::yijinl.jpg[width="150", align="left"]
+image::kkngae.png[width="150", align="left"]
 {empty}[https://github.com/KiKanNG[github]] [<<kikanng#, portfolio>>]
 
 Role: Developer +
