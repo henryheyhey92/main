@@ -113,9 +113,10 @@ public class Person implements ReadOnlyPerson {
 
     @Override
     public String fullTag() {
-            final StringBuilder builder = new StringBuilder();
-            getTags().forEach(builder::append);
-            return builder.toString().replace("]["," ").replaceAll("[\\[\\]]","");
+        final StringBuilder builder = new StringBuilder();
+        getTags().forEach(builder::append);
+
+        return builder.toString().replace("][", " ").replaceAll("[\\[\\]]", "");
     }
 
     public ObjectProperty<UniqueTagList> tagProperty() {
