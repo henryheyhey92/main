@@ -84,6 +84,22 @@ Format: `sort OPTION`
 Shows a list of all persons in the address book. +
 Format: `list`
 
+=== Copying person's information over to system clipboard : `copy`
+
+Copies the selected person's information over to the system clipboard.
+Format: `c INDEX CHOICE`
+
+****
+* Both fields after input `c` must be provided.
+****
+
+Examples:
+
+* To copy a person's name append the letter `n` after INDEX. Example 'c 1 n'.
+* To copy a person's phone append the letter `p` after INDEX. Example 'c 1 p'.
+* To copy a person's email append the letter `e` after INDEX. Example 'c 1 e'.
+* To copy a person's address append the letter `a` after INDEX. Example 'c 1 a'.
+
 === Editing a person : `edit`
 
 Edits an existing person in the address book. +
