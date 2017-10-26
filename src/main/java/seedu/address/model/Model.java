@@ -45,6 +45,12 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate);
 
+    /**
+     * Copies a single data field of the person specified by {@code person},the choice of field to be
+     * copied is specified by {@code choice}.
+     * @param person
+     * @param choice
+     */
     void copy(ReadOnlyPerson person,String choice);
 
 }
