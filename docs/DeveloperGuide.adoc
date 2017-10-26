@@ -293,11 +293,28 @@ The result of the command execution is encapsulated as a CommandResult object wh
 
 Given below is the Sequence Diagram for interactions within the Logic component for the execute("Letter A") API call.
 
-image::FindByLetterUML.png[width="800"]
+image::FBL2.png[width="800"]
 
 -`person number in list implementation`
 
 feature has implemented, but writeup still in progress...
+
+-`Program exit checker implementation`
+
+This feature is to give the user a confirmation on closing the application.
+
+The files involved in the feature are, MainApp and ConfirmBox.
+Methods that are involved in buliding this feature is start() & stop().
+
+When user input exit command or click on the close button, the application will
+call out another window to ask the user's confirmation on closing the application.
+
+setOnCloseRequest will trigger when user close or exit the program.
+ConfirmBox will return true or false value of the user intention to close or continue on the program.
+
+image::exitprogramchecker.png[width="800"]
+
+The above is a illustration of how exit program funs.
 
 -`Passcode lock implementation`
 
