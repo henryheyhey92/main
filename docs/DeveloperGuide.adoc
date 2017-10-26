@@ -256,16 +256,34 @@ Further improvement might include allowing user to use flag(e.g. findEmail \f KE
 
 The findPhone mechanism is able to search for persons whose phone numbers contain any number being searched.
 
-Finds persons whose names contain any of the given keywords. +
+Finds persons whose phones contain any of the given keywords. +
 Format: `findPhone KEYWORD [MORE_KEYWORDS]`
 
 As long as contact has phone number that contains KEYWORD [MORE_KEYWORDS], it will be matched and displayed.
 
 Java files that have been modified:
-- `PhoneContainsKeywordPredicate.java`
+- `PhoneContainsKeywordsPredicate.java`
 - `AddressBookParser.java`
 - `FindPhoneCommand`
+- `FindPhoneCommandParser`
 - Some test units have been updated.
+
+=== Add `findTag mechanism`
+
+The findTag mechanism is able to search for persons whose tags contain any keywords being searched.
+
+Finds persons whose tags contain any of the given keywords. +
+Format: `findTag KEYWORD [MORE_KEYWORDS]`
+
+As long as contact has tags that contains KEYWORD [MORE_KEYWORDS], it will be matched and displayed.
+
+Java files that have been modified:
+- `TagContainsKeywordsPredicate.java`: Newly created
+- `AddressBookParser.java`: Edited to include findTag command.
+- `FindTagCommand.java`: Newly created.
+- `FindTagCommandParser.java`: Newly created.
+- `Person.java` : Altered to get tags as a string.
+- `ReadOnlyPerson.java`: Altered to get tags as a string.
 
 
 === Search for address on Google Maps
