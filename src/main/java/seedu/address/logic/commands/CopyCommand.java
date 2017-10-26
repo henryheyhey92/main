@@ -17,7 +17,10 @@ public class CopyCommand extends Command {
     public static final String CHOICE_PHONE = "p";
     public static final String CHOICE_ADDRESS = "a";
 
-    public static final String MESSAGE_SUCCESS = "Data has been copied to the clipboard";
+    public static final String MESSAGE_SUCCESS_NAME = "Person's name has been copied to the clipboard";
+    public static final String MESSAGE_SUCCESS_ADDRESS = "Person's address has been copied to the clipboard";
+    public static final String MESSAGE_SUCCESS_PHONE = "Person's phone has been copied to the clipboard";
+    public static final String MESSAGE_SUCCESS_EMAIL = "Person's email has been copied to the clipboard";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Copies the details of the person identified "
             + "by index number used in the last person listing. "
@@ -50,6 +53,22 @@ public class CopyCommand extends Command {
 
         ReadOnlyPerson targetPerson = lastShownList.get(index.getZeroBased());
         model.copy(targetPerson, choice);
-        return new CommandResult(MESSAGE_SUCCESS);
+
+        switch (choice) {
+            case CHOICE_NAME:
+                return new CommandResult(MESSAGE_SUCCESS_NAME);
+
+            case CHOICE_ADDRESS:
+                return new CommandResult(MESSAGE_SUCCESS_ADDRESS);
+
+            case CHOICE_PHONE:
+                return new CommandResult(MESSAGE_SUCCESS_PHONE);
+
+            case CHOICE_EMAIL:
+                return new CommandResult(MESSAGE_SUCCESS_EMAIL);
+
+            default:
+                return new CommandResult("Error, this message should not be displayed");
+        }
     }
 }
