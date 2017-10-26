@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CopyCommandParser.INDEX_CHOICE;
+import static seedu.address.logic.parser.CopyCommandParser.INDEX_TARGET;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -76,10 +77,11 @@ public class ParserUtil {
      * the choice is an invalid one.
      */
     public static String parseChoice(String args) throws IllegalValueException{
-        if(!choices.contains(args.trim().charAt(INDEX_CHOICE))){
+        String[] place_holder = args.trim().split("\\s+");
+        if(!choices.contains(place_holder[INDEX_CHOICE].charAt(INDEX_TARGET))){
             throw new IllegalValueException(MESSAGE_INVALID_CHOICE);
         } else {
-            return Character.toString(args.trim().charAt(INDEX_CHOICE));
+            return place_holder[INDEX_CHOICE];
         }
     }
 
