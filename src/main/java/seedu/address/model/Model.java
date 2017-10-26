@@ -4,6 +4,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.person.ReadOnlyPerson;
+import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -52,5 +53,13 @@ public interface Model {
      * @param choice
      */
     void copy(ReadOnlyPerson person,String choice);
+
+    /**
+     *  Sorts the addressbook base on name or address
+     *  option = 1 {sorts by name}
+     *  option = 2 {sorts by address}
+     */
+    void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty;
+
 
 }

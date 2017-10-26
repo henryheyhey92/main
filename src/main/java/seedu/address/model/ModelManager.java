@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+
 import static seedu.address.logic.commands.CopyCommand.CHOICE_ADDRESS;
 import static seedu.address.logic.commands.CopyCommand.CHOICE_EMAIL;
 import static seedu.address.logic.commands.CopyCommand.CHOICE_NAME;
@@ -10,6 +11,9 @@ import static seedu.address.logic.commands.CopyCommand.CHOICE_PHONE;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+
+import static seedu.address.logic.commands.SortCommand.SAVE;
+
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -21,6 +25,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
+import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
@@ -77,6 +82,16 @@ public class ModelManager extends ComponentManager implements Model {
     public synchronized void deletePerson(ReadOnlyPerson target) throws PersonNotFoundException {
         addressBook.removePerson(target);
         indicateAddressBookChanged();
+    }
+
+    @Override
+    //Note FilteredList is unmodifiable hence sorting is done on internal list.
+    public synchronized void sortAddressBook(int option, int saveOption)throws UniquePersonList.AddressBookIsEmpty {
+        addressBook.sort(option);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        if (saveOption == SAVE) {
+            indicateAddressBookChanged();
+        }
     }
 
     @Override
