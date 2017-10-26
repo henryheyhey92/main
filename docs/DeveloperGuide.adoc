@@ -239,7 +239,7 @@ versions. The approach may be changed as well.
 The find email mechanism is facilitated by regex. After finding matches, result will be stored in the filtered list that is showing on the UI.
 
 
-=== Add `findPhone mechanism`
+=== Add findPhone mechanism
 
 The findPhone mechanism is able to search for persons whose phone numbers contain any number being searched.
 
