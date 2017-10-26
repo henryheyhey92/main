@@ -142,7 +142,7 @@ Returns `janedoe@example.com`
 
 === Locating persons by phone: `findPhone`
 
-Finds persons whose names contain any of the given keywords. +
+Finds persons whose phones contain any of the given keywords. +
 Format: `findPhone KEYWORD [MORE_KEYWORDS]`
 
 ****
@@ -156,7 +156,25 @@ Examples:
 * `findPhone 000` +
 Returns `10001` and `191000`
 * `find 111 222 333` +
-Returns any person having names `1111`, `0222`, or `9333`
+Returns any person having phone numbers `1111`, `0222`, or `9333`
+
+=== Locating persons by phone: `findTag`
+
+Finds persons whose tags contain any of the given keywords. +
+Format: `findTag KEYWORD [MORE_KEYWORDS]`
+
+****
+* Only the tag is searched.
+* Tags containing keywords will be matched e.g. `friends` will match `friends`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `friends family` will return `friends`
+****
+
+Examples:
+
+* `findTag friends` +
+Returns `friends
+* `find friends family neighbours` +
+Returns any person having tags `friends`, `family`, or `neighbour`
 
 === Locating persons by name: `letter`
 
@@ -341,9 +359,13 @@ e.g.`select 2`
 * * Add birthdays
 * * Customize UI colour theme
 * * Passcode login
-* * findPhone
+* * Transition pop-up window when closing AddressBook
 * * findEmail `Since v1.2`
+* * findPhone `Since v1.2`
 * * letter `Since v1.2`
 * * Google search Address when contact is selected `Since v1.2`
 * * Sort by address `Since v1.2`
-* * Copy to clipboard
+* * Copy to clipboard `Since v1.3`
+* * findTag `Since v1.3`
+* * Sort command with save option `Since v1.3`
+* * Program exit check `Since v1.3`
