@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import seedu.address.commons.util.StringUtil;
 
 /**
- * Tests that a {@code ReadOnlyPerson}'s {@code Phone} matches any of the keywords given.
+ * Tests that a {@code ReadOnlyPerson}'s {@code Tag} matches any of the keywords given.
  */
 public class TagContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> {
     private final List<String> keywords;
@@ -19,7 +19,7 @@ public class TagContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> {
     public boolean test(ReadOnlyPerson person) {
         System.out.println(person.fullTag());
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getTags().toString(), keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.fullTag(), keyword));
     }
 
     @Override
