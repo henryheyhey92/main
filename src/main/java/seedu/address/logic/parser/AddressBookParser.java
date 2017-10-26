@@ -97,7 +97,7 @@ public class AddressBookParser {
             return new SelectCommandParser().parse(arguments);
 
         case SortCommand.COMMAND_WORD:
-            return new SortCommand(arguments);
+            return new SortCommandParser().parse(arguments);
 
         case UndoCommand.COMMAND_WORD:
             return new UndoCommand();

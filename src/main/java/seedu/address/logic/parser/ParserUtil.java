@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.SortCommandParser.INDEX_OPTION;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -29,10 +30,33 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INSUFFICIENT_PARTS = "Number of parts must be more than 1.";
+    public static final String MESSAGE_INVALID_OPTION = "sort option is invalid.";
+    private static final HashSet<Character> choices = new HashSet<Character>();
+
+    static {
+        choices.add('n');
+        choices.add('a');
+    }
+
+    /**
+     * Parses {@code args} into a {@code String} and returns it. Leading and trailing whitespaces are already
+     * trimmed.
+     *
+     * @throws IllegalValueException if the specified sort option is invalid
+     * (input option is not found in HashSet<> choices).
+     */
+    public static String parseSortOption(String args) throws IllegalValueException {
+        if (!choices.contains(args.charAt(INDEX_OPTION))) {
+            throw new IllegalValueException(MESSAGE_INVALID_OPTION);
+        } else {
+            return Character.toString(args.trim().charAt(INDEX_OPTION));
+        }
+    }
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws IllegalValueException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws IllegalValueException {

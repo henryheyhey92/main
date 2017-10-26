@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.commands.SortCommand.SAVE;
 
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -68,9 +69,12 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     //Note FilteredList is unmodifiable hence sorting is done on internal list.
-    public void sortAddressBook(int option)throws UniquePersonList.AddressBookIsEmpty {
+    public synchronized void sortAddressBook(int option, int saveOption)throws UniquePersonList.AddressBookIsEmpty {
         addressBook.sort(option);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        if (saveOption == SAVE) {
+            indicateAddressBookChanged();
+        }
     }
 
     @Override
