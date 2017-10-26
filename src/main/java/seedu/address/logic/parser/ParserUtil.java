@@ -35,20 +35,13 @@ public class ParserUtil {
     public static final String MESSAGE_INSUFFICIENT_PARTS = "Number of parts must be more than 1.";
 
     public static final String MESSAGE_INVALID_CHOICE = "Choice of field to be copied is invalid.";
+    public static final String MESSAGE_INVALID_OPTION = "sort option is invalid.";
     private static final HashSet<Character> choices = new HashSet<Character>();
 
     static{
         choices.add('n');
         choices.add('p');
         choices.add('e');
-        choices.add('a');
-    }
-
-    public static final String MESSAGE_INVALID_OPTION = "sort option is invalid.";
-    private static final HashSet<Character> choices = new HashSet<Character>();
-
-    static {
-        choices.add('n');
         choices.add('a');
     }
 
