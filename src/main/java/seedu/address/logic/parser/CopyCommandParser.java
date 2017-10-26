@@ -11,13 +11,13 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class CopyCommandParser implements Parser<CopyCommand> {
 
     public static final int INDEX_TARGET = 0;
-    public static final int INDEX_CHOICE = 2;
+    public static final int INDEX_CHOICE = 1;
 
     /**
      * Parses the given {@code String} of arguments in the context of the CopyCommand
      * and returns a CopyCommand object for execution.
      *
-     * @throws ParseException if the user input does not conform the expected format
+     * @throws ParseException if the user input does not conform to the expected format
      */
     public CopyCommand parse(String args) throws ParseException {
         requireNonNull(args);

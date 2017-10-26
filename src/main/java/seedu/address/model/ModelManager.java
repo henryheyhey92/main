@@ -92,28 +92,28 @@ public class ModelManager extends ComponentManager implements Model {
         StringSelection sel;
 
         switch (choice) {
-            case CHOICE_NAME:
-                sel = new StringSelection(target.getName().fullName);
-                clipboard.setContents(sel, null);
-                break;
+        case CHOICE_NAME:
+            sel = new StringSelection(target.getName().fullName);
+            clipboard.setContents(sel, null);
+            break;
 
-            case CHOICE_PHONE:
-                sel = new StringSelection(target.getPhone().value);
-                clipboard.setContents(sel, null);
-                break;
+        case CHOICE_PHONE:
+            sel = new StringSelection(target.getPhone().value);
+            clipboard.setContents(sel, null);
+            break;
 
-            case CHOICE_EMAIL:
-                sel = new StringSelection(target.getEmail().value);
-                clipboard.setContents(sel, null);
-                break;
+        case CHOICE_EMAIL:
+            sel = new StringSelection(target.getEmail().value);
+            clipboard.setContents(sel, null);
+            break;
 
-            case CHOICE_ADDRESS:
-                sel = new StringSelection(target.getAddress().value);
-                clipboard.setContents(sel, null);
-                break;
+        case CHOICE_ADDRESS:
+            sel = new StringSelection(target.getAddress().value);
+            clipboard.setContents(sel, null);
+            break;
 
-            default:
-                break;
+        default:
+            break;
         }
     }
 
