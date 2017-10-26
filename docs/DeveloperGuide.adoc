@@ -219,12 +219,12 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 === Sort Command mechanism
 
 Overview: The sort command is able to sort by name or by address. Name is sorted alphabetically while
-addresses are sorted lexicographically.
+addresses are sorted by districts.
 
 How is it implemented: Sorting by name is done using the Java comparator with the compare method overridden
-in the SortName class. Comparison is via using the method compareToIgnoreCase(). For v1.2, sorting by address is done similarly to
-SortName. However another approach using an arraylist lookup table for sorting with districts already pre-loaded is
-targeted for v1.3 release. Example areas like 'Jurong', 'Clementi' and 'Pasir Ris' in the context of Singapore will be added. The address string
+in the SortName class. Comparison is via using the method compareToIgnoreCase(). For v1.3, sorting by address is done by
+using an arraylist lookup table for sorting with districts already pre-loaded. Example areas like 'Jurong', 'Clementi' and '
+Pasir Ris' in the context of Singapore will be added. The address string
 will be checked against the table and the table value would be used for comparison.
 
 Why it is implemented this way: Sort by name is straightforward using the standard sorting approach however sorting
@@ -235,6 +235,15 @@ stages, this approach may be reassessed for suitability.
 Alternatives Considered:
 -Java regex
 
+=== Copy Command mechanism
+
+Overview: The copy command is to copy the desired field of a person over to the system clipboard.
+
+How is it implemented: Copying is done by instantiating an instance of Toolkit as copying over to the system
+clipboard involves querying the operating system directly to get a reference to the system clipboard. StringSelection
+is used as the target field has to be transferred which is supported by StingSelection as it implements Transferable.
+
+Why it is implemented this way: This approach was chosen as it is as it is the most straightforward way
 // tag::undoredo[]
 === Undo/Redo mechanism
 
