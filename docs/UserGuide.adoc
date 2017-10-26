@@ -69,13 +69,15 @@ Examples:
 
 === Sorting the addressbook: `sort`
 
-Sorts the addressbook by address or by name reverts back to unsorted state upon app reboot. +
-Format: `sort OPTION`
+Sorts the addressbook by address or by name.User can specify if they want to save the sorted state. +
+Format: `s OPTION SAVE_OPTION`
 
 ***
 * OPTION keyword allows to select to sort by name or address.
-* To sort by name use `/n`. Example `sort /n`.
-* To sort by address use `/a`. Example `sort /a`.
+* SAVE_OPTION keyword allows user to save the sorted state of the addressbook base on preference.
+* To sort by name use `n`. Example `s n`.
+* To sort by address use `a`. Example `s a`.
+* To sort by name and save use `se`. Example `s n se`.
 ***
 
 === Listing all persons : `list`
