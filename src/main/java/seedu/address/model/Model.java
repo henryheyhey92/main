@@ -47,10 +47,19 @@ public interface Model {
     void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate);
 
     /**
+     * Copies a single data field of the person specified by {@code person},the choice of field to be
+     * copied is specified by {@code choice}.
+     * @param person
+     * @param choice
+     */
+    void copy(ReadOnlyPerson person,String choice);
+
+    /**
      *  Sorts the addressbook base on name or address
      *  option = 1 {sorts by name}
      *  option = 2 {sorts by address}
      */
     void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty;
+
 
 }
