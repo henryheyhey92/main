@@ -241,7 +241,7 @@ The find email mechanism is facilitated by regex. After finding matches, result 
 Further improvement might include allowing user to use flag(e.g. findEmail \f KEYWORD) to do advance search.
 
 
-=== Add `findPhone mechanism`
+=== Add findPhone mechanism
 
 The findPhone mechanism is able to search for persons whose phone numbers contain any number being searched.
 
