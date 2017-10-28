@@ -88,10 +88,10 @@ public class AddressBookParser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
-            
+
         case CopyCommand.COMMAND_WORD:
             return new CopyCommandParser().parse(arguments);
-            
+
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
 
