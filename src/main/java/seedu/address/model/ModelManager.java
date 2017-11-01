@@ -4,6 +4,17 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.commands.SortCommand.SAVE;
 
+import static seedu.address.logic.commands.CopyCommand.CHOICE_ADDRESS;
+import static seedu.address.logic.commands.CopyCommand.CHOICE_EMAIL;
+import static seedu.address.logic.commands.CopyCommand.CHOICE_NAME;
+import static seedu.address.logic.commands.CopyCommand.CHOICE_PHONE;
+
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
+import static seedu.address.logic.commands.SortCommand.SAVE;
+
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -13,6 +24,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
@@ -27,6 +39,8 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final AddressBook addressBook;
     private final FilteredList<ReadOnlyPerson> filteredPersons;
+    private final Toolkit toolkit;
+    private final Clipboard clipboard;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -39,6 +53,8 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.toolkit = Toolkit.getDefaultToolkit();
+        this.clipboard = toolkit.getSystemClipboard();
     }
 
     public ModelManager() {
@@ -56,7 +72,9 @@ public class ModelManager extends ComponentManager implements Model {
         return addressBook;
     }
 
-    /** Raises an event to indicate the model has changed */
+    /**
+     * Raises an event to indicate the model has changed
+     */
     private void indicateAddressBookChanged() {
         raise(new AddressBookChangedEvent(addressBook));
     }
@@ -69,10 +87,10 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     //Note FilteredList is unmodifiable hence sorting is done on internal list.
-    public synchronized void sortAddressBook(int option,int saveOption)throws UniquePersonList.AddressBookIsEmpty {
+    public synchronized void sortAddressBook(int option, int saveOption)throws UniquePersonList.AddressBookIsEmpty {
         addressBook.sort(option);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        if(saveOption==SAVE) {
+        if (saveOption == SAVE) {
             indicateAddressBookChanged();
         }
     }
@@ -82,6 +100,37 @@ public class ModelManager extends ComponentManager implements Model {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         indicateAddressBookChanged();
+    }
+
+    @Override
+    public void copy(ReadOnlyPerson person, String choice) {
+        Person target = new Person(person);
+        StringSelection sel;
+
+        switch (choice) {
+        case CHOICE_NAME:
+            sel = new StringSelection(target.getName().fullName);
+            clipboard.setContents(sel, null);
+            break;
+
+        case CHOICE_PHONE:
+            sel = new StringSelection(target.getPhone().value);
+            clipboard.setContents(sel, null);
+            break;
+
+        case CHOICE_EMAIL:
+            sel = new StringSelection(target.getEmail().value);
+            clipboard.setContents(sel, null);
+            break;
+
+        case CHOICE_ADDRESS:
+            sel = new StringSelection(target.getAddress().value);
+            clipboard.setContents(sel, null);
+            break;
+
+        default:
+            break;
+        }
     }
 
     @Override

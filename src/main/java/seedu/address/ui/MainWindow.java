@@ -4,7 +4,10 @@ import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
 
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
@@ -22,6 +25,7 @@ import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.commons.util.FxViewUtil;
 import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
+import sun.applet.Main;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -135,7 +139,8 @@ public class MainWindow extends UiPart<Region> {
         ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath());
+        StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath(),
+                logic.getFilteredPersonList().size());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(logic);
@@ -216,5 +221,54 @@ public class MainWindow extends UiPart<Region> {
     private void handleShowHelpEvent(ShowHelpRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleHelp();
+    }
+
+    @FXML private MenuItem lightTheme;
+
+    /**
+     * Change color theme to light
+     */
+    @FXML
+    public void handleLightTheme() {
+        lightTheme.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String lightTheme = getClass().getResource("/view/LightTheme.css").toExternalForm();
+                String darkTheme = getClass().getResource("/view/DarkTheme.css").toExternalForm();
+
+                final Scene scene = getRoot().getScene();
+
+                scene.getStylesheets().remove(darkTheme);
+                scene.getStylesheets().add(lightTheme);
+//                if(!scene.getStylesheets().contains(lightTheme)) scene.getStylesheets().add(lightTheme);
+
+                Application.setUserAgentStylesheet(Application.STYLESHEET_CASPIAN);
+                primaryStage.setScene(scene);
+                logger.info("light theme!!");
+            }
+        });
+    }
+
+    /**
+     * Change color theme to dark
+     */
+    @FXML
+    public void handleDarkTheme() {
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                String lightTheme = getClass().getResource("/view/LightTheme.css").toExternalForm();
+                String darkTheme = getClass().getResource("/view/DarkTheme.css").toExternalForm();
+
+                final Scene scene = getRoot().getScene();
+
+                scene.getStylesheets().remove(lightTheme);
+                scene.getStylesheets().add(darkTheme);
+//                if(!scene.getStylesheets().contains(darkTheme)) scene.getStylesheets().add(darkTheme);
+
+                Application.setUserAgentStylesheet(Application.STYLESHEET_CASPIAN);
+                primaryStage.setScene(scene);
+                logger.info("dark theme!!");
+            }
+        });
     }
 }

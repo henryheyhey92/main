@@ -1,6 +1,9 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+
+import static seedu.address.logic.parser.CopyCommandParser.INDEX_CHOICE;
+import static seedu.address.logic.parser.CopyCommandParser.INDEX_TARGET;
 import static seedu.address.logic.parser.SortCommandParser.INDEX_OPTION;
 
 import java.util.Collection;
@@ -30,11 +33,15 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INSUFFICIENT_PARTS = "Number of parts must be more than 1.";
+
+    public static final String MESSAGE_INVALID_CHOICE = "Choice of field to be copied is invalid.";
     public static final String MESSAGE_INVALID_OPTION = "sort option is invalid.";
     private static final HashSet<Character> choices = new HashSet<Character>();
 
     static {
         choices.add('n');
+        choices.add('p');
+        choices.add('e');
         choices.add('a');
     }
 
@@ -83,6 +90,19 @@ public class ParserUtil {
     public static Optional<Phone> parsePhone(Optional<String> phone) throws IllegalValueException {
         requireNonNull(phone);
         return phone.isPresent() ? Optional.of(new Phone(phone.get())) : Optional.empty();
+    }
+
+    /**
+     * Extracts the user's choice on which field to be copied. Throws exception {IllegalValueException} if
+     * the choice is an invalid one.
+     */
+    public static String parseChoice(String args) throws IllegalValueException{
+        String[] place_holder = args.trim().split("\\s+");
+        if(!choices.contains(place_holder[INDEX_CHOICE].charAt(INDEX_TARGET))){
+            throw new IllegalValueException(MESSAGE_INVALID_CHOICE);
+        } else {
+            return place_holder[INDEX_CHOICE];
+        }
     }
 
     /**
