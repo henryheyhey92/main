@@ -22,10 +22,10 @@ public class ListTagsCommand extends Command {
 
         ObservableList<ReadOnlyPerson> listOfPersons = model.getFilteredPersonList();
 
-        listOfPersons.forEach(persons-> persons.getTags().forEach(tags -> listOfTags.add(tags.toString())));
+        listOfPersons.forEach(persons-> persons.getTags().forEach(tags -> listOfTags.add(tags.toString()
+                .replaceAll("[^a-zA-Z]", "")))); //removes all non-letters
 
-
-        return listOfTags.stream().distinct().collect(Collectors.toList());
+        return listOfTags.stream().distinct().collect(Collectors.toList()); //removes duplicates
     }
     @Override
     public CommandResult execute() {
