@@ -37,10 +37,9 @@ import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
 
 public class AddressBookParserTest {
+    private final AddressBookParser parser = new AddressBookParser();
     @Rule
     public ExpectedException thrown = ExpectedException.none();
-
-    private final AddressBookParser parser = new AddressBookParser();
 
     @Test
     public void parseCommand_add() throws Exception {
@@ -84,9 +83,16 @@ public class AddressBookParserTest {
                 FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
         assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
+
     @Test
     public void parseCommand_sort() throws Exception {
-        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD);
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " n");
+        assertTrue(command instanceof SortCommand);
+        command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " a");
+        assertTrue(command instanceof SortCommand);
+        command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " a se");
+        assertTrue(command instanceof SortCommand);
+        command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " n se");
         assertTrue(command instanceof SortCommand);
     }
 

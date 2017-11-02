@@ -111,6 +111,14 @@ public class Person implements ReadOnlyPerson {
         return Collections.unmodifiableSet(tags.get().toSet());
     }
 
+    @Override
+    public String fullTag() {
+        final StringBuilder builder = new StringBuilder();
+        getTags().forEach(builder::append);
+
+        return builder.toString().replace("][", " ").replaceAll("[\\[\\]]", "");
+    }
+
     public ObjectProperty<UniqueTagList> tagProperty() {
         return tags;
     }
