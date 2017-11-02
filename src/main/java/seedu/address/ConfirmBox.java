@@ -1,12 +1,13 @@
 package seedu.address;
 
 import javafx.geometry.Pos;
-import javafx.stage.Modality;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.stage.Modality;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 
 
 /**
@@ -16,7 +17,7 @@ import javafx.scene.Scene;
 //@@author henryheyhey92
 public class ConfirmBox {
     private static boolean answer;
-
+        //display method
     public static boolean display(String title, String message) {
         //initialise the comfirm box window
         Stage window = new Stage();
@@ -49,10 +50,8 @@ public class ConfirmBox {
         Scene scene = new Scene(layout);
         window.setScene(scene);
         window.showAndWait();
-
         //Make sure to return answer
-        return answer;
-    }
+        return answer; }
 }//@@author
 
 
