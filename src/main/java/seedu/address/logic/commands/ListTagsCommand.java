@@ -2,10 +2,12 @@ package seedu.address.logic.commands;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.person.ReadOnlyPerson;
+import seedu.address.model.tag.Tag;
 
 /**
  * Lists all tags tagged to persons in AddressBook. Does not show duplicate tags.
@@ -30,13 +32,17 @@ public class ListTagsCommand extends Command {
     }*/
     @Override
     public CommandResult execute() {
-        List<String> listOfTags = model.getTagsList();
+        Set<Tag> listOfTags = model.getTagsList();
+        List<String> tagsString = new ArrayList<>();
+
+        //removes all [] and only show default alphanumeric regex for tags
+        listOfTags.forEach(tag -> tagsString.add(tag.toString()));//.replaceAll("[a-zA-Z]", "")));
 
         if (listOfTags.isEmpty()) {
             return new CommandResult(MESSAGE_NO_TAGS);
         }
 
         System.out.println(listOfTags);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, String.join("\n", listOfTags)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, tagsString));//String.join("\n", tagsString)));
     }
 }

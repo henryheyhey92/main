@@ -14,8 +14,11 @@ import java.awt.datatransfer.StringSelection;
 
 import static seedu.address.logic.commands.SortCommand.SAVE;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -31,6 +34,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -145,14 +149,13 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public List<String> getTagsList(){
-        List<String> listOfTags = new ArrayList<>();
+    public Set<Tag> getTagsList(){
+        Set<Tag> listOfTags = new HashSet<>();
 
-        filteredPersons.forEach(persons->persons.getTags().forEach(tags->listOfTags
-                .add(tags.toString().replaceAll("[^a-zA-Z]", "")))); //removes all non-letters
+        filteredPersons.forEach(persons -> listOfTags.addAll(persons.getTags()));
 
         //Removes duplicate tags and sorts list of tags alphabetically
-        listOfTags.stream().distinct().sorted().collect(Collectors.toList());
+        //listOfTags.stream().sorted();//.sorted();//.collect(Collectors.toList());
         return listOfTags;
     }
 

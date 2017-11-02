@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -8,6 +9,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.tag.Tag;
 
 /**
  * The API of the Model component.
@@ -65,5 +67,5 @@ public interface Model {
     /*
      * Returns list of all unique tags present in AddressBook that are sorted alphabetically
      */
-    List<String> getTagsList();
+    Set<Tag> getTagsList();
 }
