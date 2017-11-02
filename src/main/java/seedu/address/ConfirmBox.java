@@ -4,8 +4,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
@@ -16,8 +16,12 @@ import javafx.stage.Stage;
  */
 //@@author henryheyhey92
 public class ConfirmBox {
+
     private static boolean answer;
-        //display method
+
+    /**
+     *display window for the ConfirmBox
+     */
     public static boolean display(String title, String message) {
         //initialise the comfirm box window
         Stage window = new Stage();
