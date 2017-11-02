@@ -41,6 +41,7 @@ public class StringUtil {
         return false;
     }
 
+    //@@author kikanng
     /**
      * Returns true if the {@code sentence} start with {@code characters}.
      *   Ignores case, full word match is not required.
@@ -65,6 +66,7 @@ public class StringUtil {
         }
         return false;
     }
+    //@@author
 
     /**
      * Returns a detailed message of the t, including the stack trace.

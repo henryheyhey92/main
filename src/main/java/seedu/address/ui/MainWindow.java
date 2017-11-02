@@ -223,6 +223,7 @@ public class MainWindow extends UiPart<Region> {
     }
 
 
+    //@@author kikanng
     /**
      * Set color theme
      */
@@ -247,4 +248,6 @@ public class MainWindow extends UiPart<Region> {
     public void handleDarkTheme() {
         setTheme("/DarkTheme.css");
     }
+    //@@author
+
 }
