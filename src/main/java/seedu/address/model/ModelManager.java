@@ -14,11 +14,9 @@ import java.awt.datatransfer.StringSelection;
 
 import static seedu.address.logic.commands.SortCommand.SAVE;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -149,13 +147,16 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public Set<Tag> getTagsList(){
-        Set<Tag> listOfTags = new HashSet<>();
+    public List<Tag> getTagsList(){
+        List<Tag> unsortedListOfTags = new ArrayList<>();
 
-        filteredPersons.forEach(persons -> listOfTags.addAll(persons.getTags()));
+        filteredPersons.forEach(persons -> unsortedListOfTags.addAll(persons.getTags()));
 
-        //Removes duplicate tags and sorts list of tags alphabetically
-        //listOfTags.stream().sorted();//.sorted();//.collect(Collectors.toList());
+        //Removes duplicate tags to ensure all tags are unique
+        List<Tag> listOfTags= unsortedListOfTags.stream().distinct().collect(Collectors.toList());
+        //Sorts tags in alphabetical order
+        listOfTags.sort(Comparator.comparing(Tag::getTagName));
+
         return listOfTags;
     }
 

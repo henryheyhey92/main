@@ -2,11 +2,7 @@ package seedu.address.logic.commands;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-import javafx.collections.ObservableList;
-import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -32,7 +28,7 @@ public class ListTagsCommand extends Command {
     }*/
     @Override
     public CommandResult execute() {
-        Set<Tag> listOfTags = model.getTagsList();
+        List<Tag> listOfTags = model.getTagsList();
         List<String> tagsString = new ArrayList<>();
 
         //removes all [] and only show default alphanumeric regex for tags

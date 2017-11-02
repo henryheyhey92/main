@@ -67,5 +67,5 @@ public interface Model {
     /*
      * Returns list of all unique tags present in AddressBook that are sorted alphabetically
      */
-    Set<Tag> getTagsList();
+    List<Tag> getTagsList();
 }
