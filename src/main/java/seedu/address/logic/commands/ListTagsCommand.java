@@ -17,7 +17,6 @@ public class ListTagsCommand extends Command {
     public static final String MESSAGE_NO_TAGS = "There are no tags available.";
 
     private List<String> getTagList (){
-        //this.addressBook = new AddressBook(model.getAddressBook());
         List<String> listOfTags = new ArrayList<>();
 
         ObservableList<ReadOnlyPerson> listOfPersons = model.getFilteredPersonList();
@@ -30,20 +29,13 @@ public class ListTagsCommand extends Command {
     }
     @Override
     public CommandResult execute() {
-        List<String> listOfTags = getTagList();//new ArrayList<>();
-        //ObservableList<Tag> listOfTags = addressBook.getTagList();
-        //listOfTags.add("testing1");
-        //listOfTags.add("testing2");
-
+        List<String> listOfTags = getTagList();
 
         if (listOfTags.isEmpty()) {
             return new CommandResult(MESSAGE_NO_TAGS);
         }
 
-        //Collections.reverse(listOfTags);
         System.out.println(listOfTags);
         return new CommandResult(String.format(MESSAGE_SUCCESS, String.join("\n", listOfTags)));
     }
-
-
 }
