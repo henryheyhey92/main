@@ -183,6 +183,7 @@ public class MainApp extends Application {
         EventsCenter.getInstance().registerHandler(this);
     }
 
+    //@@author henryheyhey92
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting AddressBook " + MainApp.VERSION);
@@ -199,10 +200,12 @@ public class MainApp extends Application {
             });
         }
 
-    }
+    }//@@author
 
+    //@@author henryheyhey92
     @Override
     public void stop() {
+
         boolean answer = ConfirmBox.display("Exit Check Protocol","Confirm on exiting the program?");
 
         if(answer) {
@@ -218,7 +221,7 @@ public class MainApp extends Application {
             Platform.exit();
             System.exit(0);
         }
-    }
+    }//@@author
 
     @Subscribe
     public void handleExitAppRequestEvent(ExitAppRequestEvent event) {

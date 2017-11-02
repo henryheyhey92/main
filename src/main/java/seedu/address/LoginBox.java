@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+//@@author henryheyhey92
 public class LoginBox {
     private static boolean answer;
     private static Stage window = new Stage();
@@ -84,7 +85,7 @@ public class LoginBox {
         return false;
     }
 
+}//@@author
 
 
-}
 

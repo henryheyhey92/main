@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Pos;
 
+//@@author henryheyhey92
 public class ConfirmBox {
     private static boolean answer;
 
@@ -46,5 +47,7 @@ public class ConfirmBox {
         //Make sure to return answer
         return answer;
     }
-}
+}//@@author
+
+
 
