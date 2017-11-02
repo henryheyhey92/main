@@ -22,7 +22,6 @@ public interface ReadOnlyPerson {
     Address getAddress();
     ObjectProperty<UniqueTagList> tagProperty();
     Set<Tag> getTags();
-    String fullTag();
 
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)

@@ -2,10 +2,6 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import static seedu.address.logic.parser.CopyCommandParser.INDEX_CHOICE;
-import static seedu.address.logic.parser.CopyCommandParser.INDEX_TARGET;
-import static seedu.address.logic.parser.SortCommandParser.INDEX_OPTION;
-
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
@@ -34,36 +30,9 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INSUFFICIENT_PARTS = "Number of parts must be more than 1.";
 
-    public static final String MESSAGE_INVALID_CHOICE = "Choice of field to be copied is invalid.";
-    public static final String MESSAGE_INVALID_OPTION = "sort option is invalid.";
-    private static final HashSet<Character> choices = new HashSet<Character>();
-
-    static{
-        choices.add('n');
-        choices.add('p');
-        choices.add('e');
-        choices.add('a');
-    }
-
-    /**
-     * Parses {@code args} into a {@code String} and returns it. Leading and trailing whitespaces are already
-     * trimmed.
-     *
-     * @throws IllegalValueException if the specified sort option is invalid
-     * (input option is not found in HashSet<> choices).
-     */
-    public static String parseSortOption(String args) throws IllegalValueException {
-        if (!choices.contains(args.charAt(INDEX_OPTION))) {
-            throw new IllegalValueException(MESSAGE_INVALID_OPTION);
-        } else {
-            return Character.toString(args.trim().charAt(INDEX_OPTION));
-        }
-    }
-
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
-     *
      * @throws IllegalValueException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws IllegalValueException {
@@ -90,19 +59,6 @@ public class ParserUtil {
     public static Optional<Phone> parsePhone(Optional<String> phone) throws IllegalValueException {
         requireNonNull(phone);
         return phone.isPresent() ? Optional.of(new Phone(phone.get())) : Optional.empty();
-    }
-
-    /**
-     * Extracts the user's choice on which field to be copied. Throws exception {IllegalValueException} if
-     * the choice is an invalid one.
-     */
-    public static String parseChoice(String args) throws IllegalValueException{
-        String[] place_holder = args.trim().split("\\s+");
-        if(!choices.contains(place_holder[INDEX_CHOICE].charAt(INDEX_TARGET))){
-            throw new IllegalValueException(MESSAGE_INVALID_CHOICE);
-        } else {
-            return place_holder[INDEX_CHOICE];
-        }
     }
 
     /**

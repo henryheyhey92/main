@@ -12,7 +12,7 @@ ifdef::env-github[]
 endif::[]
 :repoURL: https://github.com/CS2103AUG2017-F10-B3/main.git
 
-By: `Team F10-B3`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
 
 == Quick Start
 
@@ -70,37 +70,19 @@ Examples:
 
 === Sorting the addressbook: `sort`
 
-Sorts the addressbook by address or by name.User can specify if they want to save the sorted state. +
-Format: `s OPTION SAVE_OPTION`
+Sorts the addressbook by address or by name reverts back to unsorted state upon app reboot. +
+Format: `sort OPTION`
 
 ***
 * OPTION keyword allows to select to sort by name or address.
-* SAVE_OPTION keyword allows user to save the sorted state of the addressbook base on preference.
-* To sort by name use `n`. Example `s n`.
-* To sort by address use `a`. Example `s a`.
-* To sort by name and save use `se`. Example `s n se`.
+* To sort by name use `/n`. Example `sort /n`.
+* To sort by address use `/a`. Example `sort /a`.
 ***
 
 === Listing all persons : `list`
 
 Shows a list of all persons in the address book. +
 Format: `list`
-
-=== Copying person's information over to system clipboard : `copy`
-
-Copies the selected person's information over to the system clipboard.
-Format: `c INDEX CHOICE`
-
-****
-* Both fields after input `c` must be provided.
-****
-
-Examples:
-
-* To copy a person's name append the letter `n` after INDEX. Example 'c 1 n'.
-* To copy a person's phone append the letter `p` after INDEX. Example 'c 1 p'.
-* To copy a person's email append the letter `e` after INDEX. Example 'c 1 e'.
-* To copy a person's address append the letter `a` after INDEX. Example 'c 1 a'.
 
 === Editing a person : `edit`
 
@@ -160,7 +142,7 @@ Returns `janedoe@example.com`
 
 === Locating persons by phone: `findPhone`
 
-Finds persons whose phones contain any of the given keywords. +
+Finds persons whose names contain any of the given keywords. +
 Format: `findPhone KEYWORD [MORE_KEYWORDS]`
 
 ****
@@ -174,25 +156,7 @@ Examples:
 * `findPhone 000` +
 Returns `10001` and `191000`
 * `find 111 222 333` +
-Returns any person having phone numbers `1111`, `0222`, or `9333`
-
-=== Locating persons by phone: `findTag`
-
-Finds persons whose tags contain any of the given keywords. +
-Format: `findTag KEYWORD [MORE_KEYWORDS]`
-
-****
-* Only the tag is searched.
-* Tags containing keywords will be matched e.g. `friends` will match `friends`
-* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `friends family` will return `friends`
-****
-
-Examples:
-
-* `findTag friends` +
-Returns `friends
-* `find friends family neighbours` +
-Returns any person having tags `friends`, `family`, or `neighbour`
+Returns any person having names `1111`, `0222`, or `9333`
 
 === Locating persons by name: `letter`
 
@@ -379,13 +343,10 @@ e.g.`select 2`
 * * Add birthdays
 * * Customize UI colour theme
 * * Passcode login
-* * Transition pop-up window when closing AddressBook
-* * findEmail `Since v1.2`
-* * findPhone `Since v1.2`
-* * letter `Since v1.2`
-* * Google search Address when contact is selected `Since v1.2`
-* * Sort by address `Since v1.2`
-* * Copy to clipboard `Since v1.3`
-* * findTag `Since v1.3`
-* * Sort command with save option `Since v1.3`
-* * Program exit check `Since v1.3`
+* * findPhone
+* * findEmail v1.2
+* * letter v1.2
+* * Google search Address when contact is selected v1.2
+* * Sort by address v1.2
+* * Copy to clipboard
+

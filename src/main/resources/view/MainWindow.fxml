@@ -17,8 +17,6 @@
 
   <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
     <Menu mnemonicParsing="false" text="File">
-      <MenuItem fx:id="lightTheme" onAction="#handleLightTheme" text="Light Theme" />
-      <MenuItem fx:id="darkTheme" onAction="#handleDarkTheme" text="Dark Theme" />
       <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
     </Menu>
     <Menu mnemonicParsing="false" text="Help">
