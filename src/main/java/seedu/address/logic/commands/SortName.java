@@ -12,23 +12,20 @@ import seedu.address.model.person.UniquePersonList;
 public class SortName extends SortCommand implements Comparator<ReadOnlyPerson> {
 
     public static final String
-            MESSAGE_SUCCESS_NAME = "The address book has been sorted alphabetically according to name";
+            MESSAGE_SUCCESS_NAME = "The address book has been sorted alphabetically according to name!";
     public static final int OPTION_NAME = 1;
     private Model model;
-    private int saveOption;
 
     public SortName() {
     }
 
-    public SortName(Model target, int saveOption) {
-
+    public SortName(Model target) {
         this.model = target;
-        this.saveOption = saveOption;
     }
 
     @Override
     public CommandResult execute() throws UniquePersonList.AddressBookIsEmpty {
-        model.sortAddressBook(OPTION_NAME, saveOption);
+        model.sortAddressBook(OPTION_NAME);
         return new CommandResult(MESSAGE_SUCCESS_NAME);
     }
 

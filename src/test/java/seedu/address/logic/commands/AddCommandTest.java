@@ -118,19 +118,15 @@ public class AddCommandTest {
         }
 
         @Override
-        public void copy(ReadOnlyPerson target,String choice){
-            fail("This method should not be called.");
-        }
-
-        @Override
         public void updatePerson(ReadOnlyPerson target, ReadOnlyPerson editedPerson)
                 throws DuplicatePersonException {
             fail("This method should not be called.");
         }
 
         @Override
-        public void sortAddressBook(int option,int saveOption) {
+        public void sortAddressBook(int option) {
             fail("This method should not be called");
+
         }
 
         @Override

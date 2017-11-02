@@ -9,15 +9,12 @@ import java.util.regex.Pattern;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CopyCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.FindCommandLetter;
 import seedu.address.logic.commands.FindEmailCommand;
-import seedu.address.logic.commands.FindPhoneCommand;
-import seedu.address.logic.commands.FindTagCommand;
+import seedu.address.logic.commands.FindCommandLetter;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
@@ -74,23 +71,14 @@ public class AddressBookParser {
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
 
-        case FindCommandLetter.COMMAND_WORD:
-            return new FindCommandLetterParser().parse(arguments);
-
         case FindEmailCommand.COMMAND_WORD:
             return new FindEmailCommandParser().parse(arguments);
-
-        case FindPhoneCommand.COMMAND_WORD:
-            return new FindPhoneCommandParser().parse(arguments);
-
-        case FindTagCommand.COMMAND_WORD:
-            return new FindTagCommandParser().parse(arguments);
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
 
-        case CopyCommand.COMMAND_WORD:
-            return new CopyCommandParser().parse(arguments);
+        case FindCommandLetter.COMMAND_WORD:
+            return new FindCommandLetterParser().parse(arguments);
 
         case HelpCommand.COMMAND_WORD:
             return new HelpCommand();
@@ -105,7 +93,7 @@ public class AddressBookParser {
             return new SelectCommandParser().parse(arguments);
 
         case SortCommand.COMMAND_WORD:
-            return new SortCommandParser().parse(arguments);
+            return new SortCommand(arguments);
 
         case UndoCommand.COMMAND_WORD:
             return new UndoCommand();
