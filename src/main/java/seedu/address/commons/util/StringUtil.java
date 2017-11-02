@@ -41,6 +41,16 @@ public class StringUtil {
         return false;
     }
 
+    /**
+     * Returns true if the {@code sentence} start with {@code characters}.
+     *   Ignores case, full word match is not required.
+     *   <br>examples:<pre>
+     *       containsWordIgnoreCase("Abcdef", "abc") == true
+     *       containsWordIgnoreCase("Abcdef", "bc") == false //not start with "bc"
+     *       </pre>
+     * @param sentence cannot be null
+     * @param chars cannot be null, cannot be empty
+     */
     public static boolean startWithCharIgnoreCase(String sentence, String chars) {
         requireNonNull(sentence);
         requireNonNull(chars);
