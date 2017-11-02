@@ -5,6 +5,7 @@ import java.util.List;
 
 import seedu.address.model.tag.Tag;
 
+//@@author Labradorites
 /**
  * Lists all tags tagged to persons in AddressBook. Does not show duplicate tags.
  */

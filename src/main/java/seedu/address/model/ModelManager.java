@@ -146,6 +146,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
+    //@@author Labradorites
     @Override
     public List<Tag> getTagsList(){
         List<Tag> unsortedListOfTags = new ArrayList<>();
@@ -159,6 +160,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         return listOfTags;
     }
+    //@@author
 
     //=========== Filtered Person List Accessors =============================================================
 
