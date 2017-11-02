@@ -51,7 +51,8 @@ public class MainApp extends Application {
     protected Config config;
     protected UserPrefs userPrefs;
 
-    Stage window;
+    public Stage window;
+    public Stage logInWin;
 
     @Override
     public void init() throws Exception {
@@ -186,13 +187,17 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         logger.info("Starting AddressBook " + MainApp.VERSION);
 
+        logInWin = primaryStage;
+        boolean unlock = LoginBox.display("AddressBook Login Page");
 
-        ui.start(primaryStage);
-        window = primaryStage;
-        window.setOnCloseRequest(e ->{
-            e.consume();
-            stop();
-        });
+        if(unlock) {
+            ui.start(primaryStage);
+            window = primaryStage;
+            window.setOnCloseRequest(e -> {
+                e.consume();
+                stop();
+            });
+        }
 
     }
 

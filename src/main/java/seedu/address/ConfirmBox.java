@@ -1,13 +1,15 @@
 package seedu.address;
 
-import javafx.stage.*;
-import javafx.scene.*;
-import javafx.scene.layout.*;
-import javafx.scene.control.*;
-import javafx.geometry.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.geometry.Pos;
 
 public class ConfirmBox {
-    static boolean answer;
+    private static boolean answer;
 
     public static boolean display(String title, String message) {
         Stage window = new Stage();
