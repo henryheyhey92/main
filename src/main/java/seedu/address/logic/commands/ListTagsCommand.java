@@ -41,7 +41,7 @@ public class ListTagsCommand extends Command {
 
         //Collections.reverse(listOfTags);
         System.out.println(listOfTags);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, listOfTags));//String.join("\n", listOfTags)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, String.join("\n", listOfTags)));
     }
 
 
