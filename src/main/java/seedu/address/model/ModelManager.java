@@ -14,8 +14,11 @@ import java.awt.datatransfer.StringSelection;
 
 import static seedu.address.logic.commands.SortCommand.SAVE;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -139,6 +142,18 @@ public class ModelManager extends ComponentManager implements Model {
 
         addressBook.updatePerson(target, editedPerson);
         indicateAddressBookChanged();
+    }
+
+    @Override
+    public List<String> getTagsList(){
+        List<String> listOfTags = new ArrayList<>();
+
+        filteredPersons.forEach(persons->persons.getTags().forEach(tags->listOfTags
+                .add(tags.toString().replaceAll("[^a-zA-Z]", "")))); //removes all non-letters
+
+        //Removes duplicate tags and sorts list of tags alphabetically
+        listOfTags.stream().distinct().sorted().collect(Collectors.toList());
+        return listOfTags;
     }
 
     //=========== Filtered Person List Accessors =============================================================

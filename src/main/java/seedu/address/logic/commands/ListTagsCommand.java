@@ -15,7 +15,7 @@ public class ListTagsCommand extends Command {
     public static final String COMMAND_WORD = "listTags";
     public static final String MESSAGE_SUCCESS = "List all tags:\n%1$s";
     public static final String MESSAGE_NO_TAGS = "There are no tags available.";
-
+    /*
     private List<String> getTagList (){
         List<String> listOfTags = new ArrayList<>();
 
@@ -25,11 +25,12 @@ public class ListTagsCommand extends Command {
                 .replaceAll("[^a-zA-Z]", "")))); //removes all non-letters
 
         //returns list with duplicates removed and sorted
-        return listOfTags.stream().distinct().sorted().collect(Collectors.toList());
-    }
+        listOfTags.stream().distinct().sorted().collect(Collectors.toList());
+        return listOfTags;
+    }*/
     @Override
     public CommandResult execute() {
-        List<String> listOfTags = getTagList();
+        List<String> listOfTags = model.getTagsList();
 
         if (listOfTags.isEmpty()) {
             return new CommandResult(MESSAGE_NO_TAGS);
