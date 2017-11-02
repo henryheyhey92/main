@@ -86,6 +86,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     //Note FilteredList is unmodifiable hence sorting is done on internal list.
+    //@@author NUSe0032202
     public synchronized void sortAddressBook(int option, int saveOption)throws UniquePersonList.AddressBookIsEmpty {
         addressBook.sort(option);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -93,6 +94,7 @@ public class ModelManager extends ComponentManager implements Model {
             indicateAddressBookChanged();
         }
     }
+    //@@author
 
     @Override
     public synchronized void addPerson(ReadOnlyPerson person) throws DuplicatePersonException {
@@ -101,6 +103,12 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
+    @Override
+    public void save() {
+        raise(new AddressBookChangedEvent(addressBook));
+    }
+
+    //@@author NUSe0032202
     @Override
     public void copy(ReadOnlyPerson person, String choice) {
         Person target = new Person(person);
@@ -131,6 +139,7 @@ public class ModelManager extends ComponentManager implements Model {
             break;
         }
     }
+    //@@author
 
     @Override
     public void updatePerson(ReadOnlyPerson target, ReadOnlyPerson editedPerson)
