@@ -285,6 +285,12 @@ Java files that have been modified:
 - `Person.java` : Altered to get tags as a string.
 - `ReadOnlyPerson.java`: Altered to get tags as a string.
 
+=== The add birthday mechanism
+
+A person's birthday can be added/changed via the GUI. This ensures that the input for a birthdate always conform to
+a standard format. In this situation, since the Label has to change whenever a new date is picked from the date picker
+a bidirectional binding is used instead of the normal binding.
+
 
 === Search for address on Google Maps
 
