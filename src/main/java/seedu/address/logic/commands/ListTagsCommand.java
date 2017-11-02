@@ -25,7 +25,7 @@ public class ListTagsCommand extends Command {
         listOfPersons.forEach(persons-> persons.getTags().forEach(tags -> listOfTags.add(tags.toString())));
 
 
-        return listOfTags;
+        return listOfTags.stream().distinct().collect(Collectors.toList());
     }
     @Override
     public CommandResult execute() {
