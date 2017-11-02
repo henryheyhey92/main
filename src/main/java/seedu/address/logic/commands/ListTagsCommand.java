@@ -25,7 +25,8 @@ public class ListTagsCommand extends Command {
         listOfPersons.forEach(persons-> persons.getTags().forEach(tags -> listOfTags.add(tags.toString()
                 .replaceAll("[^a-zA-Z]", "")))); //removes all non-letters
 
-        return listOfTags.stream().distinct().collect(Collectors.toList()); //removes duplicates
+        //returns list with duplicates removed and sorted
+        return listOfTags.stream().distinct().sorted().collect(Collectors.toList());
     }
     @Override
     public CommandResult execute() {
