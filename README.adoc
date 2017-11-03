@@ -16,6 +16,8 @@ image::images/Ui.png[width="600"]
 endif::[]
 
 * This is a desktop Address Book application. It has a GUI but most of the user interactions happen using a CLI (Command Line Interface).
+* This Address Book application is meant for young adults who are currently working/studying who would like to have an app like this to
+* organise their contacts in a nicer and more organised way.
 * It is a Java sample application intended for students learning Software Engineering while using Java as the main programming language.
 * It is *written in OOP fashion*. It provides a *reasonably well-written* code example that is *significantly bigger* (around 6 KLoC)than what students usually write in beginner-level SE modules.
 * What's different from https://github.com/se-edu/addressbook-level3[level 3]:

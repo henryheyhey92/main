@@ -55,11 +55,16 @@ public interface Model {
     void copy(ReadOnlyPerson person,String choice);
 
     /**
+     * Utility function to save the state of the addressbook.This function is only used when editing birthday's
+     * from the GUI.
+     */
+    void save();
+
+    /**
      *  Sorts the addressbook base on name or address
      *  option = 1 {sorts by name}
      *  option = 2 {sorts by address}
      */
-    void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty;
-
+    void sortAddressBook (int option,int saveOption) throws UniquePersonList.AddressBookIsEmpty;
 
 }
