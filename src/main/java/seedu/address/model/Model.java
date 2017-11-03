@@ -1,5 +1,7 @@
 package seedu.address.model;
 
+import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -7,6 +9,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.tag.Tag;
 
 /**
  * The API of the Model component.
@@ -55,11 +58,24 @@ public interface Model {
     void copy(ReadOnlyPerson person,String choice);
 
     /**
+     * Utility function to save the state of the addressbook.This function is only used when editing birthday's
+     * from the GUI.
+     */
+    void save();
+
+    /**
      *  Sorts the addressbook base on name or address
      *  option = 1 {sorts by name}
      *  option = 2 {sorts by address}
      */
+
     void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty;
 
+    //@@author Labradorites
+    /*
+     * Returns list of all unique tags present in AddressBook that are sorted alphabetically
+     */
+    List<Tag> getTagsList();
+    //@@author
 
 }

@@ -52,6 +52,7 @@ public class ParserUtil {
      * @throws IllegalValueException if the specified sort option is invalid
      * (input option is not found in HashSet<> choices).
      */
+    //@@author NUSe0032202
     public static String parseSortOption(String args) throws IllegalValueException {
         if (!choices.contains(args.charAt(INDEX_OPTION))) {
             throw new IllegalValueException(MESSAGE_INVALID_OPTION);
@@ -59,6 +60,7 @@ public class ParserUtil {
             return Character.toString(args.trim().charAt(INDEX_OPTION));
         }
     }
+    //@@author
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -96,6 +98,7 @@ public class ParserUtil {
      * Extracts the user's choice on which field to be copied. Throws exception {IllegalValueException} if
      * the choice is an invalid one.
      */
+    //@@author NUSe0032202
     public static String parseChoice(String args) throws IllegalValueException{
         String[] place_holder = args.trim().split("\\s+");
         if(!choices.contains(place_holder[INDEX_CHOICE].charAt(INDEX_TARGET))){
@@ -104,6 +107,7 @@ public class ParserUtil {
             return place_holder[INDEX_CHOICE];
         }
     }
+    //@@author
 
     /**
      * Parses a {@code Optional<String> address} into an {@code Optional<Address>} if {@code address} is present.

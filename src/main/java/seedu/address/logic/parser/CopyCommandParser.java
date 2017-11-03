@@ -8,6 +8,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.CopyCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+//@@author NUSe0032202
 public class CopyCommandParser implements Parser<CopyCommand> {
 
     public static final int INDEX_TARGET = 0;
@@ -40,3 +41,4 @@ public class CopyCommandParser implements Parser<CopyCommand> {
         return new CopyCommand(index, choice);
     }
 }
+//@@author
