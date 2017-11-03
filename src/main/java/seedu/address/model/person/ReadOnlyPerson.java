@@ -22,7 +22,9 @@ public interface ReadOnlyPerson {
     Address getAddress();
     ObjectProperty<UniqueTagList> tagProperty();
     Set<Tag> getTags();
+    //@@author Labradorites
     String fullTag();
+    //@@author
 
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)
