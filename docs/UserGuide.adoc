@@ -12,7 +12,7 @@ ifdef::env-github[]
 endif::[]
 :repoURL: https://github.com/CS2103AUG2017-F10-B3/main.git
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `Team F10-B3`      Since: `Jun 2016`      Licence: `MIT`
 
 == Quick Start
 
@@ -55,6 +55,10 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 Format: `help`
 
+=== Changing theme : `Dark theme` / `Light theme`
+
+Change the UI theme when the user click "File > ____ theme"
+
 === Adding a person: `add`
 
 Adds a person to the address book +
@@ -68,10 +72,44 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
+=== Sorting the addressbook: `sort`
+
+Sorts the addressbook by address or by name.User can specify if they want to save the sorted state. +
+Format: `s OPTION SAVE_OPTION`
+
+***
+* OPTION keyword allows to select to sort by name or address.
+* SAVE_OPTION keyword allows user to save the sorted state of the addressbook base on preference.
+* To sort by name use `n`. Example `s n`.
+* To sort by address use `a`. Example `s a`.
+* To sort by name and save use `se`. Example `s n se`.
+***
+
 === Listing all persons : `list`
 
 Shows a list of all persons in the address book. +
 Format: `list`
+
+=== Listing all tags : `listTags`
+
+Shows a list of all tags in the address book. Tags listed are unique (no duplicates) and sorted alphabetically.+
+Format: `listTags`
+
+=== Copying person's information over to system clipboard : `copy`
+
+Copies the selected person's information over to the system clipboard.
+Format: `c INDEX CHOICE`
+
+****
+* Both fields after input `c` must be provided.
+****
+
+Examples:
+
+* To copy a person's name append the letter `n` after INDEX. Example 'c 1 n'.
+* To copy a person's phone append the letter `p` after INDEX. Example 'c 1 p'.
+* To copy a person's email append the letter `e` after INDEX. Example 'c 1 e'.
+* To copy a person's address append the letter `a` after INDEX. Example 'c 1 a'.
 
 === Editing a person : `edit`
 
@@ -131,7 +169,7 @@ Returns `janedoe@example.com`
 
 === Locating persons by phone: `findPhone`
 
-Finds persons whose names contain any of the given keywords. +
+Finds persons whose phones contain any of the given keywords. +
 Format: `findPhone KEYWORD [MORE_KEYWORDS]`
 
 ****
@@ -145,7 +183,45 @@ Examples:
 * `findPhone 000` +
 Returns `10001` and `191000`
 * `find 111 222 333` +
-Returns any person having names `1111`, `0222`, or `9333`
+Returns any person having phone numbers `1111`, `0222`, or `9333`
+
+=== Locating persons by phone: `findTag`
+
+Finds persons whose tags contain any of the given keywords. +
+Format: `findTag KEYWORD [MORE_KEYWORDS]`
+
+****
+* Only the tag is searched.
+* Tags containing keywords will be matched e.g. `friends` will match `friends`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `friends family` will return `friends`
+****
+
+Examples:
+
+* `findTag friends` +
+Returns `friends
+* `find friends family neighbours` +
+Returns any person having tags `friends`, `family`, or `neighbour`
+
+=== Locating persons by name: `letter`
+
+Finds persons whose names contain any of the given keywords. +
+
+Format: `letter KEYWORD [1 alphabet character only]`
+
+****
+* The search is non-case insensitive. e.g `A` will match `Alan`(*for example)
+* Only the name is searched.
+* Only full words will be matched e.g. `h` will not match `Hans`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `H` will return `Hans Gruber`, `Ho Yang`
+****
+
+Examples:
+
+* `letter J` +
+Returns `John` and `John Doe`
+* `letter B` +
+Returns any person having names `Betsy`, `Bean`, or `Ben`
 
 === Deleting a person : `delete`
 
@@ -262,21 +338,31 @@ Format: `exit`
 Address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
+=== Click on contact to search address
+
+Clicking on contact in list will search for its address in Google Maps.
+image::searchAddressUI.png[width="800"]
+
 === Locating persons by name: `letter`
 
-Finds persons whose names contain any of the given keywords. +
-Format: `letter KEYWORD [One Capital letter character]`
+Clicking on contact in list will search for its address in Google Maps.
 
-****
-* The search is not case insensitive. e.g `A` will only match `A`
-* Only the name is searched.
-* Only first character of the word will be matched e.g. `A` will match `Alan`
-*****
+=== Adding a birthday for a person
 
-Examples:
+Clicking on the menu next to each person's names followed by clicking "Set Birthday" allows a birthdate to be
+added for a person. After selecting the birthdate in the date picker, the birthday label of the person has to be
+clicked on for the changes to be shown.
+image::get1.png[width="800"]
+image::get2.png[width="800"]
 
-* `letter A` +
-Returns `Alan` and `Alex Doe`
+=== Number of person in list
+
+At the bottom of the addressbook, application will display the number of person in list.
+
+=== Exit program checker
+
+When user attempt to close the application, input "exit" command or close the application by accident,
+a window will pop out to make sure that user is firm on closing the application.
 
 == FAQ
 
@@ -294,16 +380,38 @@ e.g. `delete 3`
 e.g. `edit 2 n/James Lee e/jameslee@example.com`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find James Jake`
-* *FindByPhone* : `findPhone KEYWORD [MORE_KEYWORDS]` +
+* *Find Phone* : `findPhone KEYWORD [MORE_KEYWORDS]` +
 e.g. `findPhone 000 111`
+* *Find Tag* : `findTag KEYWORD [MORE_KEYWORDS]` +
+e.g. `findTag neighbour family`
 * *List* : `list`
+* *List Tags* : `listTags`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
 * *History* : `history`
 * *Undo* : `undo`
 * *Redo* : `redo`
+* *letter* : `letter KEYWORD [1 alphabet character only]`
+=======
+
+=======
+* * findEmail `Since v1.2`
+* * findPhone `Since v1.2`
+* * letter `Since v1.2`
+* * Google search Address when contact is selected `Since v1.2`
+* * Sort by address `Since v1.2`
+* * Copy to clipboard `Since v1.3`
+* * findTag `Since v1.3`
+* * Sort command with save option `Since v1.3`
+* * Program exit check `Since v1.3`
+* * List all tags `Since v1.4`
+* * Google search Address of contact via the command line
+* * Export to csv format
+* * Import function
 
 == Coming soon in V2.0
-* * Add birthdays
-* * Customize UI colour theme
+* * Transition pop-up window when closing AddressBook
+* * Google search Address of contact via the command line
+* * Export to csv format
+* * Import function

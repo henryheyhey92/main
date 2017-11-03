@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
 
+//@@author kikanng
 /**
  * Tests that a {@code ReadOnlyPerson}'s {@code Name} matches any of the keywords given.
  */
@@ -17,8 +18,10 @@ public class EmailContainsKeywordsPredicate implements Predicate<ReadOnlyPerson>
 
     @Override
     public boolean test(ReadOnlyPerson person) {
+        // return keywords.stream()
+        // .anyMatch(keyword -> StringUtil.startWithCharIgnoreCase(person.getAddress().toString(), keyword));
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.startWithCharIgnoreCase(person.getAddress().toString(), keyword));
+        .anyMatch(keyword -> StringUtil.startWithCharIgnoreCase(person.getEmail().toString(), keyword));
     }
 
     @Override

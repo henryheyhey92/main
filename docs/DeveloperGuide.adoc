@@ -1,4 +1,4 @@
- AddressBook Level 4 - Developer Guide
+= AddressBook Level 4 - Developer Guide
 :toc:
 :toc-title:
 :toc-placement: preamble
@@ -216,12 +216,167 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 == Implementation
 
-This section describes some noteworthy details on how certain features are implemented.
+=== Sort Command mechanism
 
-// tag::findemail[]
-=== Find Email mechanism
+Overview: The sort command is able to sort by name or by address. Name is sorted alphabetically while
+addresses are sorted by districts.
+
+How is it implemented: Sorting by name is done using the Java comparator with the compare method overridden
+in the SortName class. Comparison is via using the method compareToIgnoreCase(). For v1.3, sorting by address is done by
+using an arraylist lookup table for sorting with districts already pre-loaded. Example areas like 'Jurong', 'Clementi' and '
+Pasir Ris' in the context of Singapore will be added. The address string
+will be checked against the table and the table value would be used for comparison.
+
+Why it is implemented this way: Sort by name is straightforward using the standard sorting approach however sorting
+by addresses is far more complicated. Using a lookup table offers a definite sorting approach as compared to other
+approaches as for now standard user input for address cannot be guaranteed. However if this should change in the later
+stages, this approach may be reassessed for suitability.
+
+Alternatives Considered:
+-Java regex
+
+=== Copy Command mechanism
+
+Overview: The copy command is to copy the desired field of a person over to the system clipboard.
+
+How is it implemented: Copying is done by instantiating an instance of Toolkit as copying over to the system
+clipboard involves querying the operating system directly to get a reference to the system clipboard. StringSelection
+is used as the target field has to be transferred which is supported by StingSelection as it implements Transferable.
+
+Why it is implemented this way: This approach was chosen as it is as it is the most straightforward way
+
+=== Add findEmail mechanism
 
 The find email mechanism is facilitated by regex. After finding matches, result will be stored in the filtered list that is showing on the UI.
+Further improvement might include allowing user to use flag(e.g. findEmail \f KEYWORD) to do advance search.
+
+=== Add change theme mechanism
+
+The change theme mechanism is implemented in the GUI level. By clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
+
+-`The findByLetter Implementation`;
+
+=== Add findPhone mechanism
+
+The findPhone mechanism is able to search for persons whose phone numbers contain any number being searched.
+
+Finds persons whose phones contain any of the given keywords. +
+Format: `findPhone KEYWORD [MORE_KEYWORDS]`
+
+As long as contact has phone number that contains KEYWORD [MORE_KEYWORDS], it will be matched and displayed.
+
+Java files that have been modified:
+- `PhoneContainsKeywordsPredicate.java`
+- `AddressBookParser.java`
+- `FindPhoneCommand`
+- `FindPhoneCommandParser`
+- Some test units have been updated.
+
+=== Add `findTag mechanism`
+
+The findTag mechanism is able to search for persons whose tags contain any keywords being searched.
+
+Finds persons whose tags contain any of the given keywords. +
+Format: `findTag KEYWORD [MORE_KEYWORDS]`
+
+As long as contact has tags that contains KEYWORD [MORE_KEYWORDS], it will be matched and displayed.
+
+Java files that have been modified:
+- `TagContainsKeywordsPredicate.java`: Newly created
+- `AddressBookParser.java`: Edited to include findTag command.
+- `FindTagCommand.java`: Newly created.
+- `FindTagCommandParser.java`: Newly created.
+- `Person.java` : Altered to get tags as a string.
+- `ReadOnlyPerson.java`: Altered to get tags as a string.
+
+=== The add birthday mechanism
+
+A person's birthday can be added/changed via the GUI. This ensures that the input for a birthdate always conform to
+a standard format. In this situation, since the Label has to change whenever a new date is picked from the date picker
+a bidirectional binding is used instead of the normal binding.
+
+=== Search for address on Google Maps
+
+Clicking on the person's contact will search for selected contact's address on Google Maps, as shown below.
+image::searchAddressUI.png[width="728"]
+
+Further improvements might include using command line to search for address or just clicking on address line in person's contact.
+
+=== The findByLetter Implementation
+
+Find all person that is related to the input character.
+Key idea:
+
+(1)is to compare the input letter with the names in the list and display
+the results.
+
+(2) exact the first letter of every name in the list for comparison.
+
+Java file has been modified;
+
+-`NameContainsKeywordPredicate.java`; for the if else statement.
+
+-`AddressBookParser.java`; for the case.
+
+-`FindCommandLetter.java`(*newly created); for the find letter command.
+
+=== The listTag implementation
+
+listTag is able to seive out all unique tags that can be found in the AddressBook.
+listTag does not display duplicate tags that are tagged to the contacts in the AddressBook and is sorted alphabetically.
+
+Java files that have been modified:
+- 'Model': Modified to include a signature in the Model interface for the getTagsList() method. Takes in no parameter and returns a List<Tag>.
+- 'ModelManager': Modified to include a getTagsList() method that takes in no parameter and returns a List<Tag> that contains all tags.
+- 'ListTagsCommand': Created to convert the List<Tag> to strings and be printed in the ResultsDisplay box.
+- 'Tag': modified to include an accessor for tagName.
+
+API : Logic.java
+
+Logic uses the AddressBookParser class to parse the user command.
+
+This results in a Command object which is executed by the LogicManager.
+
+The command execution can affect the Model (e.g. find a person) and/or raise events.
+
+The result of the command execution is encapsulated as a CommandResult object which is passed back to the Ui.
+
+Given below is the Sequence Diagram for interactions within the Logic component for the execute("Letter A") API call.
+
+image::FBL2.png[width="800"]
+
+-`person number in list implementation`
+
+feature has implemented, but writeup still in progress...
+
+-`Program exit checker implementation`
+
+This feature is to give the user a confirmation on closing the application.
+
+The files involved in the feature are, MainApp and ConfirmBox.
+Methods that are involved in buliding this feature is start() & stop().
+
+When user input exit command or click on the close button, the application will
+call out another window to ask the user's confirmation on closing the application.
+
+setOnCloseRequest will trigger when user close or exit the program.
+ConfirmBox will return true or false value of the user intention to close or continue on the program.
+
+image::exitprogramchecker.png[width="800"]
+
+The above is a illustration of how exit program funs.
+
+-`Passcode lock implementation`
+
+The following implementation is to add security features to the application
+
+initial draft idea:
+
+if user name & password matches the input, user get to access the application.
+
+-draft execution: will do a while loop in the MainApp class.
+
+image::passcodedraft1.png[width="800"]
 
 // tag::undoredo[]
 === Undo/Redo mechanism

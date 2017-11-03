@@ -113,7 +113,17 @@ public class AddCommandTest {
         }
 
         @Override
+        public void save(){
+            fail("This method should not be called.");
+        }
+
+        @Override
         public void deletePerson(ReadOnlyPerson target) throws PersonNotFoundException {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public void copy(ReadOnlyPerson target,String choice){
             fail("This method should not be called.");
         }
 
@@ -121,6 +131,11 @@ public class AddCommandTest {
         public void updatePerson(ReadOnlyPerson target, ReadOnlyPerson editedPerson)
                 throws DuplicatePersonException {
             fail("This method should not be called.");
+        }
+
+        @Override
+        public void sortAddressBook(int option,int saveOption) {
+            fail("This method should not be called");
         }
 
         @Override

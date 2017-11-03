@@ -8,14 +8,15 @@ import seedu.address.logic.commands.FindEmailCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.EmailContainsKeywordsPredicate;
 
+//@@author kikanng
 /**
- * Parses input arguments and creates a new FindCommand object
+ * Parses input arguments and creates a new FindEmailCommand object
  */
 public class FindEmailCommandParser implements Parser<FindEmailCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the FindCommand
-     * and returns an FindCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the FindEmailCommand
+     * and returns an FindEmailCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public FindEmailCommand parse(String args) throws ParseException {
@@ -25,8 +26,9 @@ public class FindEmailCommandParser implements Parser<FindEmailCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindEmailCommand.MESSAGE_USAGE));
         }
 
-        String[] emailKeyword = {args};
-        return new FindEmailCommand(new EmailContainsKeywordsPredicate(Arrays.asList(emailKeyword)));
+        String[] nameKeywords = trimmedArgs.split("\\s+");
+
+        return new FindEmailCommand(new EmailContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
     }
 
 }
