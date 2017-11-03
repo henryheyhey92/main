@@ -194,11 +194,11 @@ Returns `friends
 * `find friends family neighbours` +
 Returns any person having tags `friends`, `family`, or `neighbour`
 
-=== Locating persons by name: `letter`
+=== Locating persons by name: `Findletter`
 
 Finds persons whose names contain any of the given keywords. +
 
-Format: `letter KEYWORD [1 alphabet character only]`
+Format: `Findletter KEYWORD [1 alphabet character only]`
 
 ****
 * The search is non-case insensitive. e.g `A` will match `Alan`(*for example)
@@ -355,6 +355,13 @@ At the bottom of the addressbook, application will display the number of person 
 When user attempt to close the application, input "exit" command or close the application by accident,
 a window will pop out to make sure that user is firm on closing the application.
 
+=== PassCode Login
+
+When user start up the application, it will prompt to the user to enter his name and password.
+Wrong user name and password will not grant the user the access to the address book.
+Correct input for both allows the user to access the addressbook.
+Currently, the password is hardcoded into the application.
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
@@ -388,4 +395,3 @@ e.g.`select 2`
 * * Google search Address of contact via the command line
 * * Export to csv format
 * * Import function
-
