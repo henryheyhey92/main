@@ -45,7 +45,7 @@ public class LoginBox {
         passwordInput.setPromptText("Password");
         GridPane.setConstraints(passwordInput, 2, 3);
 
-        //Create login buttons
+        //Create login buttons to access app
         Button yesButton = new Button("Login");
         GridPane.setConstraints(yesButton, 2, 4);
 
