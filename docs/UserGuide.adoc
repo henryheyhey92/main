@@ -405,6 +405,9 @@ e.g.`select 2`
 * * Sort command with save option `Since v1.3`
 * * Program exit check `Since v1.3`
 * * List all tags `Since v1.4`
+* * Login UI `Since v1.4`
+* * Change UI theme `Since v1.4`
+* * Add birthday calendar `Since v1.4`
 
 == Coming soon in V2.0
 * * Transition pop-up window when closing AddressBook
