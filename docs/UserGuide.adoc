@@ -55,6 +55,10 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 Format: `help`
 
+=== Changing theme : `Dark theme` / `Light theme`
+
+Change the UI theme when the user click "File > ____ theme"
+
 === Adding a person: `add`
 
 Adds a person to the address book +
@@ -85,6 +89,11 @@ Format: `s OPTION SAVE_OPTION`
 
 Shows a list of all persons in the address book. +
 Format: `list`
+
+=== Listing all tags : `listTags`
+
+Shows a list of all tags in the address book. Tags listed are unique (no duplicates) and sorted alphabetically.+
+Format: `listTags`
 
 === Copying person's information over to system clipboard : `copy`
 
@@ -338,6 +347,14 @@ image::searchAddressUI.png[width="800"]
 
 Clicking on contact in list will search for its address in Google Maps.
 
+=== Adding a birthday for a person
+
+Clicking on the menu next to each person's names followed by clicking "Set Birthday" allows a birthdate to be
+added for a person. After selecting the birthdate in the date picker, the birthday label of the person has to be
+clicked on for the changes to be shown.
+image::get1.png[width="800"]
+image::get2.png[width="800"]
+
 === Number of person in list
 
 At the bottom of the addressbook, application will display the number of person in list.
@@ -363,9 +380,12 @@ e.g. `delete 3`
 e.g. `edit 2 n/James Lee e/jameslee@example.com`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find James Jake`
-* *FindByPhone* : `findPhone KEYWORD [MORE_KEYWORDS]` +
+* *Find Phone* : `findPhone KEYWORD [MORE_KEYWORDS]` +
 e.g. `findPhone 000 111`
+* *Find Tag* : `findTag KEYWORD [MORE_KEYWORDS]` +
+e.g. `findTag neighbour family`
 * *List* : `list`
+* *List Tags* : `listTags`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
@@ -375,11 +395,7 @@ e.g.`select 2`
 * *letter* : `letter KEYWORD [1 alphabet character only]`
 =======
 
-== Coming soon in V2.0
-* * Add birthdays
-* * Customize UI colour theme
-* * Passcode login
-* * Transition pop-up window when closing AddressBook
+=======
 * * findEmail `Since v1.2`
 * * findPhone `Since v1.2`
 * * letter `Since v1.2`
@@ -389,3 +405,13 @@ e.g.`select 2`
 * * findTag `Since v1.3`
 * * Sort command with save option `Since v1.3`
 * * Program exit check `Since v1.3`
+* * List all tags `Since v1.4`
+* * Google search Address of contact via the command line
+* * Export to csv format
+* * Import function
+
+== Coming soon in V2.0
+* * Transition pop-up window when closing AddressBook
+* * Google search Address of contact via the command line
+* * Export to csv format
+* * Import function

@@ -14,8 +14,12 @@ import java.awt.datatransfer.StringSelection;
 
 import static seedu.address.logic.commands.SortCommand.SAVE;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +32,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -86,6 +91,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     //Note FilteredList is unmodifiable hence sorting is done on internal list.
+    //@@author NUSe0032202
     public synchronized void sortAddressBook(int option, int saveOption)throws UniquePersonList.AddressBookIsEmpty {
         addressBook.sort(option);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -93,6 +99,7 @@ public class ModelManager extends ComponentManager implements Model {
             indicateAddressBookChanged();
         }
     }
+    //@@author
 
     @Override
     public synchronized void addPerson(ReadOnlyPerson person) throws DuplicatePersonException {
@@ -101,6 +108,12 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
+    @Override
+    public void save() {
+        raise(new AddressBookChangedEvent(addressBook));
+    }
+
+    //@@author NUSe0032202
     @Override
     public void copy(ReadOnlyPerson person, String choice) {
         Person target = new Person(person);
@@ -131,6 +144,7 @@ public class ModelManager extends ComponentManager implements Model {
             break;
         }
     }
+    //@@author
 
     @Override
     public void updatePerson(ReadOnlyPerson target, ReadOnlyPerson editedPerson)
@@ -140,6 +154,22 @@ public class ModelManager extends ComponentManager implements Model {
         addressBook.updatePerson(target, editedPerson);
         indicateAddressBookChanged();
     }
+
+    //@@author Labradorites
+    @Override
+    public List<Tag> getTagsList(){
+        List<Tag> unsortedListOfTags = new ArrayList<>();
+
+        filteredPersons.forEach(persons -> unsortedListOfTags.addAll(persons.getTags()));
+
+        //Removes duplicate tags to ensure all tags are unique
+        List<Tag> listOfTags= unsortedListOfTags.stream().distinct().collect(Collectors.toList());
+        //Sorts tags in alphabetical order
+        listOfTags.sort(Comparator.comparing(Tag::getTagName));
+
+        return listOfTags;
+    }
+    //@@author
 
     //=========== Filtered Person List Accessors =============================================================
 

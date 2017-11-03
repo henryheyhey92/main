@@ -7,6 +7,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 /**
  * Sorts the addressbook base on name or address
  */
+//@@author NUSe0032202
 public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "s";
@@ -53,3 +54,4 @@ public class SortCommand extends Command {
         return result;
     }
 }
+//@@author
