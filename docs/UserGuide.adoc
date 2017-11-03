@@ -343,6 +343,10 @@ At the bottom of the addressbook, application will display the number of person 
 When user attempt to close the application, input "exit" command or close the application by accident,
 a window will pop out to make sure that user is firm on closing the application.
 
+=== Login Page
+
+User have to enter user name and password to access the addressbook. The password is currently hard coded into the system.
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
