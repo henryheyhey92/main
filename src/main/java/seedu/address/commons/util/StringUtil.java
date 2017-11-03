@@ -41,17 +41,6 @@ public class StringUtil {
         return false;
     }
 
-    //@@author kikanng
-    /**
-     * Returns true if the {@code sentence} start with {@code characters}.
-     *   Ignores case, full word match is not required.
-     *   <br>examples:<pre>
-     *       containsWordIgnoreCase("Abcdef", "abc") == true
-     *       containsWordIgnoreCase("Abcdef", "bc") == false //not start with "bc"
-     *       </pre>
-     * @param sentence cannot be null
-     * @param chars cannot be null, cannot be empty
-     */
     public static boolean startWithCharIgnoreCase(String sentence, String chars) {
         requireNonNull(sentence);
         requireNonNull(chars);
@@ -66,7 +55,36 @@ public class StringUtil {
         }
         return false;
     }
-    //@@author
+
+    /**
+     * Returns true if the {@code sentence} contains the {@code word}.
+     *   Ignores case, matches if sentence contains word.
+     *   <br>examples:<pre>
+     *       containsAny("abcde", "abc") == true
+     *       containsAny("ABcdef", "def") == true
+     *       containsAny("ABcdef", "AC") == false //not a full word match
+     *       </pre>
+     * @param sentence cannot be null
+     * @param word cannot be null, cannot be empty, must be a single word
+     */
+    public static boolean containsAny(String sentence, String word) {
+        requireNonNull(sentence);
+        requireNonNull(word);
+
+        String preppedWord = word.trim();
+        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
+        checkArgument(preppedWord.split("\\s+").length == 1, "Word parameter should be a single word");
+
+        String preppedSentence = sentence;
+        String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
+
+        for (String wordInSentence: wordsInPreppedSentence) {
+            if (wordInSentence.contains(preppedWord)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * Returns a detailed message of the t, including the stack trace.
