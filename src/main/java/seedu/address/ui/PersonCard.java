@@ -52,14 +52,13 @@ public class PersonCard extends UiPart<Region> {
      * @param person
      * @param displayedIndex
      */
-    //@@author henryheyhey92
     public PersonCard(ReadOnlyPerson person, int displayedIndex) {
         super(FXML);
         this.person = person;
         id.setText(displayedIndex + ". ");
         initTags(person);
         bindListeners(person);
-    }//@@author
+    }
 
     /**
      * Add color tag to the category
@@ -84,6 +83,7 @@ public class PersonCard extends UiPart<Region> {
         email.textProperty().bind(Bindings.convert(person.emailProperty()));
         person.tagProperty().addListener((observable, oldValue, newValue) -> {
             tags.getChildren().clear();
+            /*person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));*/
             initTags(person);
         });
     }
@@ -92,14 +92,15 @@ public class PersonCard extends UiPart<Region> {
      * to give a color tag to the person in the list
      * @param person
      */
-    //@@author henryheyhey92
     private void initTags(ReadOnlyPerson person) {
+        /*person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName))); */
+
         person.getTags().forEach(tag -> {
             Label tagLabel = new Label(tag.tagName);
             tagLabel.setStyle("-fx-background-color: " + getColorForTag(tag.tagName));
             tags.getChildren().add(tagLabel);
         });
-    }//@@author
+    }
 
     @Override
     public boolean equals(Object other) {
