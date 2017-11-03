@@ -359,18 +359,6 @@ if user name & password matches the input, user get to access the application.
 
 image::passcodedraft1.png[width="800"]
 
-=== Pass code Login implementation
-
-image::passcode.png[width="500"]
-
-This feature enhance the security of addressbook
-
-Flow: From the MainApp.java ->The login page will first initialize-> input of user name and password ->
--> if(false); access deny -> if(true); access grant and proceed on to the rest of the task.
-
-image::loginlogic.png[width="500"]
-
-
 // tag::undoredo[]
 === Undo/Redo mechanism
 
