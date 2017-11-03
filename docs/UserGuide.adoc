@@ -92,7 +92,7 @@ Format: `list`
 
 === Listing all tags : `listTags`
 
-Shows a list of all tags in the address book. Tags listed are unique (no duplicates) and sorted alphabetically.+
+Shows a list of all tags in the address book. Tags listed are unique (no duplicates) and sorted alphabetically. +
 Format: `listTags`
 
 === Copying person's information over to system clipboard : `copy`
@@ -199,8 +199,8 @@ Format: `findTag KEYWORD [MORE_KEYWORDS]`
 Examples:
 
 * `findTag friends` +
-Returns `friends
-* `find friends family neighbours` +
+Returns `friends`
+* `findTag friends family neighbours` +
 Returns any person having tags `friends`, `family`, or `neighbour`
 
 === Locating persons by name: `letter`
@@ -393,9 +393,8 @@ e.g.`select 2`
 * *Undo* : `undo`
 * *Redo* : `redo`
 * *letter* : `letter KEYWORD [1 alphabet character only]`
-=======
 
-=======
+== Added functions
 * * findEmail `Since v1.2`
 * * findPhone `Since v1.2`
 * * letter `Since v1.2`
@@ -406,9 +405,6 @@ e.g.`select 2`
 * * Sort command with save option `Since v1.3`
 * * Program exit check `Since v1.3`
 * * List all tags `Since v1.4`
-* * Google search Address of contact via the command line
-* * Export to csv format
-* * Import function
 
 == Coming soon in V2.0
 * * Transition pop-up window when closing AddressBook
