@@ -376,7 +376,7 @@ if user name & password matches the input, user get to access the application.
 
 -draft execution: will do a while loop in the MainApp class.
 
-image::passcodedraft1.png[width="800"]
+image::Login.png[width="800"]
 
 === Undo/Redo mechanism
 
