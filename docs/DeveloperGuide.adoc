@@ -326,11 +326,11 @@ Given below is the Sequence Diagram for interactions within the Logic component 
 
 image::FBL2.png[width="800"]
 
--`person number in list implementation`
+=== Person number in list implementation
 
 feature has implemented, but writeup still in progress...
 
--`Program exit checker implementation`
+=== Program exit checker implementation
 
 This feature is to give the user a confirmation on closing the application.
 
@@ -347,7 +347,7 @@ image::exitprogramchecker.png[width="800"]
 
 The above is a illustration of how exit program funs.
 
--`Passcode lock implementation`
+=== Passcode lock implementation
 
 The following implementation is to add security features to the application
 
@@ -359,7 +359,6 @@ if user name & password matches the input, user get to access the application.
 
 image::passcodedraft1.png[width="800"]
 
-// tag::undoredo[]
 === Undo/Redo mechanism
 
 The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modifies the state of the address book (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.
