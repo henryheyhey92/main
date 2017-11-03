@@ -9,6 +9,7 @@ import seedu.address.model.person.UniquePersonList;
 /**
  * Actual logic for sorting by name
  */
+//author NUSe0032202
 public class SortName extends SortCommand implements Comparator<ReadOnlyPerson> {
 
     public static final String
@@ -37,3 +38,4 @@ public class SortName extends SortCommand implements Comparator<ReadOnlyPerson> 
         return a.getName().fullName.compareToIgnoreCase(b.getName().fullName);
     }
 }
+//@@author

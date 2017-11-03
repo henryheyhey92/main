@@ -9,6 +9,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.ReadOnlyPerson;
 
+//@@author NUSe0032202
 public class CopyCommand extends Command {
 
     public static final String COMMAND_WORD = "c";
@@ -72,3 +73,4 @@ public class CopyCommand extends Command {
         }
     }
 }
+//@@author

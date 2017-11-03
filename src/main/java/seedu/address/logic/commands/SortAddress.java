@@ -10,6 +10,7 @@ import seedu.address.model.person.UniquePersonList;
 /**
  * Actual logic for sorting by address
  */
+//@@author NUSe0032202
 public class SortAddress extends SortCommand implements Comparator<ReadOnlyPerson> {
 
     public static final String
@@ -24,6 +25,8 @@ public class SortAddress extends SortCommand implements Comparator<ReadOnlyPerso
     private Model model;
     private int saveOption;
 
+    //@@author
+    //Demo look-up table to be extracted out in final product
     static {
         table.add("ang mo kio");
         table.add("geylang");
@@ -36,6 +39,7 @@ public class SortAddress extends SortCommand implements Comparator<ReadOnlyPerso
         table.add("bukit batok");
     }
 
+    //@@author NUSe0032202
     public SortAddress() {}
 
     public SortAddress(Model target, int saveOption) {
@@ -69,4 +73,5 @@ public class SortAddress extends SortCommand implements Comparator<ReadOnlyPerso
 
         return compareFirst.compareToIgnoreCase(compareSecond);
     }
+    //@@author
 }
