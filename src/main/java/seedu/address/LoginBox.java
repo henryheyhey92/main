@@ -45,21 +45,11 @@ public class LoginBox {
         passwordInput.setPromptText("Password");
         GridPane.setConstraints(passwordInput, 2, 3);
 
-        //Create login buttons
+        //Create login buttons to access app
         Button yesButton = new Button("Login");
         GridPane.setConstraints(yesButton, 2, 4);
 
-        //String name = nameInput.getText().trim();
-
-        yesButton.setOnAction((ActionEvent e) -> {
-            if(isInt(nameInput, passwordInput)){
-                answer = true;
-                window.close();
-            }
-        });
-
-
-        //yesButton.setOnAction(this);
+        yesButton.setOnAction(LoginBox::handle);
 
         //Add buttons
         grid.getChildren().addAll(nameLabel, nameInput, passwordLabel, passwordInput, yesButton);
@@ -85,6 +75,12 @@ public class LoginBox {
         return false;
     }
 
+    private static void handle(ActionEvent e) {
+        if (isInt(nameInput, passwordInput)) {
+            answer = true;
+            window.close();
+        }
+    }
 }//@@author
 
 

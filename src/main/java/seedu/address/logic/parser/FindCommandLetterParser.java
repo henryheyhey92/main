@@ -12,7 +12,6 @@ import seedu.address.model.person.NameContainsKeywordsPredicate;
 /**
  * Parses input arguments and creates a new FindCommand object
  */
-//@@author henryheyhey92
 public class FindCommandLetterParser implements Parser<FindCommandLetter> {
 
     /**
@@ -32,6 +31,4 @@ public class FindCommandLetterParser implements Parser<FindCommandLetter> {
         return new FindCommandLetter(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
     }
 
-}//@@author
-
-
+}

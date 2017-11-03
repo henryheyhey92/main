@@ -51,8 +51,7 @@ public class MainApp extends Application {
     protected Config config;
     protected UserPrefs userPrefs;
 
-    public Stage window;
-    public Stage logInWin;
+    Stage window;
 
     @Override
     public void init() throws Exception {
@@ -183,29 +182,23 @@ public class MainApp extends Application {
         EventsCenter.getInstance().registerHandler(this);
     }
 
-    //@@author henryheyhey92
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting AddressBook " + MainApp.VERSION);
-
-        logInWin = primaryStage;
-        boolean unlock = LoginBox.display("AddressBook Login Page");
-
-        if(unlock) {
+        window = primaryStage;
+        boolean answer = LoginBox.display("AddressBook Login");
+        if(answer) {
             ui.start(primaryStage);
-            window = primaryStage;
             window.setOnCloseRequest(e -> {
                 e.consume();
                 stop();
             });
         }
 
-    }//@@author
+    }
 
-    //@@author henryheyhey92
     @Override
     public void stop() {
-
         boolean answer = ConfirmBox.display("Exit Check Protocol","Confirm on exiting the program?");
 
         if(answer) {
@@ -221,7 +214,7 @@ public class MainApp extends Application {
             Platform.exit();
             System.exit(0);
         }
-    }//@@author
+    }
 
     @Subscribe
     public void handleExitAppRequestEvent(ExitAppRequestEvent event) {

@@ -22,20 +22,18 @@ public class Person implements ReadOnlyPerson {
     private ObjectProperty<Phone> phone;
     private ObjectProperty<Email> email;
     private ObjectProperty<Address> address;
-    private ObjectProperty<Birthday> birthday;
-    private ObjectProperty<UniqueTagList> tags;
 
+    private ObjectProperty<UniqueTagList> tags;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address,Birthday birthday,Set<Tag> tags) {
+    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = new SimpleObjectProperty<>(name);
         this.phone = new SimpleObjectProperty<>(phone);
         this.email = new SimpleObjectProperty<>(email);
         this.address = new SimpleObjectProperty<>(address);
-        this.birthday = new SimpleObjectProperty<>(birthday);
         // protect internal tags from changes in the arg list
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
     }
@@ -45,7 +43,7 @@ public class Person implements ReadOnlyPerson {
      */
     public Person(ReadOnlyPerson source) {
         this(source.getName(), source.getPhone(), source.getEmail(), source.getAddress(),
-                source.getBirthday(),source.getTags());
+                source.getTags());
     }
 
     public void setName(Name name) {
@@ -60,18 +58,6 @@ public class Person implements ReadOnlyPerson {
     @Override
     public Name getName() {
         return name.get();
-    }
-
-    @Override
-    public ObjectProperty<Birthday> birthdayProperty(){return birthday;}
-
-    @Override
-    public Birthday getBirthday(){
-        return birthday.get();
-    }
-
-    public void setBirthday(Birthday birthday) {
-        this.birthday.set(requireNonNull(birthday));
     }
 
     public void setPhone(Phone phone) {
