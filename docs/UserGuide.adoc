@@ -194,11 +194,11 @@ Returns `friends
 * `find friends family neighbours` +
 Returns any person having tags `friends`, `family`, or `neighbour`
 
-=== Locating persons by name: `letter`
+=== Locating persons by name: `Findletter`
 
 Finds persons whose names contain any of the given keywords. +
 
-Format: `letter KEYWORD [1 alphabet character only]`
+Format: `Findletter KEYWORD [1 alphabet character only]`
 
 ****
 * The search is non-case insensitive. e.g `A` will match `Alan`(*for example)
@@ -209,9 +209,9 @@ Format: `letter KEYWORD [1 alphabet character only]`
 
 Examples:
 
-* `letter J` +
+* `Findletter J` +
 Returns `John` and `John Doe`
-* `letter B` +
+* `Findletter B` +
 Returns any person having names `Betsy`, `Bean`, or `Ben`
 
 === Deleting a person : `delete`
@@ -333,10 +333,6 @@ There is no need to save manually.
 
 Clicking on contact in list will search for its address in Google Maps.
 image::searchAddressUI.png[width="800"]
-
-=== Locating persons by name: `letter`
-
-Clicking on contact in list will search for its address in Google Maps.
 
 === Number of person in list
 
