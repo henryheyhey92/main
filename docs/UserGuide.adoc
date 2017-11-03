@@ -86,6 +86,11 @@ Format: `s OPTION SAVE_OPTION`
 Shows a list of all persons in the address book. +
 Format: `list`
 
+=== Listing all tags : `listTags`
+
+Shows a list of all tags in the address book. Tags listed are unique (no duplicates) and sorted alphabetically.+
+Format: `listTags`
+
 === Copying person's information over to system clipboard : `copy`
 
 Copies the selected person's information over to the system clipboard.
@@ -363,9 +368,12 @@ e.g. `delete 3`
 e.g. `edit 2 n/James Lee e/jameslee@example.com`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` +
 e.g. `find James Jake`
-* *FindByPhone* : `findPhone KEYWORD [MORE_KEYWORDS]` +
+* *Find Phone* : `findPhone KEYWORD [MORE_KEYWORDS]` +
 e.g. `findPhone 000 111`
+* *Find Tag* : `findTag KEYWORD [MORE_KEYWORDS]` +
+e.g. `findTag neighbour family`
 * *List* : `list`
+* *List Tags* : `listTags`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
@@ -389,3 +397,7 @@ e.g.`select 2`
 * * findTag `Since v1.3`
 * * Sort command with save option `Since v1.3`
 * * Program exit check `Since v1.3`
+* * List all tags `Since v1.4`
+* * Google search Address of contact via the command line
+* * Export to csv format
+* * Import function

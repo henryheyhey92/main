@@ -56,6 +56,7 @@ public class StringUtil {
         return false;
     }
 
+    //@@author Labradorites
     /**
      * Returns true if the {@code sentence} contains the {@code word}.
      *   Ignores case, matches if sentence contains word.
@@ -85,6 +86,7 @@ public class StringUtil {
         }
         return false;
     }
+    //@@author
 
     /**
      * Returns a detailed message of the t, including the stack trace.
