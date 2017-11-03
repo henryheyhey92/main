@@ -2,21 +2,15 @@ package seedu.address.ui;
 
 import java.util.HashMap;
 import java.util.Random;
-import java.util.logging.Logger;
-
-import com.google.common.eventbus.Subscribe;
 
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.ui.ShowHelpRequestEvent;
-import seedu.address.logic.Logic;
 import seedu.address.model.person.ReadOnlyPerson;
+
 
 
 /**
@@ -25,7 +19,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
-    private static String[] colors = {"red", "yellow", "blue", "orange", "brown", "green", "pink", "black", "grey"};
+    private static String[] colors = { "red", "yellow", "blue", "orange", "brown", "green", "pink", "black", "grey" };
     private static HashMap<String, String> tagColors = new HashMap<String, String>();
     private static Random random = new Random();
     /**
@@ -37,9 +31,7 @@ public class PersonCard extends UiPart<Region> {
      */
 
     public final ReadOnlyPerson person;
-    private final Logger logger = LogsCenter.getLogger(this.getClass());
-    private final Logic logic;
-    private CalendarTest calendar;
+
     @FXML
     private HBox cardPane;
     @FXML
@@ -53,28 +45,23 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
-    private Label birthday;
-    @FXML
     private FlowPane tags;
 
     /**
      * method for giving a tag name to the person. Eg: family, friends...etc
-     *
      * @param person
      * @param displayedIndex
      */
-    public PersonCard(ReadOnlyPerson person, Logic logic, int displayedIndex) {
+    public PersonCard(ReadOnlyPerson person, int displayedIndex) {
         super(FXML);
         this.person = person;
-        this.logic = logic;
         id.setText(displayedIndex + ". ");
         initTags(person);
         bindListeners(person);
-    }//@@author
+    }
 
     /**
      * Add color tag to the category
-     *
      * @param tagValue
      * @return
      */
@@ -85,57 +72,35 @@ public class PersonCard extends UiPart<Region> {
         return tagColors.get(tagValue);
     }
 
-    //@@author NUSe0032202
-    @FXML
-    private void showArgs() {
-        birthday.setText(calendar.getBirthday());
-        person.getBirthday().edit(calendar.getBirthday());
-        logic.getModel().save();
-    }
-    //@@author
-
-    /**
-     * Opens the birthday input window.
-     */
-    //@@author NUSe0032202
-    @FXML
-    public void handleCalendar() {
-        calendar = new CalendarTest();
-        calendar.show();
-    }
-    //@@author
-
     /**
      * Binds the individual UI elements to observe their respective {@code Person} properties
      * so that they will be notified of any changes.
      */
     private void bindListeners(ReadOnlyPerson person) {
-        SimpleStringProperty selected = new SimpleStringProperty();
-        selected.setValue(Bindings.convert(person.birthdayProperty()).getValue());
         name.textProperty().bind(Bindings.convert(person.nameProperty()));
         phone.textProperty().bind(Bindings.convert(person.phoneProperty()));
         address.textProperty().bind(Bindings.convert(person.addressProperty()));
         email.textProperty().bind(Bindings.convert(person.emailProperty()));
-        birthday.textProperty().bindBidirectional(selected);
         person.tagProperty().addListener((observable, oldValue, newValue) -> {
             tags.getChildren().clear();
+            /*person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));*/
             initTags(person);
         });
     }
 
     /**
      * to give a color tag to the person in the list
-     *
      * @param person
      */
-    //@@author henryheyhey92
     private void initTags(ReadOnlyPerson person) {
+        /*person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName))); */
+
         person.getTags().forEach(tag -> {
             Label tagLabel = new Label(tag.tagName);
             tagLabel.setStyle("-fx-background-color: " + getColorForTag(tag.tagName));
             tags.getChildren().add(tagLabel);
         });
-    }//@@author
+    }
 
     @Override
     public boolean equals(Object other) {
@@ -153,11 +118,5 @@ public class PersonCard extends UiPart<Region> {
         PersonCard card = (PersonCard) other;
         return id.getText().equals(card.id.getText())
                 && person.equals(card.person);
-    }
-
-    @Subscribe
-    private void handleShowCalendarEvent(ShowHelpRequestEvent event) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handleCalendar();
     }
 }

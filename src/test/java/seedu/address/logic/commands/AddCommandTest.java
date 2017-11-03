@@ -113,11 +113,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public void save(){
-            fail("This method should not be called.");
-        }
-
-        @Override
         public void deletePerson(ReadOnlyPerson target) throws PersonNotFoundException {
             fail("This method should not be called.");
         }

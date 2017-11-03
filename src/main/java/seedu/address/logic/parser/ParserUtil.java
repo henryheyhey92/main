@@ -38,7 +38,7 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_OPTION = "sort option is invalid.";
     private static final HashSet<Character> choices = new HashSet<Character>();
 
-    static {
+    static{
         choices.add('n');
         choices.add('p');
         choices.add('e');

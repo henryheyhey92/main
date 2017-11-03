@@ -285,12 +285,6 @@ Java files that have been modified:
 - `Person.java` : Altered to get tags as a string.
 - `ReadOnlyPerson.java`: Altered to get tags as a string.
 
-=== The add birthday mechanism
-
-A person's birthday can be added/changed via the GUI. This ensures that the input for a birthdate always conform to
-a standard format. In this situation, since the Label has to change whenever a new date is picked from the date picker
-a bidirectional binding is used instead of the normal binding.
-
 
 === Search for address on Google Maps
 
@@ -364,18 +358,6 @@ if user name & password matches the input, user get to access the application.
 -draft execution: will do a while loop in the MainApp class.
 
 image::passcodedraft1.png[width="800"]
-
-=== Pass code Login implementation
-
-image::passcode.png[width="500"]
-
-This feature enhance the security of addressbook
-
-Flow: From the MainApp.java ->The login page will first initialize-> input of user name and password ->
--> if(false); access deny -> if(true); access grant and proceed on to the rest of the task.
-
-image::loginlogic.png[width="500"]
-
 
 // tag::undoredo[]
 === Undo/Redo mechanism
