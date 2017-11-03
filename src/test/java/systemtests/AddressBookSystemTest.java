@@ -158,6 +158,7 @@ public abstract class AddressBookSystemTest {
      * contains the same person objects as those from TypicalPersons and the person list panel displays the persons
      * in the model correctly.
      */
+    //@@author NUSe0032202
     protected void assertApplicationDisplaysExpectedSecondVersion(String expectedCommandInput,
                                                                   String expectedResultMessage, Model expectedModel) {
         assertEquals(expectedCommandInput, getCommandBox().getInput());
@@ -166,6 +167,7 @@ public abstract class AddressBookSystemTest {
         assertEquals(getTypicalAddressBook(), testApp.readStorageAddressBook());
         assertListMatching(getPersonListPanel(), expectedModel.getFilteredPersonList());
     }
+    //@@author
 
     /**
      * Calls {@code BrowserPanelHandle}, {@code PersonListPanelHandle} and {@code StatusBarFooterHandle} to remember

@@ -20,6 +20,7 @@ import seedu.address.model.person.UniquePersonList;
 /**
  * Contains integration tests (interaction with the Model) and unit tests for SortCommand.
  */
+//@@author NUSe0032202
 public class SortCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
@@ -67,3 +68,4 @@ public class SortCommandTest {
         return sortCommand;
     }
 }
+//@@author

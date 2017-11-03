@@ -347,6 +347,14 @@ image::searchAddressUI.png[width="800"]
 
 Clicking on contact in list will search for its address in Google Maps.
 
+=== Adding a birthday for a person
+
+Clicking on the menu next to each person's names followed by clicking "Set Birthday" allows a birthdate to be
+added for a person. After selecting the birthdate in the date picker, the birthday label of the person has to be
+clicked on for the changes to be shown.
+image::get1.png[width="800"]
+image::get2.png[width="800"]
+
 === Number of person in list
 
 At the bottom of the addressbook, application will display the number of person in list.
@@ -387,11 +395,7 @@ e.g.`select 2`
 * *letter* : `letter KEYWORD [1 alphabet character only]`
 =======
 
-== Coming soon in V2.0
-* * Add birthdays
-* * Customize UI colour theme
-* * Passcode login
-* * Transition pop-up window when closing AddressBook
+=======
 * * findEmail `Since v1.2`
 * * findPhone `Since v1.2`
 * * letter `Since v1.2`
@@ -402,6 +406,12 @@ e.g.`select 2`
 * * Sort command with save option `Since v1.3`
 * * Program exit check `Since v1.3`
 * * List all tags `Since v1.4`
+* * Google search Address of contact via the command line
+* * Export to csv format
+* * Import function
+
+== Coming soon in V2.0
+* * Transition pop-up window when closing AddressBook
 * * Google search Address of contact via the command line
 * * Export to csv format
 * * Import function
