@@ -199,11 +199,11 @@ Returns `friends
 * `find friends family neighbours` +
 Returns any person having tags `friends`, `family`, or `neighbour`
 
-=== Locating persons by name: `letter`
+=== Locating persons by name: `Findletter`
 
 Finds persons whose names contain any of the given keywords. +
 
-Format: `letter KEYWORD [1 alphabet character only]`
+Format: `Findletter KEYWORD [1 alphabet character only]`
 
 ****
 * The search is non-case insensitive. e.g `A` will match `Alan`(*for example)
@@ -343,6 +343,14 @@ image::searchAddressUI.png[width="800"]
 
 Clicking on contact in list will search for its address in Google Maps.
 
+=== Adding a birthday for a person
+
+Clicking on the menu next to each person's names followed by clicking "Set Birthday" allows a birthdate to be
+added for a person. After selecting the birthdate in the date picker, the birthday label of the person has to be
+clicked on for the changes to be shown.
+image::get1.png[width="800"]
+image::get2.png[width="800"]
+
 === Number of person in list
 
 At the bottom of the addressbook, application will display the number of person in list.
@@ -351,6 +359,13 @@ At the bottom of the addressbook, application will display the number of person 
 
 When user attempt to close the application, input "exit" command or close the application by accident,
 a window will pop out to make sure that user is firm on closing the application.
+
+=== PassCode Login
+
+When user start up the application, it will prompt to the user to enter his name and password.
+Wrong user name and password will not grant the user the access to the address book.
+Correct input for both allows the user to access the addressbook.
+Currently, the password is hardcoded into the application.
 
 == FAQ
 
@@ -384,9 +399,6 @@ e.g.`select 2`
 =======
 
 == Coming soon in V2.0
-* * Add birthdays
-* * Customize UI colour theme
-* * Passcode login
 * * Transition pop-up window when closing AddressBook
 * * findEmail `Since v1.2`
 * * findPhone `Since v1.2`
@@ -398,3 +410,6 @@ e.g.`select 2`
 * * Sort command with save option `Since v1.3`
 * * Program exit check `Since v1.3`
 * * List all tags `Since v1.4`
+* * Google search Address of contact via the command line
+* * Export to csv format
+* * Import function
