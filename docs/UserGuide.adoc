@@ -345,7 +345,7 @@ a window will pop out to make sure that user is firm on closing the application.
 
 === Login Page
 
-User have to enter user name and password to access the addressbook. The password is currently hard coded into the system.
+User have to enter user name and password to access the addressbook. The password is currently hard coded into the system.g
 
 == FAQ
 
