@@ -334,18 +334,6 @@ There is no need to save manually.
 Clicking on contact in list will search for its address in Google Maps.
 image::searchAddressUI.png[width="800"]
 
-=== Locating persons by name: `letter`
-
-Clicking on contact in list will search for its address in Google Maps.
-
-=== Adding a birthday for a person
-
-Clicking on the menu next to each person's names followed by clicking "Set Birthday" allows a birthdate to be
-added for a person. After selecting the birthdate in the date picker, the birthday label of the person has to be
-clicked on for the changes to be shown.
-image::get1.png[width="800"]
-image::get2.png[width="800"]
-
 === Number of person in list
 
 At the bottom of the addressbook, application will display the number of person in list.
@@ -391,7 +379,17 @@ e.g.`select 2`
 =======
 
 == Coming soon in V2.0
+* * Add birthdays
+* * Customize UI colour theme
+* * Passcode login enhance version
 * * Transition pop-up window when closing AddressBook
-* * Google search Address of contact via the command line
-* * Export to csv format
-* * Import function
+* * findEmail `Since v1.2`
+* * findPhone `Since v1.2`
+* * letter `Since v1.2`
+* * Google search Address when contact is selected `Since v1.2`
+* * Sort by address `Since v1.2`
+* * Copy to clipboard `Since v1.3`
+* * findTag `Since v1.3`
+* * Sort command with save option `Since v1.3`
+* * Program exit check `Since v1.3`
+* * reset login password.
