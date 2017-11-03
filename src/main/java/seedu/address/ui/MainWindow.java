@@ -143,7 +143,7 @@ public class MainWindow extends UiPart<Region> {
         CommandBox commandBox = new CommandBox(logic);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        setTheme("/DarkTheme.css");
+        setTheme("DarkTheme.css");
     }
 
     void hide() {
@@ -238,7 +238,7 @@ public class MainWindow extends UiPart<Region> {
      */
     @FXML
     public void handleLightTheme() {
-        setTheme("/LightTheme.css");
+        setTheme("LightTheme.css");
     }
 
     /**
@@ -246,7 +246,7 @@ public class MainWindow extends UiPart<Region> {
      */
     @FXML
     public void handleDarkTheme() {
-        setTheme("/DarkTheme.css");
+        setTheme("DarkTheme.css");
     }
     //@@author
 
