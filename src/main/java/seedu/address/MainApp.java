@@ -185,14 +185,15 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting AddressBook " + MainApp.VERSION);
-
-
-        ui.start(primaryStage);
         window = primaryStage;
-        window.setOnCloseRequest(e ->{
-            e.consume();
-            stop();
-        });
+        boolean answer = LoginBox.display("AddressBook Login");
+        if(answer) {
+            ui.start(primaryStage);
+            window.setOnCloseRequest(e -> {
+                e.consume();
+                stop();
+            });
+        }
 
     }
 
