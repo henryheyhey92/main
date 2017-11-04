@@ -350,6 +350,10 @@ Wrong user name and password will not grant the user the access to the address b
 Correct input for both allows the user to access the addressbook.
 Currently, the password is hardcoded into the application.
 
+Input the following to enter the application:
+User name: NUS
+Password: 1234
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
