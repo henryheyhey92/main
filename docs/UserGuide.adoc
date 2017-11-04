@@ -362,6 +362,19 @@ At the bottom of the addressbook, application will display the number of person 
 When user attempt to close the application, input "exit" command or close the application by accident,
 a window will pop out to make sure that user is firm on closing the application.
 
+=== Login Page
+
+User have to enter user name and password to access the application.
+The user name and password currently hardcoded into the system.
+Please input the following to access the application
+
+User name: NUS
+Password: 1234
+
+Input the following to enter the application:
+User name: NUS
+Password: 1234
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
