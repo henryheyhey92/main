@@ -371,6 +371,10 @@ Please input the following to access the application
 User name: NUS
 Password: 1234
 
+Input the following to enter the application:
+User name: NUS
+Password: 1234
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
