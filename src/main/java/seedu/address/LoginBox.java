@@ -13,6 +13,9 @@ import javafx.scene.control.Label;
 
 
 //@@author henryheyhey92
+/**
+ * This is to create the login window.
+ */
 public class LoginBox {
 
     private static boolean answer;
@@ -20,6 +23,10 @@ public class LoginBox {
     private static TextField nameInput = new TextField();
     private static TextField passwordInput = new TextField();
 
+    /**
+     * create the login box display
+     *
+     */
     public static boolean display(String title) {
 
         //create window
@@ -69,6 +76,9 @@ public class LoginBox {
         //Clicking will set answer and cloe window
     }
 
+    /**
+     * to create a exit checker
+     */
     private static void stop() {
         boolean answer = ConfirmBox.display("Exit Check Protocol","Confirm on exiting the program?");
 
@@ -78,6 +88,12 @@ public class LoginBox {
         }
     }
 
+    /**
+     *
+     * @param name
+     * @param pass
+     * @return true or false
+     */
     private static boolean isInt(TextField name, TextField pass){
         String name2 = name.getText();
         String pass2 = pass.getText();
@@ -93,6 +109,10 @@ public class LoginBox {
         return false;
     }
 
+    /**
+     * Event handler
+     * @param e
+     */
     private static void handle(ActionEvent e) {
         if (isInt(nameInput, passwordInput)) {
             answer = true;
