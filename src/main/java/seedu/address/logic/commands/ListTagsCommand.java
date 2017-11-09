@@ -9,7 +9,8 @@ import seedu.address.model.tag.Tag;
 
 //@@author Labradorites
 /**
- * Lists all tags tagged to persons in AddressBook. Does not show duplicate tags.
+ * Lists all tags tagged to persons in AddressBook or PersonPanelList depending on choice to the user.
+ * Does not show duplicate tags.
  */
 public class ListTagsCommand extends Command {
 
@@ -30,28 +31,24 @@ public class ListTagsCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        List<Tag> listOfTags = null;
+        List<String> listOfTags = null;
 
         requireNonNull(model);
 
         switch (option) {
         case CHOICE:
-            listOfTags = model.getFilteredTagsList();
-            List<String> tagsString = new ArrayList<>();
-
-            //removes all [] from tags
-            listOfTags.forEach(tag -> tagsString.add(tag.toString().replaceAll("[\\[\\]]", "")));
+            listOfTags = model.getTagsListAsString(model.getFilteredTagsList());
             break;
         default:
+            listOfTags = model.getTagsListAsString(model.getNormalTagsList());
             break;
         }
-
 
         if (listOfTags.isEmpty()) {
             return new CommandResult(MESSAGE_NO_TAGS);
         }
 
         System.out.println(listOfTags);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, String.join("\n", tagsString)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, String.join("\n", listOfTags)));
     }
 }

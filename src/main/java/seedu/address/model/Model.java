@@ -72,11 +72,17 @@ public interface Model {
     void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty;
 
     //@@author Labradorites
-    /*
+    /**
+     * Returns unique tags list as List<String>
+     */
+    List<String> getTagsListAsString(List<Tag> tagStringList);
+
+    /**
      * Returns list of all unique tags present in AddressBook that are sorted alphabetically
      */
     List<Tag> getNormalTagsList();
-    /*
+
+    /**
      * Returns list of all unique tags currently present in PersonPanelList that are sorted alphabetically
      */
     List<Tag> getFilteredTagsList();

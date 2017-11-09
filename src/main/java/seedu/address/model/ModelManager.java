@@ -27,6 +27,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.logic.commands.ListTagsCommand;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
@@ -157,17 +158,30 @@ public class ModelManager extends ComponentManager implements Model {
 
     //@@author Labradorites
     @Override
+    public List<String> getTagsListAsString(List<Tag> tagsList) {
+        List<String> tagsStringList= new ArrayList<>();
+        tagsList.forEach(tag -> tagsStringList.add(tag.toString().replaceAll("[\\[\\]]", "")));
+        return tagsStringList;
+    }
+
+    @Override
+    public List<Tag> getNormalTagsList() {
+        List<Tag> listofNormalTags = getAddressBook().getTagList().sorted();
+        return listofNormalTags;
+    }
+
+    @Override
     public List<Tag> getFilteredTagsList(){
         List<Tag> unsortedListOfTags = new ArrayList<>();
 
         filteredPersons.forEach(persons -> unsortedListOfTags.addAll(persons.getTags()));
 
         //Removes duplicate tags to ensure all tags are unique
-        List<Tag> listOfTags= unsortedListOfTags.stream().distinct().collect(Collectors.toList());
+        List<Tag> listOfFilteredTags= unsortedListOfTags.stream().distinct().collect(Collectors.toList());
         //Sorts tags in alphabetical order
-        listOfTags.sort(Comparator.comparing(Tag::getTagName));
+        listOfFilteredTags.sort(Comparator.comparing(Tag::getTagName));
 
-        return listOfTags;
+        return listOfFilteredTags;
     }
     //@@author
 

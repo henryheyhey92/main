@@ -9,7 +9,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.TagContainsKeywordsPredicate;
 
 //@@author Labradorites
-
 /**
  * Parses input arguments and creates a new ListTagsCommand object
  */
