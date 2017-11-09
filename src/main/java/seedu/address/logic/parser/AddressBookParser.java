@@ -91,7 +91,7 @@ public class AddressBookParser {
             return new ListCommand();
 
         case ListTagsCommand.COMMAND_WORD:
-            return new ListTagsCommand();
+            return new ListTagsCommandParser().parse(arguments);
 
         case CopyCommand.COMMAND_WORD:
             return new CopyCommandParser().parse(arguments);

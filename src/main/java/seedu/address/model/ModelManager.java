@@ -157,17 +157,30 @@ public class ModelManager extends ComponentManager implements Model {
 
     //@@author Labradorites
     @Override
-    public List<Tag> getTagsList(){
+    public List<String> getTagsListAsString(List<Tag> tagsList) {
+        List<String> tagsStringList= new ArrayList<>();
+        tagsList.forEach(tag -> tagsStringList.add(tag.toString().replaceAll("[\\[\\]]", "")));
+        return tagsStringList;
+    }
+
+    @Override
+    public List<Tag> getNormalTagsList() {
+        List<Tag> listofNormalTags = getAddressBook().getTagList().sorted();
+        return listofNormalTags;
+    }
+
+    @Override
+    public List<Tag> getFilteredTagsList(){
         List<Tag> unsortedListOfTags = new ArrayList<>();
 
-        filteredPersons.forEach(persons -> unsortedListOfTags.addAll(persons.getTags()));
+        getFilteredPersonList().forEach(persons -> unsortedListOfTags.addAll(persons.getTags()));
 
         //Removes duplicate tags to ensure all tags are unique
-        List<Tag> listOfTags= unsortedListOfTags.stream().distinct().collect(Collectors.toList());
+        List<Tag> listOfFilteredTags= unsortedListOfTags.stream().distinct().collect(Collectors.toList());
         //Sorts tags in alphabetical order
-        listOfTags.sort(Comparator.comparing(Tag::getTagName));
+        listOfFilteredTags.sort(Comparator.comparing(Tag::getTagName));
 
-        return listOfTags;
+        return listOfFilteredTags;
     }
     //@@author
 
