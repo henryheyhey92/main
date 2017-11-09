@@ -249,6 +249,11 @@ Why it is implemented this way: This approach was chosen as it is as it is the m
 The find email mechanism is facilitated by regex. After finding matches, result will be stored in the filtered list that is showing on the UI.
 Further improvement might include allowing user to use flag(e.g. findEmail \f KEYWORD) to do advance search.
 
+=== Add change theme mechanism
+
+The change theme mechanism is implemented in the GUI level. By clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
+
+-`The findByLetter Implementation`;
 
 === Add findPhone mechanism
 
@@ -289,14 +294,12 @@ A person's birthday can be added/changed via the GUI. This ensures that the inpu
 a standard format. In this situation, since the Label has to change whenever a new date is picked from the date picker
 a bidirectional binding is used instead of the normal binding.
 
-
 === Search for address on Google Maps
 
 Clicking on the person's contact will search for selected contact's address on Google Maps, as shown below.
-image::searchAddressUI.png[width="700"]
+image::searchAddressUI.png[width="728"]
 
 Further improvements might include using command line to search for address or just clicking on address line in person's contact.
-
 
 === The findByLetter Implementation
 
@@ -315,6 +318,17 @@ Java file has been modified;
 -`AddressBookParser.java`; for the case.
 
 -`FindCommandLetter.java`(*newly created); for the find letter command.
+
+=== The listTag implementation
+
+listTag is able to seive out all unique tags that can be found in the AddressBook.
+listTag does not display duplicate tags that are tagged to the contacts in the AddressBook and is sorted alphabetically.
+
+Java files that have been modified:
+- 'Model': Modified to include a signature in the Model interface for the getTagsList() method. Takes in no parameter and returns a List<Tag>.
+- 'ModelManager': Modified to include a getTagsList() method that takes in no parameter and returns a List<Tag> that contains all tags.
+- 'ListTagsCommand': Created to convert the List<Tag> to strings and be printed in the ResultsDisplay box.
+- 'Tag': modified to include an accessor for tagName.
 
 API : Logic.java
 

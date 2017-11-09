@@ -125,6 +125,7 @@ public class Person implements ReadOnlyPerson {
         return Collections.unmodifiableSet(tags.get().toSet());
     }
 
+    //@@author Labradorites
     @Override
     public String fullTag() {
         final StringBuilder builder = new StringBuilder();
@@ -132,6 +133,7 @@ public class Person implements ReadOnlyPerson {
 
         return builder.toString().replace("][", " ").replaceAll("[\\[\\]]", "");
     }
+    //@@author
 
     public ObjectProperty<UniqueTagList> tagProperty() {
         return tags;
