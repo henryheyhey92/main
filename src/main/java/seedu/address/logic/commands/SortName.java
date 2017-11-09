@@ -28,7 +28,7 @@ public class SortName extends SortCommand implements Comparator<ReadOnlyPerson> 
     }
 
     @Override
-    public CommandResult execute() throws UniquePersonList.AddressBookIsEmpty {
+    public CommandResult executeUndoableCommand() throws UniquePersonList.AddressBookIsEmpty {
         model.sortAddressBook(OPTION_NAME, saveOption);
         return new CommandResult(MESSAGE_SUCCESS_NAME);
     }
