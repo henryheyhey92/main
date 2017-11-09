@@ -6,7 +6,7 @@ import java.util.List;
 
 //@@author Labradorites
 /**
- * Lists all tags tagged to persons in AddressBook or PersonPanelList depending on choice to the user.
+ * Lists all tags tagged to persons in AddressBook or PersonListPanel depending on choice to the user.
  * Does not show duplicate tags.
  */
 public class ListTagsCommand extends Command {

@@ -82,7 +82,7 @@ public interface Model {
     List<Tag> getNormalTagsList();
 
     /**
-     * Returns list of all unique tags currently present in PersonPanelList that are sorted alphabetically
+     * Returns list of all unique tags currently present in PersonListPanel that are sorted alphabetically
      */
     List<Tag> getFilteredTagsList();
     //@@author
