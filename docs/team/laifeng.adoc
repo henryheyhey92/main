@@ -30,7 +30,7 @@ Returns any person having names `Betsy`, `Bean`, or `Ben`
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=findletter]
+include::../UserGuide.adoc [tag=findletter]
 
 #End of Extract#
 
@@ -45,7 +45,7 @@ User might need a short cut to find the relative contact in alphabetical order.
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=findletter]
+include::../DeveloperGuide.adoc [tag=findletter]
 
 #End of Extract#
 
@@ -62,7 +62,7 @@ The command to execute is by entering the key word 'exit' or by clicking on the 
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=exitcheck]
+include::../UserGuide.adoc [tag=exitcheck]
 
 #End of Extract#
 
@@ -78,7 +78,7 @@ the program.
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=exitcheck]
+include::../DeveloperGuide.adoc [tag=exitcheck]
 
 #End of Extract#
 
@@ -102,7 +102,7 @@ Password: 1234
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=lock]
+include::../UserGuide.adoc [tag=lock]
 
 #End of Extract#
 
@@ -117,7 +117,7 @@ User would need to provide information before accessing the application.
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=lock]
+include::../DeveloperGuide.adoc [tag=lock]
 
 #End of Extract#
 
