@@ -300,7 +300,7 @@ Clicking on the person's contact will search for selected contact's address on G
 image::searchAddressUI.png[width="728"]
 
 Further improvements might include using command line to search for address or just clicking on address line in person's contact.
-
+// tag::findletter
 === The findByLetter Implementation
 
 Find all person that is related to the input character.
@@ -318,6 +318,7 @@ Java file has been modified;
 -`AddressBookParser.java`; for the case.
 
 -`FindCommandLetter.java`(*newly created); for the find letter command.
+// end::findletter
 
 === The listTag implementation
 
@@ -348,6 +349,7 @@ image::FBL2.png[width="800"]
 
 feature has implemented, but writeup still in progress...
 
+// tag::exitcheck
 === Program exit checker implementation
 
 This feature is to give the user a confirmation on closing the application.
@@ -364,7 +366,9 @@ ConfirmBox will return true or false value of the user intention to close or con
 image::exitprogramchecker.png[width="800"]
 
 The above is a illustration of how exit program funs.
+// end::exitcheck
 
+// tag::lock
 === Passcode lock implementation
 
 The following implementation is to add security features to the application
@@ -376,6 +380,7 @@ if user name & password matches the input, user get to access the application.
 -draft execution: will do a while loop in the MainApp class.
 
 image::Login.png[width="800"]
+// end::lock
 
 === Undo/Redo mechanism
 

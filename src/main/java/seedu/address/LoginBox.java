@@ -11,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import static java.util.Objects.requireNonNull;
+
 
 //@@author henryheyhey92
 /**
@@ -99,8 +101,11 @@ public class LoginBox {
         String pass2 = pass.getText();
         try{
             if(name2.compareTo("NUS")==0 ) {
-                if (pass2.compareTo("1234") == 0)
+                if (pass2.compareTo("1234") == 0) {
+                    nameInput.setText("");
+                    passwordInput.setText("");
                     return true;
+                }
             }else
                 return false;
         }catch(NumberFormatException e){
