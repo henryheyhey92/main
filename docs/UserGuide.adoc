@@ -153,7 +153,7 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
-=== Locating persons by phone: `findEmail`
+=== Locating persons by email: `findEmail`
 
 Finds persons whose email contain any of the given keywords. +
 Format: `findEmail KEYWORD`
