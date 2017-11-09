@@ -77,7 +77,8 @@ public class AddCommandParserTest {
     public void parse_optionalFieldsMissing_success() {
         // zero tags
         Person expectedPerson = new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
-                .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTags().withBirthday("not initialised")
+                .withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY).withTags()
+                .withBirthday("DOB not initialised")
                 .build();
         assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY
                 + EMAIL_DESC_AMY + ADDRESS_DESC_AMY, new AddCommand(expectedPerson));

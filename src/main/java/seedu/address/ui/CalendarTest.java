@@ -1,5 +1,9 @@
 package seedu.address.ui;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
@@ -22,13 +26,13 @@ public class CalendarTest extends UiPart<Region> {
     @FXML
     private DatePicker birthday;
 
-
     public CalendarTest() {
         super("Calendar.fxml");
         Scene scene = new Scene(getRoot(), 300, 100);
         dialogStage = createDialogStage("", null, scene);
         dialogStage.setScene(scene);
-
+        birthday.setValue(NOW_LOCAL_DATE());
+        this.birthdayArgs();
     }
 
     @FXML
@@ -45,6 +49,14 @@ public class CalendarTest extends UiPart<Region> {
     public void show() {
         logger.fine("Showing birthday picker.");
         dialogStage.showAndWait();
+    }
+
+    //Set the Java datepicker to the default date
+    public static final LocalDate NOW_LOCAL_DATE (){
+        String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse(date , formatter);
+        return localDate;
     }
 }
 //@@author
