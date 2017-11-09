@@ -57,7 +57,9 @@ Format: `help`
 
 === Changing theme : `Dark theme` / `Light theme`
 
-Change the UI theme when the user click "File > ____ theme"
+Change the UI theme through command or UI
+Command Format: `theme light/dark`
+UI: click "File > ____ theme"
 
 === Adding a person: `add`
 
