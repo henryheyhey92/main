@@ -1,11 +1,18 @@
 package seedu.address;
 
-import javafx.stage.*;
-import javafx.scene.*;
-import javafx.scene.layout.*;
-import javafx.scene.control.*;
-import javafx.geometry.*;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+/**
+ * To confirm that the user wanted to exit the program
+ * Avoid accidental shutdown of the addressbook
+ */
+//@@author henryheyhey92
 public class ConfirmBox {
     static boolean answer;
 
