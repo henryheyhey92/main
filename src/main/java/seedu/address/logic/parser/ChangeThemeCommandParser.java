@@ -36,8 +36,10 @@ public class ChangeThemeCommandParser implements Parser<ChangeThemeCommand> {
             }
         }
 
-        if (!legalArg) throw new ParseException(
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, ChangeThemeCommand.MESSAGE_USAGE));
+        if (!legalArg) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ChangeThemeCommand.MESSAGE_USAGE));
+        }
 
         return new ChangeThemeCommand(arg);
     }

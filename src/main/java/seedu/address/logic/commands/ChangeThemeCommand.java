@@ -14,9 +14,9 @@ public class ChangeThemeCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Change GUI color theme.\n"
             + "Example: " + COMMAND_WORD + " light/dark";
 
-    private static String theme;
-
     public static final String SHOWING_HELP_MESSAGE = "Changed color theme.";
+
+    private static String theme;
 
     public ChangeThemeCommand(String theme) {
         this.theme = theme;
