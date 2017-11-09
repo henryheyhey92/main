@@ -13,6 +13,7 @@ import seedu.address.logic.parser.SortCommandParser;
 import seedu.address.model.Model;
 import seedu.address.model.person.UniquePersonList;
 
+//@@author NUSe0032202
 public class SortCommandSystemTest extends AddCommandSystemTest {
 
     private static final String MESSAGE_INVALID_SORT_COMMAND_FORMAT =
@@ -69,6 +70,7 @@ public class SortCommandSystemTest extends AddCommandSystemTest {
         command = SortCommand.COMMAND_WORD + " a 78%@!*";
         assertCommandFailure(command, MESSAGE_INVALID_SORT_COMMAND_FORMAT_2);
     }
+    //@@author
 
     /**
      * Executes {@code command} and in addition,<br>
@@ -81,11 +83,13 @@ public class SortCommandSystemTest extends AddCommandSystemTest {
      *
      * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
      */
+    //@@author NUSe0032202
     public void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage) {
         executeCommand(command);
         assertApplicationDisplaysExpected("", expectedResultMessage, expectedModel);
         assertCommandBoxShowsDefaultStyle();
     }
+    //@@author
 
     /**
      * Performs the same verification as {@code assertCommandSuccess(String, Model, String)} except that instead of
@@ -94,11 +98,13 @@ public class SortCommandSystemTest extends AddCommandSystemTest {
      *
      * @see AddressBookSystemTest#assertApplicationDisplaysExpectedSecondVersion(String, String, Model)
      */
+    //@@author NUSe0032202
     public void assertCommandSuccessSecondVersion(String command, Model expectedModel, String expectedResultMessage) {
         executeCommand(command);
         assertApplicationDisplaysExpectedSecondVersion("", expectedResultMessage, expectedModel);
         assertCommandBoxShowsDefaultStyle();
     }
+    //@@author
 
     /**
      * Executes {@code command} and in addition,<br>
@@ -111,6 +117,7 @@ public class SortCommandSystemTest extends AddCommandSystemTest {
      *
      * @see AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)
      */
+    //@@author NUSe0032202
     private void assertCommandFailure(String command, String expectedResultMessage) {
         Model expectedModel = getModel();
 
@@ -119,4 +126,6 @@ public class SortCommandSystemTest extends AddCommandSystemTest {
         assertCommandBoxShowsErrorStyle();
         assertStatusBarUnchanged();
     }
+    //@@author
 }
+

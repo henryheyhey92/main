@@ -14,14 +14,9 @@ import javafx.stage.Stage;
  */
 //@@author henryheyhey92
 public class ConfirmBox {
+    static boolean answer;
 
-    private static boolean answer;
-
-    /**
-     *display window for the ConfirmBox
-     */
     public static boolean display(String title, String message) {
-        //initialise the comfirm box window
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
@@ -43,7 +38,7 @@ public class ConfirmBox {
             answer = false;
             window.close();
         });
-        // add VBox
+
         VBox layout = new VBox(10);
 
         //Add buttons
@@ -52,9 +47,9 @@ public class ConfirmBox {
         Scene scene = new Scene(layout);
         window.setScene(scene);
         window.showAndWait();
+
         //Make sure to return answer
-        return answer; }
-}//@@author
-
-
+        return answer;
+    }
+}
 

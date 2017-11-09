@@ -10,6 +10,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new SortCommand object
  */
+//@@author NUSe0032202
 public class SortCommandParser implements Parser<SortCommand> {
 
     public static final int INDEX_OPTION = 0;
@@ -46,4 +47,5 @@ public class SortCommandParser implements Parser<SortCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.SAVE_OPTION));
         }
     }
+    //@@author
 }

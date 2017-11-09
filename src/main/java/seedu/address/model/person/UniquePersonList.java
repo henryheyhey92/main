@@ -60,6 +60,7 @@ public class UniquePersonList implements Iterable<Person> {
      * @param option
      * @throws AddressBookIsEmpty
      */
+    //@@author NUSe0032202
     public void sort(int option) throws AddressBookIsEmpty {
         if (!internalList.isEmpty()) {
             if (option == OPTION_NAME) {
@@ -71,6 +72,7 @@ public class UniquePersonList implements Iterable<Person> {
             throw new AddressBookIsEmpty();
         }
     }
+    //@@author
 
     /**
      * Replaces the person {@code target} in the list with {@code editedPerson}.

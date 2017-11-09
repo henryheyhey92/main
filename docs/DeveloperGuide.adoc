@@ -235,7 +235,6 @@ stages, this approach may be reassessed for suitability.
 Alternatives Considered:
 -Java regex
 
-
 === Copy Command mechanism
 
 Overview: The copy command is to copy the desired field of a person over to the system clipboard.
@@ -251,6 +250,11 @@ Why it is implemented this way: This approach was chosen as it is as it is the m
 The find email mechanism is facilitated by regex. After finding matches, result will be stored in the filtered list that is showing on the UI.
 Further improvement might include allowing user to use flag(e.g. findEmail \f KEYWORD) to do advance search.
 
+=== Add change theme mechanism
+
+The change theme mechanism is implemented in the GUI level. By clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
+
+-`The findByLetter Implementation`;
 
 === Add findPhone mechanism
 
@@ -285,14 +289,18 @@ Java files that have been modified:
 - `Person.java` : Altered to get tags as a string.
 - `ReadOnlyPerson.java`: Altered to get tags as a string.
 
+=== The add birthday mechanism
+
+A person's birthday can be added/changed via the GUI. This ensures that the input for a birthdate always conform to
+a standard format. In this situation, since the Label has to change whenever a new date is picked from the date picker
+a bidirectional binding is used instead of the normal binding.
 
 === Search for address on Google Maps
 
 Clicking on the person's contact will search for selected contact's address on Google Maps, as shown below.
-image::searchAddressUI.png[width="700"]
+image::searchAddressUI.png[width="728"]
 
 Further improvements might include using command line to search for address or just clicking on address line in person's contact.
-
 
 === The findByLetter Implementation
 
@@ -312,6 +320,17 @@ Java file has been modified;
 
 -`FindCommandLetter.java`(*newly created); for the find letter command.
 
+=== The listTag implementation
+
+listTag is able to seive out all unique tags that can be found in the AddressBook.
+listTag does not display duplicate tags that are tagged to the contacts in the AddressBook and is sorted alphabetically.
+
+Java files that have been modified:
+- 'Model': Modified to include a signature in the Model interface for the getTagsList() method. Takes in no parameter and returns a List<Tag>.
+- 'ModelManager': Modified to include a getTagsList() method that takes in no parameter and returns a List<Tag> that contains all tags.
+- 'ListTagsCommand': Created to convert the List<Tag> to strings and be printed in the ResultsDisplay box.
+- 'Tag': modified to include an accessor for tagName.
+
 API : Logic.java
 
 Logic uses the AddressBookParser class to parse the user command.
@@ -326,11 +345,11 @@ Given below is the Sequence Diagram for interactions within the Logic component 
 
 image::FBL2.png[width="800"]
 
--`person number in list implementation`
+=== Person number in list implementation
 
 feature has implemented, but writeup still in progress...
 
--`Program exit checker implementation`
+=== Program exit checker implementation
 
 This feature is to give the user a confirmation on closing the application.
 
@@ -347,7 +366,7 @@ image::exitprogramchecker.png[width="800"]
 
 The above is a illustration of how exit program funs.
 
--`Passcode lock implementation`
+=== Passcode lock implementation
 
 The following implementation is to add security features to the application
 
@@ -357,21 +376,8 @@ if user name & password matches the input, user get to access the application.
 
 -draft execution: will do a while loop in the MainApp class.
 
-image::passcodedraft1.png[width="800"]
+image::Login.png[width="800"]
 
-=== Pass code Login implementation
-
-image::passcode.png[width="500"]
-
-This feature enhance the security of addressbook
-
-Flow: From the MainApp.java ->The login page will first initialize-> input of user name and password ->
--> if(false); access deny -> if(true); access grant and proceed on to the rest of the task.
-
-image::loginlogic.png[width="500"]
-
-
-// tag::undoredo[]
 === Undo/Redo mechanism
 
 The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modifies the state of the address book (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.
