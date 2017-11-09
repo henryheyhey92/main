@@ -173,7 +173,7 @@ public class ModelManager extends ComponentManager implements Model {
     public List<Tag> getFilteredTagsList(){
         List<Tag> unsortedListOfTags = new ArrayList<>();
 
-        filteredPersons.forEach(persons -> unsortedListOfTags.addAll(persons.getTags()));
+        getFilteredPersonList().forEach(persons -> unsortedListOfTags.addAll(persons.getTags()));
 
         //Removes duplicate tags to ensure all tags are unique
         List<Tag> listOfFilteredTags= unsortedListOfTags.stream().distinct().collect(Collectors.toList());
