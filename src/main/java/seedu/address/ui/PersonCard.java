@@ -159,10 +159,4 @@ public class PersonCard extends UiPart<Region> {
         return id.getText().equals(card.id.getText())
                 && person.equals(card.person);
     }
-
-    @Subscribe
-    private void handleShowCalendarEvent(ShowHelpRequestEvent event) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handleCalendar();
-    }
 }
