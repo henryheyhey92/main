@@ -11,8 +11,6 @@ import java.util.List;
 
 import org.fxmisc.easybind.EasyBind;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.CollectionUtil;
