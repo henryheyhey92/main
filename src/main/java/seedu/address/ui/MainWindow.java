@@ -18,6 +18,7 @@ import seedu.address.MainApp;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.ui.ChangeThemeEvent;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.commons.util.FxViewUtil;
@@ -231,6 +232,12 @@ public class MainWindow extends UiPart<Region> {
         this.getPrimaryStage().getScene().getStylesheets().clear();
         this.getPrimaryStage().getScene().getStylesheets().add(MainApp.class
                 .getResource("/view/" + themeUrl).toExternalForm());
+    }
+
+    @Subscribe
+    private void handleChangeThemeEvent(ChangeThemeEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        setTheme(event.getTheme());
     }
 
     /**
