@@ -4,11 +4,14 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.commands.SortCommand.MESSAGE_EMPTY;
 import static seedu.address.logic.commands.SortName.OPTION_NAME;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 import org.fxmisc.easybind.EasyBind;
+
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -62,15 +65,17 @@ public class UniquePersonList implements Iterable<Person> {
      */
     //@@author NUSe0032202
     public void sort(int option) throws AddressBookIsEmpty {
-        if (!internalList.isEmpty()) {
-            if (option == OPTION_NAME) {
-                Collections.sort(internalList, new SortName());
+        try {
+            if (!internalList.isEmpty()) {
+                if (option == OPTION_NAME) {
+                    Collections.sort(internalList, new SortName());
+                } else {
+                    Collections.sort(internalList, new SortAddress());
+                }
             } else {
-                Collections.sort(internalList, new SortAddress());
+                throw new AddressBookIsEmpty();
             }
-        } else {
-            throw new AddressBookIsEmpty();
-        }
+        } catch (IOException e){}
     }
     //@@author
 
@@ -149,9 +154,11 @@ public class UniquePersonList implements Iterable<Person> {
     /**
      * Exception gets thrown if the addressbook is empty.
      */
+    //@@author NUSe0032202
     public static class AddressBookIsEmpty extends CommandException {
         protected AddressBookIsEmpty() {
             super(MESSAGE_EMPTY);
         }
     }
+    //@@author
 }
