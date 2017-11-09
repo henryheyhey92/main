@@ -1,5 +1,7 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,14 +22,30 @@ public class ListTagsCommand extends Command {
             + "1. To list all tags available in AddressBook: " + COMMAND_WORD + "\n"
             + "2. To list all tags of persons currently shown below: " + COMMAND_WORD + " " + CHOICE + "\n";
 
-    public ListTagsCommand(String option){}
+    private String option;
+
+    public ListTagsCommand(String argument) {
+        this.option = argument;
+    }
+
     @Override
     public CommandResult execute() {
-        List<Tag> listOfTags = model.getTagsList();
-        List<String> tagsString = new ArrayList<>();
+        List<Tag> listOfTags = null;
 
-        //removes all [] from tags
-        listOfTags.forEach(tag -> tagsString.add(tag.toString().replaceAll("[\\[\\]]", "")));
+        requireNonNull(model);
+
+        switch (option) {
+        case CHOICE:
+            listOfTags = model.getFilteredTagsList();
+            List<String> tagsString = new ArrayList<>();
+
+            //removes all [] from tags
+            listOfTags.forEach(tag -> tagsString.add(tag.toString().replaceAll("[\\[\\]]", "")));
+            break;
+        default:
+            break;
+        }
+
 
         if (listOfTags.isEmpty()) {
             return new CommandResult(MESSAGE_NO_TAGS);

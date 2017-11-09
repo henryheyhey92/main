@@ -157,7 +157,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     //@@author Labradorites
     @Override
-    public List<Tag> getTagsList(){
+    public List<Tag> getFilteredTagsList(){
         List<Tag> unsortedListOfTags = new ArrayList<>();
 
         filteredPersons.forEach(persons -> unsortedListOfTags.addAll(persons.getTags()));

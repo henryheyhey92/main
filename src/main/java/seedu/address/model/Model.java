@@ -75,7 +75,11 @@ public interface Model {
     /*
      * Returns list of all unique tags present in AddressBook that are sorted alphabetically
      */
-    List<Tag> getTagsList();
+    List<Tag> getNormalTagsList();
+    /*
+     * Returns list of all unique tags currently present in PersonPanelList that are sorted alphabetically
+     */
+    List<Tag> getFilteredTagsList();
     //@@author
 
 }
