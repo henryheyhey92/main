@@ -68,18 +68,23 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
+// tag::sort[]
 === Sorting the addressbook: `sort`
 
 Sorts the addressbook by address or by name.User can specify if they want to save the sorted state. +
 Format: `s OPTION SAVE_OPTION`
 
-***
-* OPTION keyword allows to select to sort by name or address.
+****
+* OPTION keyword allows user to select to sort by name or address.
 * SAVE_OPTION keyword allows user to save the sorted state of the addressbook base on preference.
+****
+
+Examples:
+
 * To sort by name use `n`. Example `s n`.
 * To sort by address use `a`. Example `s a`.
 * To sort by name and save use `se`. Example `s n se`.
-***
+// end::sort[]
 
 === Listing all persons : `list`
 
