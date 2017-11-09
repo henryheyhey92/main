@@ -9,6 +9,9 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.ReadOnlyPerson;
 
+/**
+ *  Copies the desired data field of a person over to the system clipboard
+ */
 //@@author NUSe0032202
 public class CopyCommand extends Command {
 
@@ -71,6 +74,14 @@ public class CopyCommand extends Command {
             default:
                 return new CommandResult("Error, this message should not be displayed");
         }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof CopyCommand // instanceof handles nulls
+                && this.index.equals(((CopyCommand) other).index))
+                && this.choice.equals(((CopyCommand) other).choice); // state check
     }
 }
 //@@author

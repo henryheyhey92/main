@@ -40,6 +40,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final FilteredList<ReadOnlyPerson> filteredPersons;
     private final Toolkit toolkit;
     private final Clipboard clipboard;
+    private  Predicate <ReadOnlyPerson> SORT_LIST_PREDICATE;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -54,6 +55,7 @@ public class ModelManager extends ComponentManager implements Model {
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.toolkit = Toolkit.getDefaultToolkit();
         this.clipboard = toolkit.getSystemClipboard();
+        this.SORT_LIST_PREDICATE = PREDICATE_SHOW_ALL_PERSONS;
     }
 
     public ModelManager() {
@@ -89,7 +91,8 @@ public class ModelManager extends ComponentManager implements Model {
     //@@author NUSe0032202
     public synchronized void sortAddressBook(int option, int saveOption)throws UniquePersonList.AddressBookIsEmpty {
         addressBook.sort(option);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredPersonList(SORT_LIST_PREDICATE);//Detected bug when sorting on a filtered list.
+                                                      //Temp fix only
         if (saveOption == SAVE) {
             indicateAddressBookChanged();
         }
@@ -165,6 +168,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+        SORT_LIST_PREDICATE = predicate;
     }
 
     @Override
