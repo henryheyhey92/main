@@ -18,21 +18,22 @@ public class LockCommand extends UndoableCommand {
     public static final String MESSAGE_SUCCESS = "Address book is unlock!";
     public static final String MESSAGE_FAIL = "Address book is lock";
     public static LoginBox lock;
-    public static boolean answer = false;
+    //public static boolean answer;
     protected Storage storage;
 
     public LockCommand(){
+
         lock = new LoginBox();
-        answer = lock.display("AddressBook Login");
+        lock.display("AddressBook Login", 0);
     }
 
     @Override
     public CommandResult executeUndoableCommand() {
-        if(answer) {
+//        if(answer) {
             return new CommandResult(MESSAGE_SUCCESS);
-        }else{
-            return new CommandResult(MESSAGE_FAIL);
-        }
+//        }else{
+//            return new CommandResult(MESSAGE_FAIL);
+//        }
     }
 
 }
