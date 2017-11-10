@@ -102,6 +102,7 @@ Format: `list`
 Shows a list of all tags in the address book. Tags listed are unique (no duplicates) and sorted alphabetically. +
 Format: `listTags`
 
+//tag::copy[]
 === Copying person's information over to system clipboard : `copy`
 
 Copies the selected person's information over to the system clipboard.
@@ -117,6 +118,7 @@ Examples:
 * To copy a person's phone append the letter `p` after INDEX. Example 'c 1 p'.
 * To copy a person's email append the letter `e` after INDEX. Example 'c 1 e'.
 * To copy a person's address append the letter `a` after INDEX. Example 'c 1 a'.
+//end::copy[]
 
 === Editing a person : `edit`
 
