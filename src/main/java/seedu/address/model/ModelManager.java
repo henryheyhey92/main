@@ -2,18 +2,15 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-
 import static seedu.address.logic.commands.CopyCommand.CHOICE_ADDRESS;
 import static seedu.address.logic.commands.CopyCommand.CHOICE_EMAIL;
 import static seedu.address.logic.commands.CopyCommand.CHOICE_NAME;
 import static seedu.address.logic.commands.CopyCommand.CHOICE_PHONE;
+import static seedu.address.logic.commands.SortCommand.SAVE;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-
-import static seedu.address.logic.commands.SortCommand.SAVE;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -46,7 +43,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final FilteredList<ReadOnlyPerson> filteredPersons;
     private final Toolkit toolkit;
     private final Clipboard clipboard;
-    private  Predicate <ReadOnlyPerson> SORT_LIST_PREDICATE;
+    private Predicate<ReadOnlyPerson> SORT_LIST_PREDICATE;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -95,11 +92,11 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     //Note FilteredList is unmodifiable hence sorting is done on internal list.
     //@@author NUSe0032202
-    public synchronized void sortAddressBook(int option, int saveOption)throws UniquePersonList.AddressBookIsEmpty,
-            LoadLookUpTableException{
+    public synchronized void sortAddressBook(int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty,
+            LoadLookUpTableException {
         addressBook.sort(option);
         updateFilteredPersonList(SORT_LIST_PREDICATE);//Detected bug when sorting on a filtered list.
-                                                      //Temp fix only
+        //Temp fix only
         if (saveOption == SAVE) {
             indicateAddressBookChanged();
         }
@@ -125,28 +122,28 @@ public class ModelManager extends ComponentManager implements Model {
         StringSelection sel;
 
         switch (choice) {
-        case CHOICE_NAME:
-            sel = new StringSelection(target.getName().fullName);
-            clipboard.setContents(sel, null);
-            break;
+            case CHOICE_NAME:
+                sel = new StringSelection(target.getName().fullName);
+                clipboard.setContents(sel, null);
+                break;
 
-        case CHOICE_PHONE:
-            sel = new StringSelection(target.getPhone().value);
-            clipboard.setContents(sel, null);
-            break;
+            case CHOICE_PHONE:
+                sel = new StringSelection(target.getPhone().value);
+                clipboard.setContents(sel, null);
+                break;
 
-        case CHOICE_EMAIL:
-            sel = new StringSelection(target.getEmail().value);
-            clipboard.setContents(sel, null);
-            break;
+            case CHOICE_EMAIL:
+                sel = new StringSelection(target.getEmail().value);
+                clipboard.setContents(sel, null);
+                break;
 
-        case CHOICE_ADDRESS:
-            sel = new StringSelection(target.getAddress().value);
-            clipboard.setContents(sel, null);
-            break;
+            case CHOICE_ADDRESS:
+                sel = new StringSelection(target.getAddress().value);
+                clipboard.setContents(sel, null);
+                break;
 
-        default:
-            break;
+            default:
+                break;
         }
     }
     //@@author
@@ -163,7 +160,7 @@ public class ModelManager extends ComponentManager implements Model {
     //@@author Labradorites
     @Override
     public List<String> getTagsListAsString(List<Tag> tagsList) {
-        List<String> tagsStringList= new ArrayList<>();
+        List<String> tagsStringList = new ArrayList<>();
         tagsList.forEach(tag -> tagsStringList.add(tag.toString().replaceAll("[\\[\\]]", "")));
         return tagsStringList;
     }
@@ -175,13 +172,13 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public List<Tag> getFilteredTagsList(){
+    public List<Tag> getFilteredTagsList() {
         List<Tag> unsortedListOfTags = new ArrayList<>();
 
         getFilteredPersonList().forEach(persons -> unsortedListOfTags.addAll(persons.getTags()));
 
         //Removes duplicate tags to ensure all tags are unique
-        List<Tag> listOfFilteredTags= unsortedListOfTags.stream().distinct().collect(Collectors.toList());
+        List<Tag> listOfFilteredTags = unsortedListOfTags.stream().distinct().collect(Collectors.toList());
         //Sorts tags in alphabetical order
         listOfFilteredTags.sort(Comparator.comparing(Tag::getTagName));
 

@@ -84,11 +84,11 @@ public class PersonCard extends UiPart<Region> {
         return tagColors.get(tagValue);
     }
 
-    //@@author NUSe0032202
-    @FXML
     /**
      * Updates the birthday label to display the date picked and changes the specified person's birthday
      */
+    //@@author NUSe0032202
+    @FXML
     private void showArgs() {
         requireNonNull(calendar);
         birthday.setText(calendar.getBirthday());
