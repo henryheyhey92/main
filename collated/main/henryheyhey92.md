@@ -128,6 +128,12 @@ public class LoginBox {
         passwordInput.setPromptText("Password");
         GridPane.setConstraints(passwordInput, 2, 3);
 
+        //Create login buttons to access app
+        Button yesButton = new Button("Login");
+        GridPane.setConstraints(yesButton, 2, 4);
+
+        yesButton.setOnAction(LoginBox::handle);
+        
         //Create login buttons
         Button yesButton = new Button("Login");
         GridPane.setConstraints(yesButton, 2, 4);
@@ -168,6 +174,12 @@ public class LoginBox {
         return false;
     }
 
+    private static void handle(ActionEvent e) {
+        if (isInt(nameInput, passwordInput)) {
+            answer = true;
+            window.close();
+        }
+    }
 ```
 ###### /java/seedu/address/MainApp.java
 ``` java

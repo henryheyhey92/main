@@ -251,7 +251,7 @@ Further improvement might include allowing user to use flag(e.g. findEmail \f KE
 
 === Add change theme mechanism
 
-The change theme mechanism is implemented in the GUI level. By clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
+The change theme mechanism is implemented in both command and GUI level. By typing command `theme light/dark` or clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
 
 -`The findByLetter Implementation`;
 
