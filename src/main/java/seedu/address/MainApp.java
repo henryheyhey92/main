@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.LogsCenter;
@@ -44,6 +45,7 @@ public class MainApp extends Application {
     public static final Version VERSION = new Version(1, 3, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
+    public Callogin test;
 
     protected Ui ui;
     protected Logic logic;
@@ -184,9 +186,11 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        test = new Callogin();
         logger.info("Starting AddressBook " + MainApp.VERSION);
         window = primaryStage;
-        boolean answer = LoginBox.display("AddressBook Login");
+//        boolean answer = LoginBox.display("AddressBook Login");
+        boolean answer = test.play();
         if(answer) {
             ui.start(primaryStage);
             window.setOnCloseRequest(e -> {

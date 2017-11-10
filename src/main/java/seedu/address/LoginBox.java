@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import static java.util.Objects.requireNonNull;
+import static javafx.stage.Modality.NONE;
 
 
 //@@author henryheyhey92
@@ -29,10 +30,12 @@ public class LoginBox {
      * create the login box display
      *
      */
-    public static boolean display(String title) {
+    public static boolean display(String title, int pass) {
 
         //create window
-        window.initModality(Modality.APPLICATION_MODAL);
+        if(pass == 1) {
+            window.initModality(Modality.WINDOW_MODAL);
+        }
         window.setTitle(title);
 
         //create Grid
@@ -72,10 +75,14 @@ public class LoginBox {
         grid.getChildren().addAll(nameLabel, nameInput, passwordLabel, passwordInput, yesButton);
         Scene scene = new Scene(grid, 350, 200);
         window.setScene(scene);
-        window.showAndWait();
+        enter();
+
 
         return answer;
         //Clicking will set answer and cloe window
+    }
+    private static void enter(){
+        window.showAndWait();
     }
 
     /**
