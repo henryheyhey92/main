@@ -43,20 +43,20 @@ public class SortCommand extends UndoableCommand {
     public CommandResult executeUndoableCommand() throws CommandException {
         requireNonNull(model);
         try {
-          switch (option)  {
-          case CHOICE_ADDRESS:
-              SortCommand address = new SortAddress(model, saveOption);
-              result = address.executeUndoableCommand();
-              break;
+            switch (option)  {
+            case CHOICE_ADDRESS:
+                SortCommand address = new SortAddress(model, saveOption);
+                result = address.executeUndoableCommand();
+                break;
 
-          case CHOICE_NAME:
-              SortCommand name = new SortName(model, saveOption);
-              result = name.executeUndoableCommand();
-              break;
+            case CHOICE_NAME:
+                SortCommand name = new SortName(model, saveOption);
+                result = name.executeUndoableCommand();
+                break;
 
-          default:
-              break;
-          }
+            default:
+                break;
+            }
             return result;
         } catch (IOException e) {
             return  new CommandResult("Error with internal data");
