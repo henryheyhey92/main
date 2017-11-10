@@ -1,5 +1,6 @@
 package seedu.address;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
@@ -10,13 +11,24 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import static java.util.Objects.requireNonNull;
+
+
 //@@author henryheyhey92
+/**
+ * This is to create the login window.
+ */
 public class LoginBox {
+
     private static boolean answer;
     private static Stage window = new Stage();
     private static TextField nameInput = new TextField();
     private static TextField passwordInput = new TextField();
 
+    /**
+     * create the login box display
+     *
+     */
     public static boolean display(String title) {
 
         //create window
@@ -49,6 +61,11 @@ public class LoginBox {
         Button yesButton = new Button("Login");
         GridPane.setConstraints(yesButton, 2, 4);
 
+        window.setOnCloseRequest(e -> {
+            e.consume();
+            stop();
+        });
+
         yesButton.setOnAction(LoginBox::handle);
 
         //Add buttons
@@ -60,13 +77,35 @@ public class LoginBox {
         return answer;
         //Clicking will set answer and cloe window
     }
+
+    /**
+     * to create a exit checker
+     */
+    private static void stop() {
+        boolean answer = ConfirmBox.display("Exit Check Protocol","Confirm on exiting the program?");
+
+        if(answer) {
+            Platform.exit();
+            System.exit(0);
+        }
+    }
+
+    /**
+     *
+     * @param name
+     * @param pass
+     * @return true or false
+     */
     private static boolean isInt(TextField name, TextField pass){
         String name2 = name.getText();
         String pass2 = pass.getText();
         try{
             if(name2.compareTo("NUS")==0 ) {
-                if (pass2.compareTo("1234") == 0)
+                if (pass2.compareTo("1234") == 0) {
+                    nameInput.setText("");
+                    passwordInput.setText("");
                     return true;
+                }
             }else
                 return false;
         }catch(NumberFormatException e){
@@ -75,6 +114,10 @@ public class LoginBox {
         return false;
     }
 
+    /**
+     * Event handler
+     * @param e
+     */
     private static void handle(ActionEvent e) {
         if (isInt(nameInput, passwordInput)) {
             answer = true;

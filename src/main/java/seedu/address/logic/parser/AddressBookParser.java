@@ -75,7 +75,7 @@ public class AddressBookParser {
             return new ListCommand();
 
         case ListTagsCommand.COMMAND_WORD:
-            return new ListTagsCommand();
+            return new ListTagsCommandParser().parse(arguments);
 
         case CopyCommand.COMMAND_WORD:
             return new CopyCommandParser().parse(arguments);
@@ -97,6 +97,9 @@ public class AddressBookParser {
 
         case UndoCommand.COMMAND_WORD:
             return new UndoCommand();
+
+        case LockCommand.COMMAND_WORD:
+            return new LockCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

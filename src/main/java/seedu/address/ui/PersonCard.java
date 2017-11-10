@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.HashMap;
 import java.util.Random;
 import java.util.logging.Logger;
@@ -88,6 +90,7 @@ public class PersonCard extends UiPart<Region> {
     //@@author NUSe0032202
     @FXML
     private void showArgs() {
+        requireNonNull(calendar);
         birthday.setText(calendar.getBirthday());
         person.getBirthday().edit(calendar.getBirthday());
         logic.getModel().save();
@@ -155,11 +158,5 @@ public class PersonCard extends UiPart<Region> {
         PersonCard card = (PersonCard) other;
         return id.getText().equals(card.id.getText())
                 && person.equals(card.person);
-    }
-
-    @Subscribe
-    private void handleShowCalendarEvent(ShowHelpRequestEvent event) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handleCalendar();
     }
 }

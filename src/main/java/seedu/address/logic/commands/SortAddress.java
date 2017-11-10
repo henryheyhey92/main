@@ -1,7 +1,9 @@
 package seedu.address.logic.commands;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 
 import seedu.address.model.Model;
 import seedu.address.model.person.ReadOnlyPerson;
@@ -17,59 +19,60 @@ public class SortAddress extends SortCommand implements Comparator<ReadOnlyPerso
             MESSAGE_SUCCESS_ADDRESS = "The address book has been sorted alphabetically according to address";
     public static final int OPTION_ADDRESS = 2;
 
-    /*
-     * Look up table of addresses for comparison
-     */
-    private static final ArrayList<CharSequence> table = new ArrayList();
-
     private Model model;
     private int saveOption;
 
+    private static ArrayList<String> table;
+
     //@@author
-    //Demo look-up table to be extracted out in final product
-    static {
-        table.add("ang mo kio");
-        table.add("geylang");
-        table.add("tampines");
-        table.add("serangoon");
-        table.add("aljunied");
-        table.add("jurong");
-        table.add("clementi");
-        table.add("pasir ris");
-        table.add("bukit batok");
-    }
 
     //@@author NUSe0032202
-    public SortAddress() {}
+    public SortAddress() throws IOException{
+        AddressData.initTable();
+        table = AddressData.getTable();
+    }
 
-    public SortAddress(Model target, int saveOption) {
+    public SortAddress(Model target, int saveOption)throws IOException{
         this.model = target;
         this.saveOption = saveOption;
     }
 
     @Override
-    public CommandResult execute() throws UniquePersonList.AddressBookIsEmpty {
+    public CommandResult executeUndoableCommand() throws UniquePersonList.AddressBookIsEmpty {
         model.sortAddressBook(OPTION_ADDRESS, saveOption);
         return new CommandResult(MESSAGE_SUCCESS_ADDRESS);
     }
 
     @Override
     public int compare(ReadOnlyPerson a, ReadOnlyPerson b) {
-        int index = 0;
-        for (CharSequence compare : table) {
-            if (a.getAddress().value.toLowerCase().contains(compare)) {
-                index = table.indexOf(compare);
-            }
-        }
-        String compareFirst = (String) table.get(index);
+        String compareFirst = "";
+        String compareSecond = "";
+        Boolean firstAddressFound = false;
+        Boolean secondAddressFound = false;
 
-        for (CharSequence compare : table) {
-            if (b.getAddress().value.toLowerCase().contains(compare)) {
-                index = table.indexOf(compare);
+        for(String compare: table){
+            if(a.getAddress().value.toLowerCase().contains(compare.toLowerCase())){
+                compareFirst = compare;
+                firstAddressFound = true;
             }
         }
 
-        String compareSecond = (String) table.get(index);
+        for(String compare: table){
+            if(b.getAddress().value.toLowerCase().contains(compare.toLowerCase())){
+                compareSecond = compare;
+                secondAddressFound = true;
+            }
+        }
+
+        //If the address can't be found in the table return a positive value to ensure that the person is always placed
+        //last
+        if(firstAddressFound==false){
+            return 1;
+        }
+
+        if(secondAddressFound==false){
+            return -1;
+        }
 
         return compareFirst.compareToIgnoreCase(compareSecond);
     }

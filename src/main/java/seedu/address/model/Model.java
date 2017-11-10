@@ -1,7 +1,6 @@
 package seedu.address.model;
 
 import java.util.List;
-import java.util.Set;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -72,10 +71,20 @@ public interface Model {
     void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty;
 
     //@@author Labradorites
-    /*
+    /**
+     * Returns unique tags list as List<String>
+     */
+    List<String> getTagsListAsString(List<Tag> tagStringList);
+
+    /**
      * Returns list of all unique tags present in AddressBook that are sorted alphabetically
      */
-    List<Tag> getTagsList();
+    List<Tag> getNormalTagsList();
+
+    /**
+     * Returns list of all unique tags currently present in PersonListPanel that are sorted alphabetically
+     */
+    List<Tag> getFilteredTagsList();
     //@@author
 
 }

@@ -74,18 +74,23 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
+// tag::sort[]
 === Sorting the addressbook: `sort`
 
 Sorts the addressbook by address or by name.User can specify if they want to save the sorted state. +
 Format: `s OPTION SAVE_OPTION`
 
-***
-* OPTION keyword allows to select to sort by name or address.
+****
+* OPTION keyword allows user to select to sort by name or address.
 * SAVE_OPTION keyword allows user to save the sorted state of the addressbook base on preference.
+****
+
+Examples:
+
 * To sort by name use `n`. Example `s n`.
 * To sort by address use `a`. Example `s a`.
 * To sort by name and save use `se`. Example `s n se`.
-***
+// end::sort[]
 
 === Listing all persons : `list`
 
@@ -94,7 +99,7 @@ Format: `list`
 
 === Listing all tags : `listTags`
 
-Shows a list of all tags in the address book. Tags listed are unique (no duplicates) and sorted alphabetically.+
+Shows a list of all tags in the address book. Tags listed are unique (no duplicates) and sorted alphabetically. +
 Format: `listTags`
 
 === Copying person's information over to system clipboard : `copy`
@@ -201,15 +206,15 @@ Format: `findTag KEYWORD [MORE_KEYWORDS]`
 Examples:
 
 * `findTag friends` +
-Returns `friends
-* `find friends family neighbours` +
+Returns `friends`
+* `findTag friends family neighbours` +
 Returns any person having tags `friends`, `family`, or `neighbour`
-
-=== Locating persons by name: `letter`
+// tag::findletter
+=== Locating persons by name: `Findletter`
 
 Finds persons whose names contain any of the given keywords. +
 
-Format: `letter KEYWORD [1 alphabet character only]`
+Format: `Findletter KEYWORD [1 alphabet character only]`
 
 ****
 * The search is non-case insensitive. e.g `A` will match `Alan`(*for example)
@@ -220,11 +225,11 @@ Format: `letter KEYWORD [1 alphabet character only]`
 
 Examples:
 
-* `letter J` +
+* `Findletter J` +
 Returns `John` and `John Doe`
-* `letter B` +
+* `Findletter B` +
 Returns any person having names `Betsy`, `Bean`, or `Ben`
-
+// end::findletter
 === Deleting a person : `delete`
 
 Deletes the specified person from the address book. +
@@ -345,9 +350,6 @@ There is no need to save manually.
 Clicking on contact in list will search for its address in Google Maps.
 image::searchAddressUI.png[width="800"]
 
-=== Locating persons by name: `letter`
-
-Clicking on contact in list will search for its address in Google Maps.
 
 === Adding a birthday for a person
 
@@ -357,15 +359,31 @@ clicked on for the changes to be shown.
 image::get1.png[width="800"]
 image::get2.png[width="800"]
 
+
 === Number of person in list
 
 At the bottom of the addressbook, application will display the number of person in list.
-
+// tag::exitcheck
 === Exit program checker
 
 When user attempt to close the application, input "exit" command or close the application by accident,
 a window will pop out to make sure that user is firm on closing the application.
+// end::exitcheck
 
+// tag::lock
+=== Login Page
+
+User have to enter user name and password to access the application.
+The user name and password currently hardcoded into the system.
+Please input the following to access the application
+
+User name: NUS
+Password: 1234
+
+Input the following to enter the application:
+User name: NUS
+Password: 1234
+// end::lock
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
@@ -395,9 +413,8 @@ e.g.`select 2`
 * *Undo* : `undo`
 * *Redo* : `redo`
 * *letter* : `letter KEYWORD [1 alphabet character only]`
-=======
 
-=======
+== Added functions
 * * findEmail `Since v1.2`
 * * findPhone `Since v1.2`
 * * letter `Since v1.2`
@@ -408,9 +425,9 @@ e.g.`select 2`
 * * Sort command with save option `Since v1.3`
 * * Program exit check `Since v1.3`
 * * List all tags `Since v1.4`
-* * Google search Address of contact via the command line
-* * Export to csv format
-* * Import function
+* * Login UI `Since v1.4`
+* * Change UI theme `Since v1.4`
+* * Add birthday calendar `Since v1.4`
 
 == Coming soon in V2.0
 * * Transition pop-up window when closing AddressBook

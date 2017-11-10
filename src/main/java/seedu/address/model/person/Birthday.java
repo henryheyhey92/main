@@ -7,12 +7,12 @@ public class Birthday {
 
     //Default when adding a new person
     public Birthday(){
-        this.birthday="not initialised";
+        this.birthday="DOB not initialised";
     }
 
     //Use this when editing a person's birthday
     public Birthday(String input){
-        this.birthday = input;
+        this.birthday = input.trim();
     }
 
     public String getBirthday (){
