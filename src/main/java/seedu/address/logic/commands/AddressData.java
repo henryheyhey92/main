@@ -1,22 +1,25 @@
 package seedu.address.logic.commands;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+
+import seedu.address.MainApp;
 
 /**
  * Utility class for sorting the addressbook by address
  */
 public class AddressData {
 
-    private static final String dataFilePath = "src\\main\\resources\\tables\\data.csv";
     private static BufferedReader br;
     private static String line;
     private static ArrayList<String> table = new ArrayList<>();
 
     public static void initTable() throws IOException {
-        br = new BufferedReader(new FileReader(dataFilePath));
+        InputStream in = MainApp.class.getResourceAsStream("/tables/data.csv");
+        br = new BufferedReader(new InputStreamReader(in));
         while ((line = br.readLine()) != null) {
             table.add(line.trim());
         }
