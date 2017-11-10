@@ -43,7 +43,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final FilteredList<ReadOnlyPerson> filteredPersons;
     private final Toolkit toolkit;
     private final Clipboard clipboard;
-    private Predicate<ReadOnlyPerson> SORT_LIST_PREDICATE;
+    private Predicate<ReadOnlyPerson> sortListPredicate;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -58,7 +58,7 @@ public class ModelManager extends ComponentManager implements Model {
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         this.toolkit = Toolkit.getDefaultToolkit();
         this.clipboard = toolkit.getSystemClipboard();
-        this.SORT_LIST_PREDICATE = PREDICATE_SHOW_ALL_PERSONS;
+        this.sortListPredicate = PREDICATE_SHOW_ALL_PERSONS;
     }
 
     public ModelManager() {
@@ -95,8 +95,7 @@ public class ModelManager extends ComponentManager implements Model {
     public synchronized void sortAddressBook(int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty,
             LoadLookUpTableException {
         addressBook.sort(option);
-        updateFilteredPersonList(SORT_LIST_PREDICATE);//Detected bug when sorting on a filtered list.
-        //Temp fix only
+        updateFilteredPersonList(sortListPredicate);
         if (saveOption == SAVE) {
             indicateAddressBookChanged();
         }
@@ -122,28 +121,28 @@ public class ModelManager extends ComponentManager implements Model {
         StringSelection sel;
 
         switch (choice) {
-            case CHOICE_NAME:
-                sel = new StringSelection(target.getName().fullName);
-                clipboard.setContents(sel, null);
-                break;
+        case CHOICE_NAME:
+         sel = new StringSelection(target.getName().fullName);
+         clipboard.setContents(sel, null);
+         break;
 
-            case CHOICE_PHONE:
-                sel = new StringSelection(target.getPhone().value);
-                clipboard.setContents(sel, null);
-                break;
+        case CHOICE_PHONE:
+         sel = new StringSelection(target.getPhone().value);
+         clipboard.setContents(sel, null);
+         break;
 
-            case CHOICE_EMAIL:
-                sel = new StringSelection(target.getEmail().value);
-                clipboard.setContents(sel, null);
-                break;
+        case CHOICE_EMAIL:
+         sel = new StringSelection(target.getEmail().value);
+         clipboard.setContents(sel, null);
+         break;
 
-            case CHOICE_ADDRESS:
-                sel = new StringSelection(target.getAddress().value);
-                clipboard.setContents(sel, null);
-                break;
+        case CHOICE_ADDRESS:
+         sel = new StringSelection(target.getAddress().value);
+         clipboard.setContents(sel, null);
+         break;
 
-            default:
-                break;
+        default:
+         break;
         }
     }
     //@@author
@@ -201,7 +200,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
-        SORT_LIST_PREDICATE = predicate;
+        sortListPredicate = predicate;
     }
 
     @Override
