@@ -22,6 +22,7 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
+import seedu.address.logic.commands.LockCommand;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -46,7 +47,7 @@ public class MainApp extends Application {
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
     public Callogin test;
-
+    public LockCommand test2;
     protected Ui ui;
     protected Logic logic;
     protected Storage storage;
@@ -187,16 +188,21 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         test = new Callogin();
+        test2 = new LockCommand();
         logger.info("Starting AddressBook " + MainApp.VERSION);
         window = primaryStage;
 //        boolean answer = LoginBox.display("AddressBook Login");
         boolean answer = test.play();
         if(answer) {
+            //window = primaryStage;
+            primaryStage.close();
             ui.start(primaryStage);
             window.setOnCloseRequest(e -> {
                 e.consume();
                 stop();
             });
+        }else {
+
         }
 
     }

@@ -22,9 +22,8 @@ public class LockCommand extends UndoableCommand {
     protected Storage storage;
 
     public LockCommand(){
-
         lock = new LoginBox();
-        lock.display("AddressBook Login", 0);
+        lock.display("AddressBook Login", 1);
     }
 
     @Override
