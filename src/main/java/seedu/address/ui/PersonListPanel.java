@@ -29,7 +29,7 @@ public class PersonListPanel extends UiPart<Region> {
     @FXML
     private ListView<PersonCard> personListView;
 
-    public PersonListPanel(Logic logic,ObservableList<ReadOnlyPerson> personList) {
+    public PersonListPanel(Logic logic, ObservableList<ReadOnlyPerson> personList) {
         super(FXML);
         this.logic = logic;
         setConnections(personList);
@@ -38,7 +38,7 @@ public class PersonListPanel extends UiPart<Region> {
 
     private void setConnections(ObservableList<ReadOnlyPerson> personList) {
         ObservableList<PersonCard> mappedList = EasyBind.map(
-                personList, (person) -> new PersonCard(person,logic,personList.indexOf(person) + 1));
+                personList, (person) -> new PersonCard(person, logic, personList.indexOf(person) + 1));
         personListView.setItems(mappedList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
         setEventHandlerForSelectionChangeEvent();
