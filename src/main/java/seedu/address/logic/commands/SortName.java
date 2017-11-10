@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import java.util.Comparator;
 
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
