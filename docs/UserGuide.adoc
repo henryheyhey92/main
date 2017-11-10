@@ -99,8 +99,15 @@ Format: `list`
 
 === Listing all tags : `listTags`
 
-Shows a list of all tags in the address book. Tags listed are unique (no duplicates) and sorted alphabetically. +
-Format: `listTags`
+Shows a list of unique all tags in the AddressBook or persons currently displayed in PersonPanelList. +
+Tags listed are unique (no duplicates) and sorted alphabetically. +
+Format: `listTags [f]`
+
+***
+* `f`, is optional, allows users to choose between displaying all unique tags added to AddressBook or unique tags of persons currently listed in the PersonPanelList.
+* `listTags` displays list of all unique tags added to AddressBook.
+* `listTags f` displays list of all unique tags of persons listed in the PersonListPanel. `f` referring to "filtered".
+***
 
 //tag::copy[]
 === Copying person's information over to system clipboard : `copy`
@@ -407,7 +414,7 @@ e.g. `findPhone 000 111`
 * *Find Tag* : `findTag KEYWORD [MORE_KEYWORDS]` +
 e.g. `findTag neighbour family`
 * *List* : `list`
-* *List Tags* : `listTags`
+* *List Tags* : `listTags [f]`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
