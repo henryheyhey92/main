@@ -55,7 +55,7 @@ public interface Model {
      * @param person
      * @param choice
      */
-    void copy(ReadOnlyPerson person,String choice);
+    void copy(ReadOnlyPerson person, String choice);
 
     /**
      * Utility function to save the state of the addressbook.This function is only used when editing birthday's

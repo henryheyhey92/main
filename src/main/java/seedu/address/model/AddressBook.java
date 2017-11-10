@@ -92,7 +92,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         // in the person list.
         persons.add(newPerson);
     }
-    public void sort(int option)throws UniquePersonList.AddressBookIsEmpty, LoadLookUpTableException{
+    public void sort(int option)throws UniquePersonList.AddressBookIsEmpty, LoadLookUpTableException {
         persons.sort(option);
     }
 
