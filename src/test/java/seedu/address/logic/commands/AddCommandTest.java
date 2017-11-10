@@ -115,6 +115,24 @@ public class AddCommandTest {
         }
 
         @Override
+        public List<Tag> getNormalTagsList() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
+        public List<String> getTagsListAsString(List<Tag> tagStringList) {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
+        public List<Tag> getFilteredTagsList() {
+            fail("This method should not be called");
+            return null;
+        }
+
+        @Override
         public void save(){
             fail("This method should not be called.");
         }
@@ -150,12 +168,6 @@ public class AddCommandTest {
         public void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate) {
             fail("This method should not be called.");
         }
-
-        @Override
-        public List<Tag> getTagsList(){
-            fail("This method should not be called.");
-            return null;
-        };
     }
 
     /**

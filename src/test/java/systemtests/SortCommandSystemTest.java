@@ -12,6 +12,7 @@ import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.SortCommandParser;
 import seedu.address.model.Model;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.exceptions.LoadLookUpTableException;
 
 //@@author NUSe0032202
 public class SortCommandSystemTest extends AddCommandSystemTest {
@@ -22,7 +23,7 @@ public class SortCommandSystemTest extends AddCommandSystemTest {
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.SAVE_OPTION);
 
     @Test
-    public void sort() throws UniquePersonList.AddressBookIsEmpty {
+    public void sort() throws UniquePersonList.AddressBookIsEmpty, LoadLookUpTableException {
 
         /*Case: sort the addressbook by name with save not enabled, command with leading and trailing spaces
         -> sorted by name */

@@ -31,6 +31,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.LoadLookUpTableException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
 
@@ -94,7 +95,8 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     //Note FilteredList is unmodifiable hence sorting is done on internal list.
     //@@author NUSe0032202
-    public synchronized void sortAddressBook(int option, int saveOption)throws UniquePersonList.AddressBookIsEmpty {
+    public synchronized void sortAddressBook(int option, int saveOption)throws UniquePersonList.AddressBookIsEmpty,
+            LoadLookUpTableException{
         addressBook.sort(option);
         updateFilteredPersonList(SORT_LIST_PREDICATE);//Detected bug when sorting on a filtered list.
                                                       //Temp fix only
