@@ -30,8 +30,7 @@ public class SortCommand extends UndoableCommand {
     protected int saveOption;
     private String option;
     private CommandResult result;
-
-    //default Constructor 
+    
     public SortCommand() {
     }
 
