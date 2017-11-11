@@ -31,7 +31,7 @@ public class CalendarTest extends UiPart<Region> {
         Scene scene = new Scene(getRoot(), 300, 100);
         dialogStage = createDialogStage("", null, scene);
         dialogStage.setScene(scene);
-        birthday.setValue(NOW_LOCAL_DATE());
+        birthday.setValue(nowLocalDate());
         this.birthdayArgs();
     }
 
@@ -46,13 +46,19 @@ public class CalendarTest extends UiPart<Region> {
         return birthdate;
     }
 
+    /**
+     *  Shows the birthday picker window
+     */
     public void show() {
         logger.fine("Showing birthday picker.");
         dialogStage.showAndWait();
     }
 
-    //Set the Java datepicker to the default date
-    public static final LocalDate NOW_LOCAL_DATE (){
+    /**
+     * Gets the current calender date
+     * @return LocalDate
+     */
+    public static final LocalDate nowLocalDate() {
         String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate localDate = LocalDate.parse(date , formatter);

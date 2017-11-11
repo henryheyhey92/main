@@ -1,6 +1,5 @@
 package seedu.address.logic.parser;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -31,25 +30,25 @@ public class SortCommandParser implements Parser<SortCommand> {
         placeHolder = args.trim().split("\\s+");
 
         //Detect empty arguments.
-        if(placeHolder[INDEX_OPTION].equals("")){
-           throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+        if (placeHolder[INDEX_OPTION].equals("")) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                    SortCommand.MESSAGE_USAGE));
         }
 
         try {
             option = ParserUtil.parseSortOption(placeHolder[INDEX_OPTION]);
         } catch (IllegalValueException ive) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,SortCommand.POSSIBLE_CHOICES));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.POSSIBLE_CHOICES));
         }
 
         if (placeHolder.length == 1) {
             return new SortCommand(option, noSave);
         }
 
-        if (placeHolder[INDEX_SAVE_OPTION].compareTo(SAVE)== 0) {
+        if (placeHolder[INDEX_SAVE_OPTION].compareTo(SAVE) == 0) {
             return new SortCommand(option, save);
         } else {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,SortCommand.SAVE_OPTION));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.SAVE_OPTION));
         }
     }
     //@@author

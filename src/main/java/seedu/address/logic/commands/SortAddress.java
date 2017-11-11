@@ -8,6 +8,7 @@ import java.util.HashSet;
 import seedu.address.model.Model;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.exceptions.LoadLookUpTableException;
 
 /**
  * Actual logic for sorting by address
@@ -39,8 +40,12 @@ public class SortAddress extends SortCommand implements Comparator<ReadOnlyPerso
 
     @Override
     public CommandResult executeUndoableCommand() throws UniquePersonList.AddressBookIsEmpty {
-        model.sortAddressBook(OPTION_ADDRESS, saveOption);
-        return new CommandResult(MESSAGE_SUCCESS_ADDRESS);
+        try {
+            model.sortAddressBook(OPTION_ADDRESS, saveOption);
+            return new CommandResult(MESSAGE_SUCCESS_ADDRESS);
+        } catch (LoadLookUpTableException le) {
+            return  new CommandResult("Error with loading data for lookup table");
+        }
     }
 
     @Override

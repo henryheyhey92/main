@@ -17,6 +17,7 @@ public class AddressData {
     private static String line;
     private static ArrayList<String> table = new ArrayList<>();
 
+    //initialize the lookup table with data values
     public static void initTable() throws IOException {
         InputStream in = MainApp.class.getResourceAsStream("/tables/data.csv");
         br = new BufferedReader(new InputStreamReader(in));

@@ -42,25 +42,25 @@ public class SortCommand extends UndoableCommand {
     @Override
     public CommandResult executeUndoableCommand() throws CommandException {
         requireNonNull(model);
-      try {
-          switch (option) {
-              case CHOICE_ADDRESS:
-                  SortCommand address = new SortAddress(model, saveOption);
-                  result = address.executeUndoableCommand();
-                  break;
+        try {
+            switch (option)  {
+            case CHOICE_ADDRESS:
+                SortCommand address = new SortAddress(model, saveOption);
+                result = address.executeUndoableCommand();
+                break;
 
-              case CHOICE_NAME:
-                  SortCommand name = new SortName(model, saveOption);
-                  result = name.executeUndoableCommand();
-                  break;
+            case CHOICE_NAME:
+                SortCommand name = new SortName(model, saveOption);
+                result = name.executeUndoableCommand();
+                break;
 
-              default:
-                  break;
-          }
-          return result;
-      } catch (IOException e){
-         return  new CommandResult("Error with internal data");
-      }
+            default:
+                break;
+            }
+            return result;
+        } catch (IOException e) {
+            return  new CommandResult("Error with internal data");
+        }
     }
 
     @Override
@@ -68,7 +68,7 @@ public class SortCommand extends UndoableCommand {
         return other == this // short circuit if same object
                 || (other instanceof SortCommand // instanceof handles nulls
                 && this.option.equals(((SortCommand) other).option))
-                && this.saveOption==(((SortCommand) other).saveOption); // state check
+                && this.saveOption == (((SortCommand) other).saveOption); // state check
     }
 
 }

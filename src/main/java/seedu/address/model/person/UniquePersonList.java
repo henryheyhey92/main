@@ -18,6 +18,7 @@ import seedu.address.logic.commands.SortAddress;
 import seedu.address.logic.commands.SortName;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.LoadLookUpTableException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
@@ -62,7 +63,7 @@ public class UniquePersonList implements Iterable<Person> {
      * @throws AddressBookIsEmpty
      */
     //@@author NUSe0032202
-    public void sort(int option) throws AddressBookIsEmpty {
+    public void sort(int option) throws AddressBookIsEmpty, LoadLookUpTableException {
         try {
             if (!internalList.isEmpty()) {
                 if (option == OPTION_NAME) {
@@ -73,7 +74,9 @@ public class UniquePersonList implements Iterable<Person> {
             } else {
                 throw new AddressBookIsEmpty();
             }
-        } catch (IOException e){}
+        } catch (IOException e) {
+            throw new LoadLookUpTableException();
+        }
     }
     //@@author
 
