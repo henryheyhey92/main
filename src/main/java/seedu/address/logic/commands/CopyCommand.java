@@ -59,20 +59,20 @@ public class CopyCommand extends Command {
         model.copy(targetPerson, choice);
 
         switch (choice) {
-            case CHOICE_NAME:
-                return new CommandResult(MESSAGE_SUCCESS_NAME);
+        case CHOICE_NAME:
+            return new CommandResult(MESSAGE_SUCCESS_NAME);
 
-            case CHOICE_ADDRESS:
-                return new CommandResult(MESSAGE_SUCCESS_ADDRESS);
+        case CHOICE_ADDRESS:
+            return new CommandResult(MESSAGE_SUCCESS_ADDRESS);
 
-            case CHOICE_PHONE:
-                return new CommandResult(MESSAGE_SUCCESS_PHONE);
+        case CHOICE_PHONE:
+            return new CommandResult(MESSAGE_SUCCESS_PHONE);
 
-            case CHOICE_EMAIL:
-                return new CommandResult(MESSAGE_SUCCESS_EMAIL);
+        case CHOICE_EMAIL:
+            return new CommandResult(MESSAGE_SUCCESS_EMAIL);
 
-            default:
-                return new CommandResult("Error, this message should not be displayed");
+        default:
+            return new CommandResult("Error, this message should not be displayed");
         }
     }
 
