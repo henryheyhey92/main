@@ -20,11 +20,20 @@ public class LockCommand extends UndoableCommand {
     public static LoginBox lock;
     //public static boolean answer;
     protected Storage storage;
+    private boolean name = false;
 
-    public LockCommand(){
-        lock = new LoginBox();
-        lock.display("AddressBook Login", 1);
+    //    public LockCommand(){
+////        lock = new LoginBox();
+////        lock.display("AddressBook Login", 1);
+//
+//    }
+    public LockCommand(boolean name){
+        this.name = name;
     }
+    public boolean LockCommandget(){
+        return this.name;
+    }
+
 
     @Override
     public CommandResult executeUndoableCommand() {

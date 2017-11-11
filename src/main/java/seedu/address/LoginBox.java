@@ -75,14 +75,11 @@ public class LoginBox {
         grid.getChildren().addAll(nameLabel, nameInput, passwordLabel, passwordInput, yesButton);
         Scene scene = new Scene(grid, 350, 200);
         window.setScene(scene);
-        enter();
+        window.showAndWait();
 
 
         return answer;
         //Clicking will set answer and cloe window
-    }
-    private static void enter(){
-        window.showAndWait();
     }
 
     /**

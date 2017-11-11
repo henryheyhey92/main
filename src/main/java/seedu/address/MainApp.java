@@ -44,14 +44,14 @@ public class MainApp extends Application {
     public static final Version VERSION = new Version(1, 3, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
-
+    public LockCommand result;
     protected Ui ui;
     protected Logic logic;
     protected Storage storage;
     protected Model model;
     protected Config config;
     protected UserPrefs userPrefs;
-    Stage window;
+    public Stage window;
 
     @Override
     public void init() throws Exception {
@@ -189,11 +189,17 @@ public class MainApp extends Application {
         window = primaryStage;
         boolean answer = LoginBox.display("AddressBook Login", 0);
         if(answer) {
+            //this line causing the problem
+           // boolean result2 = result.LockCommandget();
             ui.start(primaryStage);
-            window.setOnCloseRequest(e -> {
-                e.consume();
-                stop();
-            });
+//            if(result2){
+//                LoginBox.display("AddressBook Login", 0);
+//            }
+                window.setOnCloseRequest(e -> {
+                    e.consume();
+                    stop();
+                });
+
         }
 
     }
