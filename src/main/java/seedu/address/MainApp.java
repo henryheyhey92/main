@@ -9,9 +9,7 @@ import com.google.common.eventbus.Subscribe;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import jdk.nashorn.internal.codegen.CompilerConstants;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.LogsCenter;
@@ -46,8 +44,7 @@ public class MainApp extends Application {
     public static final Version VERSION = new Version(1, 3, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
-    public Callogin test;
-    public LockCommand test2;
+    
     protected Ui ui;
     protected Logic logic;
     protected Storage storage;
@@ -187,22 +184,16 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        test = new Callogin();
-        test2 = new LockCommand();
+
         logger.info("Starting AddressBook " + MainApp.VERSION);
         window = primaryStage;
-//        boolean answer = LoginBox.display("AddressBook Login");
-        boolean answer = test.play();
+        boolean answer = LoginBox.display("AddressBook Login", 0);
         if(answer) {
-            //window = primaryStage;
-            primaryStage.close();
             ui.start(primaryStage);
             window.setOnCloseRequest(e -> {
                 e.consume();
                 stop();
             });
-        }else {
-
         }
 
     }
@@ -224,7 +215,9 @@ public class MainApp extends Application {
             Platform.exit();
             System.exit(0);
         }
+
     }
+
 
     @Subscribe
     public void handleExitAppRequestEvent(ExitAppRequestEvent event) {
