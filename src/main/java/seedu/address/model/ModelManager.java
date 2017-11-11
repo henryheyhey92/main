@@ -8,7 +8,7 @@ import static seedu.address.logic.commands.CopyCommand.CHOICE_NAME;
 import static seedu.address.logic.commands.CopyCommand.CHOICE_PHONE;
 import static seedu.address.logic.commands.SortCommand.SAVE;
 
-import java.awt.*;
+import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.util.ArrayList;
