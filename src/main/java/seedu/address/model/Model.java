@@ -74,7 +74,7 @@ public interface Model {
 
     //@@author Labradorites
     /**
-     * Returns unique tags list as List<String>
+     * Returns a unique tags list as {@code List<String>}
      */
     List<String> getTagsListAsString(List<Tag> tagStringList);
 
