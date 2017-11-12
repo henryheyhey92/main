@@ -2,66 +2,73 @@ package systemtests;
 
 import static seedu.address.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalPersons.AMY;
+import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalPersons.CARL;
+import static seedu.address.testutil.TypicalPersons.DANIEL;
 import static seedu.address.testutil.TypicalPersons.HOON;
 import static seedu.address.testutil.TypicalPersons.IDA;
 import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_84;
+import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_CLASSMATES;
 
 import org.junit.Test;
 
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.FindPhoneCommand;
+import seedu.address.logic.commands.FindTagCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 
 //@@author Labradorites
-public class FindPhoneCommandSystemTest extends AddressBookSystemTest {
+public class FindTagCommandSystemTest extends AddressBookSystemTest {
 
     @Test
-    public void findPhone() {
+    public void findTag() {
         /* Case: find multiple persons in address book, command with leading spaces and trailing spaces
-         * -> 2 persons found
+         * -> 4 persons found
          */
-        String command = "   " + FindPhoneCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_84 + "   ";
+        String command = "   " + FindTagCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_CLASSMATES + "   ";
         Model expectedModel = getModel();
-        ModelHelper.setFilteredList(expectedModel, HOON, IDA); // Phone numbers of Hoon and Ida contain "84"
+        ModelHelper.setFilteredList(expectedModel, HOON, IDA);// Tags of HOON and IDA contain "classmates"
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: repeat previous find command where person list is displaying the persons we are finding
          * -> 2 persons found
          */
-        command = FindPhoneCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_84;
+        command = FindTagCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_CLASSMATES;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find person where person list is not displaying the person we are finding -> 1 person found */
-        command = FindPhoneCommand.COMMAND_WORD + " 8482424";
-        ModelHelper.setFilteredList(expectedModel, HOON);
+        command = FindTagCommand.COMMAND_WORD + " family";
+        ModelHelper.setFilteredList(expectedModel, CARL);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find multiple persons in address book, 2 keywords -> 2 persons found */
-        command = FindPhoneCommand.COMMAND_WORD + " 8482424 8482131";
-        ModelHelper.setFilteredList(expectedModel, HOON, IDA);
+        command = FindTagCommand.COMMAND_WORD + " family colleagues";
+        ModelHelper.setFilteredList(expectedModel, CARL, DANIEL);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find multiple persons in address book, 2 keywords in reversed order -> 2 persons found */
-        command = FindPhoneCommand.COMMAND_WORD + " 8482131 8482424";
+        command = FindTagCommand.COMMAND_WORD + " colleagues family";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find multiple persons in address book, 2 keywords with 1 repeat -> 2 persons found */
-        command = FindPhoneCommand.COMMAND_WORD + " 8482424 8482131 8482424";
+        command = FindTagCommand.COMMAND_WORD + " family colleagues family";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find multiple persons in address book, 2 matching keywords and 1 non-matching keyword
          * -> 2 persons found
          */
-        command = FindPhoneCommand.COMMAND_WORD + " 8482424 8482131 123456789";
+        command = FindTagCommand.COMMAND_WORD + " colleagues family stranger";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -78,14 +85,14 @@ public class FindPhoneCommandSystemTest extends AddressBookSystemTest {
         /* Case: find same persons in address book after deleting 1 of them -> 1 person found */
         executeCommand(DeleteCommand.COMMAND_WORD + " 1");
         assert !getModel().getAddressBook().getPersonList().contains(HOON);
-        command = FindPhoneCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_84;
+        command = FindTagCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_CLASSMATES;
         expectedModel = getModel();
         ModelHelper.setFilteredList(expectedModel, IDA);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find person in address book, keyword is other part of phone -> 0 persons found */
-        command = FindPhoneCommand.COMMAND_WORD + " Mei";
+        /* Case: find person in address book, keyword is part of tag -> 0 persons found */
+        command = FindTagCommand.COMMAND_WORD + " class";
         ModelHelper.setFilteredList(expectedModel);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
@@ -93,14 +100,14 @@ public class FindPhoneCommandSystemTest extends AddressBookSystemTest {
         /* Case: find person in empty address book -> 0 persons found */
         executeCommand(ClearCommand.COMMAND_WORD);
         assert getModel().getAddressBook().getPersonList().size() == 0;
-        command = FindPhoneCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_84;
+        command = FindTagCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_CLASSMATES;
         expectedModel = getModel();
         ModelHelper.setFilteredList(expectedModel, HOON);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: mixed case command word -> rejected */
-        command = "FiNd Meier";
+        command = "FiNdTaG classmates";
         assertCommandFailure(command, MESSAGE_UNKNOWN_COMMAND);
     }
 

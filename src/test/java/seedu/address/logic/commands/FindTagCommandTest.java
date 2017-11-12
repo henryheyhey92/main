@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
+import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.CARL;
-import static seedu.address.testutil.TypicalPersons.ELLE;
-import static seedu.address.testutil.TypicalPersons.FIONA;
+import static seedu.address.testutil.TypicalPersons.DANIEL;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
@@ -21,31 +21,31 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.PhoneContainsKeywordsPredicate;
+import seedu.address.model.person.TagContainsKeywordsPredicate;
 import seedu.address.model.person.ReadOnlyPerson;
 
 //@@author Labradorites
 /**
- * Contains integration tests (interaction with the Model) for {@code FindPhoneCommand}.
+ * Contains integration tests (interaction with the Model) for {@code FindTagCommand}.
  */
-public class FindPhoneCommandTest {
+public class FindTagCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
     public void equals() {
-        PhoneContainsKeywordsPredicate firstPredicate =
-                new PhoneContainsKeywordsPredicate(Collections.singletonList("123"));
-        PhoneContainsKeywordsPredicate secondPredicate =
-                new PhoneContainsKeywordsPredicate(Collections.singletonList("567"));
+        TagContainsKeywordsPredicate firstPredicate =
+                new TagContainsKeywordsPredicate(Collections.singletonList("friends"));
+        TagContainsKeywordsPredicate secondPredicate =
+                new TagContainsKeywordsPredicate(Collections.singletonList("neighbours"));
 
-        FindPhoneCommand findFirstCommand = new FindPhoneCommand(firstPredicate);
-        FindPhoneCommand findSecondCommand = new FindPhoneCommand(secondPredicate);
+        FindTagCommand findFirstCommand = new FindTagCommand(firstPredicate);
+        FindTagCommand findSecondCommand = new FindTagCommand(secondPredicate);
 
         // same object -> returns true
         assertTrue(findFirstCommand.equals(findFirstCommand));
 
         // same values -> returns true
-        FindPhoneCommand findFirstCommandCopy = new FindPhoneCommand(firstPredicate);
+        FindTagCommand findFirstCommandCopy = new FindTagCommand(firstPredicate);
         assertTrue(findFirstCommand.equals(findFirstCommandCopy));
 
         // different types -> returns false
@@ -61,23 +61,23 @@ public class FindPhoneCommandTest {
     @Test
     public void execute_zeroKeywords_noPersonFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
-        FindPhoneCommand command = prepareCommand(" ");
+        FindTagCommand command = prepareCommand(" ");
         assertCommandSuccess(command, expectedMessage, Collections.emptyList());
     }
 
     @Test
     public void execute_multipleKeywords_multiplePersonsFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
-        FindPhoneCommand command = prepareCommand("95352563 9482224 9482427");
-        assertCommandSuccess(command, expectedMessage, Arrays.asList(CARL, ELLE, FIONA));
+        FindTagCommand command = prepareCommand("owesMoney family colleagues");
+        assertCommandSuccess(command, expectedMessage, Arrays.asList(BENSON, CARL, DANIEL));
     }
 
     /**
-     * Parses {@code userInput} into a {@code FindPhoneCommand}.
+     * Parses {@code userInput} into a {@code FindTagCommand}.
      */
-    private FindPhoneCommand prepareCommand(String userInput) {
-        FindPhoneCommand command =
-                new FindPhoneCommand(new PhoneContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+"))));
+    private FindTagCommand prepareCommand(String userInput) {
+        FindTagCommand command =
+                new FindTagCommand(new TagContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+"))));
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
     }
@@ -88,7 +88,7 @@ public class FindPhoneCommandTest {
      *     - the {@code FilteredList<ReadOnlyPerson>} is equal to {@code expectedList}<br>
      *     - the {@code AddressBook} in model remains the same after executing the {@code command}
      */
-    private void assertCommandSuccess(FindPhoneCommand command, String expectedMessage,
+    private void assertCommandSuccess(FindTagCommand command, String expectedMessage,
                                       List<ReadOnlyPerson> expectedList) {
         AddressBook expectedAddressBook = new AddressBook(model.getAddressBook());
         CommandResult commandResult = command.execute();
