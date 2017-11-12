@@ -13,11 +13,18 @@ public class LockCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "lock";
     public static final String MESSAGE_SUCCESS = "Address book is unlock!";
+    public static LoginBox lock;
     protected Storage storage;
     private boolean name = false;
 
-    public LockCommand(boolean name){
+    /**
+     * lock the application when command is inputted
+     * @param name
+     */
+    public LockCommand(boolean name) {
         this.name = name;
+        lock = new LoginBox();
+        lock.display("AddressBook" , 1 );
     }
 
     @Override

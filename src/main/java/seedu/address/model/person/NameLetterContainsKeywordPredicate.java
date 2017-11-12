@@ -18,7 +18,6 @@ public class NameLetterContainsKeywordPredicate implements Predicate<ReadOnlyPer
     @Override
     public boolean test(ReadOnlyPerson person) {
 
-        //String letter = person.getName().fullName;
         if (keywords.isEmpty()) {
             return keywords.stream()
                     .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
