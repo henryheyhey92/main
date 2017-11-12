@@ -133,7 +133,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void save(){
+        public void save() {
             fail("This method should not be called.");
         }
 
@@ -143,7 +143,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void copy(ReadOnlyPerson target,String choice){
+        public void copy(ReadOnlyPerson target, String choice) {
             fail("This method should not be called.");
         }
 
@@ -154,7 +154,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void sortAddressBook(int option,int saveOption) {
+        public void sortAddressBook(int option, int saveOption) {
             fail("This method should not be called");
         }
 

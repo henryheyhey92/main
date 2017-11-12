@@ -32,7 +32,7 @@ public class BrowserPanelTest extends GuiUnitTest {
     public void setUp() {
         Model model = new ModelManager();
         Logic logic = new LogicManager(model);
-        selectionChangedEventStub = new PersonPanelSelectionChangedEvent(new PersonCard(ALICE,logic,0));
+        selectionChangedEventStub = new PersonPanelSelectionChangedEvent(new PersonCard(ALICE, logic, 0));
 
         guiRobot.interact(() -> browserPanel = new BrowserPanel());
         uiPartRule.setUiPart(browserPanel);
