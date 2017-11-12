@@ -1,16 +1,22 @@
 # Labradorites
-###### /java/seedu/address/ui/BrowserPanel.java
+###### /java/seedu/address/commons/events/ui/PersonAddressSelectionChangedEvent.java
 ``` java
-    private void loadAddressPage(ReadOnlyPerson person) {
-        loadPage(GOOGLE_MAPS_SEARCH_URL_PREFIX + person.getAddress().value.replaceAll(" ", "+"));
+public class PersonAddressSelectionChangedEvent extends BaseEvent {
+
+
+    private final PersonCard newSelection;
+
+    public PersonAddressSelectionChangedEvent(PersonCard newSelection) {
+        this.newSelection = newSelection;
     }
-```
-###### /java/seedu/address/ui/BrowserPanel.java
-``` java
-    @Subscribe
-    private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        loadAddressPage(event.getNewSelection().person);
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
+
+    public PersonCard getNewSelection() {
+        return newSelection;
     }
 }
 ```
@@ -46,77 +52,38 @@
         return false;
     }
 ```
-###### /java/seedu/address/commons/events/ui/PersonAddressSelectionChangedEvent.java
+###### /java/seedu/address/logic/commands/FindPhoneCommand.java
 ``` java
-public class PersonAddressSelectionChangedEvent extends BaseEvent {
+/**
+ * Finds and lists all persons in address book whose phone numbers contains any of the argument keywords.
+ */
+public class FindPhoneCommand extends Command {
 
+    public static final String COMMAND_WORD = "findPhone";
 
-    private final PersonCard newSelection;
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose phone contain any of "
+            + "the specified numbers() and displays them as a list with index numbers.\n"
+            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
+            + "Example: " + COMMAND_WORD + " 999 111 99998888";
 
-    public PersonAddressSelectionChangedEvent(PersonCard newSelection) {
-        this.newSelection = newSelection;
+    private final PhoneContainsKeywordsPredicate predicate;
+
+    public FindPhoneCommand(PhoneContainsKeywordsPredicate predicate) {
+        this.predicate = predicate;
     }
 
     @Override
-    public String toString() {
-        return this.getClass().getSimpleName();
+    public CommandResult execute() {
+        model.updateFilteredPersonList(predicate);
+        return new CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
     }
 
-    public PersonCard getNewSelection() {
-        return newSelection;
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof FindPhoneCommand // instanceof handles nulls
+                && this.predicate.equals(((FindPhoneCommand) other).predicate)); // state check
     }
-}
-```
-###### /java/seedu/address/logic/parser/FindTagCommandParser.java
-``` java
-/**
- * Parses input arguments and creates a new FindTagCommand object
- */
-public class FindTagCommandParser implements Parser<FindTagCommand> {
-
-    /**
-     * Parses the given {@code String} of arguments in the context of the FindTagCommand
-     * and returns an FindTagCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
-     */
-    public FindTagCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindTagCommand.MESSAGE_USAGE));
-        }
-
-        String[] tagKeywords = trimmedArgs.split("\\s+");
-
-        return new FindTagCommand(new TagContainsKeywordsPredicate(Arrays.asList(tagKeywords)));
-    }
-
-}
-```
-###### /java/seedu/address/logic/parser/FindPhoneCommandParser.java
-``` java
-/**
- * Parses input arguments and creates a new FindPhoneCommand object
- */
-public class FindPhoneCommandParser implements Parser<FindPhoneCommand> {
-
-    /**
-     * Parses the given {@code String} of arguments in the context of the FindPhoneCommand
-     * and returns an FindPhoneCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
-     */
-    public FindPhoneCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindPhoneCommand.MESSAGE_USAGE));
-        }
-
-        String[] phoneKeywords = trimmedArgs.split("\\s+");
-
-        return new FindPhoneCommand(new PhoneContainsKeywordsPredicate(Arrays.asList(phoneKeywords)));
-    }
-
 }
 ```
 ###### /java/seedu/address/logic/commands/FindTagCommand.java
@@ -154,98 +121,175 @@ public class FindTagCommand extends Command {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/FindPhoneCommand.java
-``` java
-/**
- * Finds and lists all persons in address book whose phone numbers contains any of the argument keywords.
- */
-public class FindPhoneCommand extends Command {
-
-    public static final String COMMAND_WORD = "findPhone";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose phone contain any of "
-            + "the specified numbers() and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " 999 111 99998888";
-
-    private final PhoneContainsKeywordsPredicate predicate;
-
-    public FindPhoneCommand(PhoneContainsKeywordsPredicate predicate) {
-        this.predicate = predicate;
-    }
-
-    @Override
-    public CommandResult execute() {
-        model.updateFilteredPersonList(predicate);
-        return new CommandResult(getMessageForPersonListShownSummary(model.getFilteredPersonList().size()));
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof FindPhoneCommand // instanceof handles nulls
-                && this.predicate.equals(((FindPhoneCommand) other).predicate)); // state check
-    }
-}
-```
 ###### /java/seedu/address/logic/commands/ListTagsCommand.java
 ``` java
 /**
- * Lists all tags tagged to persons in AddressBook. Does not show duplicate tags.
+ * Lists all unique tags added to AddressBook or PersonListPanel depending on choice to the user.
+ * Does not show duplicate tags.
  */
 public class ListTagsCommand extends Command {
+
+    public static final String FILTERED = "f";
 
     public static final String COMMAND_WORD = "listTags";
     public static final String MESSAGE_SUCCESS = "List all tags:\n%1$s";
     public static final String MESSAGE_NO_TAGS = "There are no tags available.";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds tags according to choice.\n"
+            + "1. To list all tags available in AddressBook: " + COMMAND_WORD + "\n"
+            + "2. To list all tags of persons currently shown below: " + COMMAND_WORD + " " + FILTERED + "\n";
+
+    private String option;
+
+    public ListTagsCommand(String argument) {
+        this.option = argument;
+    }
 
     @Override
     public CommandResult execute() {
-        List<Tag> listOfTags = model.getTagsList();
-        List<String> tagsString = new ArrayList<>();
+        List<String> listOfTags = null;
 
-        //removes all [] from tags
-        listOfTags.forEach(tag -> tagsString.add(tag.toString().replaceAll("[\\[\\]]", "")));
+        requireNonNull(model);
+
+        switch (option) {
+        case FILTERED:
+            listOfTags = model.getTagsListAsString(model.getFilteredTagsList());
+            break;
+        default:
+            listOfTags = model.getTagsListAsString(model.getNormalTagsList());
+            break;
+        }
 
         if (listOfTags.isEmpty()) {
             return new CommandResult(MESSAGE_NO_TAGS);
         }
 
         System.out.println(listOfTags);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, String.join("\n", tagsString)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, String.join("\n", listOfTags)));
     }
 }
 ```
-###### /java/seedu/address/model/person/TagContainsKeywordsPredicate.java
+###### /java/seedu/address/logic/parser/FindPhoneCommandParser.java
 ``` java
 /**
- * Tests that a {@code ReadOnlyPerson}'s {@code Tag} matches any of the keywords given.
+ * Parses input arguments and creates a new FindPhoneCommand object
  */
-public class TagContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> {
-    private final List<String> keywords;
+public class FindPhoneCommandParser implements Parser<FindPhoneCommand> {
 
-    public TagContainsKeywordsPredicate(List<String> keywords) {
-        this.keywords = keywords;
-    }
+    /**
+     * Parses the given {@code String} of arguments in the context of the FindPhoneCommand
+     * and returns an FindPhoneCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public FindPhoneCommand parse(String args) throws ParseException {
+        String trimmedArgs = args.trim();
+        if (trimmedArgs.isEmpty()) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindPhoneCommand.MESSAGE_USAGE));
+        }
 
-    @Override
-    public boolean test(ReadOnlyPerson person) {
-        return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.fullTag(), keyword));
-    }
+        String[] phoneKeywords = trimmedArgs.split("\\s+");
 
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof TagContainsKeywordsPredicate // instanceof handles nulls
-                && this.keywords.equals(((TagContainsKeywordsPredicate) other).keywords)); // state check
+        return new FindPhoneCommand(new PhoneContainsKeywordsPredicate(Arrays.asList(phoneKeywords)));
     }
 
 }
 ```
-###### /java/seedu/address/model/person/ReadOnlyPerson.java
+###### /java/seedu/address/logic/parser/FindTagCommandParser.java
 ``` java
-    String fullTag();
+/**
+ * Parses input arguments and creates a new FindTagCommand object
+ */
+public class FindTagCommandParser implements Parser<FindTagCommand> {
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the FindTagCommand
+     * and returns an FindTagCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public FindTagCommand parse(String args) throws ParseException {
+        String trimmedArgs = args.trim();
+        if (trimmedArgs.isEmpty()) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindTagCommand.MESSAGE_USAGE));
+        }
+
+        String[] tagKeywords = trimmedArgs.split("\\s+");
+
+        return new FindTagCommand(new TagContainsKeywordsPredicate(Arrays.asList(tagKeywords)));
+    }
+
+}
+```
+###### /java/seedu/address/logic/parser/ListTagsCommandParser.java
+``` java
+/**
+ * Parses input arguments and creates a new ListTagsCommand object
+ */
+public class ListTagsCommandParser implements Parser<ListTagsCommand> {
+
+    public static final String CHOICE = "f";
+    /**
+     * Parses the given {@code String} of arguments in the context of the ListTagsCommand
+     * and returns an ListTagsCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+    public ListTagsCommand parse(String args) throws ParseException {
+        String trimmedArgs = args.trim();
+        if (!(trimmedArgs.equals(CHOICE) || trimmedArgs.isEmpty())) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListTagsCommand.MESSAGE_USAGE));
+        }
+
+        return new ListTagsCommand(trimmedArgs);
+    }
+
+}
+```
+###### /java/seedu/address/model/Model.java
+``` java
+    /**
+     * Returns a unique tags list as {@code List<String>}
+     */
+    List<String> getTagsListAsString(List<Tag> tagStringList);
+
+    /**
+     * Returns list of all unique tags present in AddressBook that are sorted alphabetically
+     */
+    List<Tag> getNormalTagsList();
+
+    /**
+     * Returns list of all unique tags currently present in PersonListPanel that are sorted alphabetically
+     */
+    List<Tag> getFilteredTagsList();
+```
+###### /java/seedu/address/model/ModelManager.java
+``` java
+    @Override
+    public List<String> getTagsListAsString(List<Tag> tagsList) {
+        List<String> tagsStringList = new ArrayList<>();
+        tagsList.forEach(tag -> tagsStringList.add(tag.toString().replaceAll("[\\[\\]]", "")));
+        return tagsStringList;
+    }
+
+    @Override
+    public List<Tag> getNormalTagsList() {
+        List<Tag> listofNormalTags = getAddressBook().getTagList().sorted();
+        return listofNormalTags;
+    }
+
+    @Override
+    public List<Tag> getFilteredTagsList() {
+        List<Tag> unsortedListOfTags = new ArrayList<>();
+
+        getFilteredPersonList().forEach(persons -> unsortedListOfTags.addAll(persons.getTags()));
+
+        //Removes duplicate tags to ensure all tags are unique
+        List<Tag> listOfFilteredTags = unsortedListOfTags.stream().distinct().collect(Collectors.toList());
+        //Sorts tags in alphabetical order
+        listOfFilteredTags.sort(Comparator.comparing(Tag::getTagName));
+
+        return listOfFilteredTags;
+    }
 ```
 ###### /java/seedu/address/model/person/Person.java
 ``` java
@@ -256,6 +300,30 @@ public class TagContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> {
 
         return builder.toString().replace("][", " ").replaceAll("[\\[\\]]", "");
     }
+
+    public ObjectProperty<UniqueTagList> tagProperty() {
+        return tags;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ReadOnlyPerson // instanceof handles nulls
+                && this.isSameStateAs((ReadOnlyPerson) other));
+    }
+
+    @Override
+    public int hashCode() {
+        // use this method for custom fields hashing instead of implementing your own
+        return Objects.hash(name, phone, email, address, birthday, tags);
+    }
+
+    @Override
+    public String toString() {
+        return getAsText();
+    }
+
+}
 ```
 ###### /java/seedu/address/model/person/PhoneContainsKeywordsPredicate.java
 ``` java
@@ -284,21 +352,36 @@ public class PhoneContainsKeywordsPredicate implements Predicate<ReadOnlyPerson>
 
 }
 ```
-###### /java/seedu/address/model/ModelManager.java
+###### /java/seedu/address/model/person/ReadOnlyPerson.java
 ``` java
-    @Override
-    public List<Tag> getTagsList(){
-        List<Tag> unsortedListOfTags = new ArrayList<>();
+    String fullTag();
+```
+###### /java/seedu/address/model/person/TagContainsKeywordsPredicate.java
+``` java
+/**
+ * Tests that a {@code ReadOnlyPerson}'s {@code Tag} matches any of the keywords given.
+ */
+public class TagContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> {
+    private final List<String> keywords;
 
-        filteredPersons.forEach(persons -> unsortedListOfTags.addAll(persons.getTags()));
-
-        //Removes duplicate tags to ensure all tags are unique
-        List<Tag> listOfTags= unsortedListOfTags.stream().distinct().collect(Collectors.toList());
-        //Sorts tags in alphabetical order
-        listOfTags.sort(Comparator.comparing(Tag::getTagName));
-
-        return listOfTags;
+    public TagContainsKeywordsPredicate(List<String> keywords) {
+        this.keywords = keywords;
     }
+
+    @Override
+    public boolean test(ReadOnlyPerson person) {
+        return keywords.stream()
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.fullTag(), keyword));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof TagContainsKeywordsPredicate // instanceof handles nulls
+                && this.keywords.equals(((TagContainsKeywordsPredicate) other).keywords)); // state check
+    }
+
+}
 ```
 ###### /java/seedu/address/model/tag/Tag.java
 ``` java
@@ -309,10 +392,18 @@ public class PhoneContainsKeywordsPredicate implements Predicate<ReadOnlyPerson>
         return tagName;
     }
 ```
-###### /java/seedu/address/model/Model.java
+###### /java/seedu/address/ui/BrowserPanel.java
 ``` java
-    /*
-     * Returns list of all unique tags present in AddressBook that are sorted alphabetically
-     */
-    List<Tag> getTagsList();
+    private void loadAddressPage(ReadOnlyPerson person) {
+        loadPage(GOOGLE_MAPS_SEARCH_URL_PREFIX + person.getAddress().value.replaceAll(" ", "+"));
+    }
+```
+###### /java/seedu/address/ui/BrowserPanel.java
+``` java
+    @Subscribe
+    private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        loadAddressPage(event.getNewSelection().person);
+    }
+}
 ```
