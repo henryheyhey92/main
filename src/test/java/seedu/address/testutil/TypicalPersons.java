@@ -36,9 +36,11 @@ public class TypicalPersons {
             .withBirthday("DOB not initialised").build();
     public static final ReadOnlyPerson CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withAddress("46 Pasir Ris Ave 5, #98-143")
+            .withTags("family")
             .withBirthday("DOB not initialised").build();
     public static final ReadOnlyPerson DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")
             .withEmail("cornelia@example.com").withAddress("Blk 13 Bukit Batok East Ave 7, #04-15")
+            .withTags("colleagues")
             .withBirthday("DOB not initialised").build();
     public static final ReadOnlyPerson ELLE = new PersonBuilder().withName("Elle Meyer").withPhone("9482224")
             .withEmail("werner@example.com").withAddress("Geylang lorong Ave 5,#05-17")
@@ -52,10 +54,10 @@ public class TypicalPersons {
 
     // Manually added
     public static final ReadOnlyPerson HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
-            .withEmail("stefan@example.com").withAddress("little india")
+            .withEmail("stefan@example.com").withAddress("little india").withTags("classmates")
             .withBirthday("DOB not initialised").build();
     public static final ReadOnlyPerson IDA = new PersonBuilder().withName("Ida Mueller").withPhone("8482131")
-            .withEmail("hans@example.com").withAddress("chicago ave")
+            .withEmail("hans@example.com").withAddress("chicago ave").withTags("classmates")
             .withBirthday("DOB not initialised").build();
 
     // Manually added - Person's details found in {@code CommandTestUtil}
@@ -67,7 +69,8 @@ public class TypicalPersons {
             .withBirthday("DOB not initialised").build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
-    public static final String KEYWORD_MATCHING_84 = "84"; // A keyword that matches MEIER
+    public static final String KEYWORD_MATCHING_84 = "84"; // A keyword that matches 84
+    public static final String KEYWORD_MATCHING_CLASSMATES = "classmates"; // A keyword that matches friends
 
     private TypicalPersons() {} // prevents instantiation
 
