@@ -180,11 +180,11 @@ public class MainApp extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
 
         logger.info("Starting AddressBook " + MainApp.VERSION);
         window = primaryStage;
-        boolean answer = LoginBox.display("AddressBook Login", 0);
+        boolean answer = LoginBox.display("AddressBook Login");
         if (answer) {
 
             ui.start(primaryStage);

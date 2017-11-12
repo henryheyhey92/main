@@ -1,7 +1,6 @@
 package seedu.address;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,19 +17,16 @@ import javafx.stage.Stage;
 public class LoginBox {
 
     private static boolean answer;
-    private static Stage window = new Stage();
     private static TextField nameInput = new TextField();
     private static TextField passwordInput = new TextField();
-
     /**
      * create the login box display
      *
      */
-    public static boolean display(String title, int pass) {
+    public static boolean display(String title) {
         //create window
-        if (pass == 1) {
-            window.initModality(Modality.WINDOW_MODAL);
-        }
+        Stage window = new Stage();
+        window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
         //create Grid
         GridPane grid = new GridPane();
@@ -63,17 +59,17 @@ public class LoginBox {
             stop();
         });
 
-        yesButton.setOnAction(LoginBox::handle);
-
-        //Add buttons
+        yesButton.setOnAction (e -> {
+            if (isInt(nameInput, passwordInput)) {
+                answer = true;
+                window.close();
+            }
+        });
         grid.getChildren().addAll(nameLabel, nameInput, passwordLabel, passwordInput, yesButton);
-        Scene scene = new Scene(grid, 350, 200);
-        window.setScene(scene);
+        window.setScene(new Scene(grid, 350, 200));
         window.showAndWait();
 
-
         return answer;
-        //Clicking will set answer and cloe window
     }
 
     /**
@@ -111,17 +107,6 @@ public class LoginBox {
             return false;
         }
         return false;
-    }
-
-    /**
-     * Event handler
-     * @param e
-     */
-    private static void handle(ActionEvent e) {
-        if (isInt(nameInput, passwordInput)) {
-            answer = true;
-            window.close();
-        }
     }
 } //@@author
 
