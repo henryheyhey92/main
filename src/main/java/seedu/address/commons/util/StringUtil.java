@@ -43,32 +43,59 @@ public class StringUtil {
 
     //@@author kikanng
     /**
-     * Returns true if the {@code sentence} start with {@code characters}.
-     *   Ignores case, full word match is not required.
-     *   <br>examples:<pre>
-     *       containsWordIgnoreCase("Abcdef", "abc") == true
-     *       containsWordIgnoreCase("Abcdef", "bc") == false //not start with "bc"
-     *       </pre>
      * @param sentence cannot be null
-     * @param chars cannot be null, cannot be empty
+     * @param word cannot be null, cannot be empty
      */
-    public static boolean startWithCharIgnoreCase(String sentence, String chars) {
+    private static boolean universalCompare(String sentence, String word, boolean startWith, boolean endWith, boolean ignoreCase) {
         requireNonNull(sentence);
-        requireNonNull(chars);
+        requireNonNull(word);
 
-        String preppedChars = chars.trim();
-        checkArgument(!preppedChars.isEmpty(), "Word parameter cannot be empty");
-        checkArgument(preppedChars.split("\\s+").length == 1, "Word parameter should be a single word");
-        String regex = String.format("^" + preppedChars + ".*$");
-
-        if (sentence.matches(regex)) {
-            return true;
+        if (ignoreCase) {
+            sentence = sentence.toLowerCase();
+            word = word.toLowerCase();
         }
+
+        String preppedWord = word.trim();
+        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
+        checkArgument(preppedWord.split("\\s+").length == 1, "Word parameter should be a single word");
+
+        String regex = preppedWord;
+        if (!startWith) { regex = String.format(".*" + regex); }
+        if (!endWith) { regex = String.format(regex + ".*"); }
+        regex = String.format("^" + regex + "$");
+
+        if (sentence.matches(regex)) { return true; }
         return false;
     }
-    //@@author
 
-    //@@author Labradorites
+    /**
+     * Returns true if the {@code sentence} start with {@code word}.
+     *   Ignores case, full word match is not required.
+     *   <br>examples:<pre>
+     *       startWithWordIgnoreCase("Abcdef", "abc") == true
+     *       startWithWordIgnoreCase("Abcdef", "bc") == false //not start with "bc"
+     *       </pre>
+     * @param sentence cannot be null
+     * @param word cannot be null, cannot be empty
+     */
+    public static boolean startWithWordIgnoreCase(String sentence, String word) {
+        return universalCompare(sentence, word, true, false, true);
+    }
+
+    /**
+     * Returns true if the {@code sentence} end with {@code word}.
+     *   Ignores case, full word match is not required.
+     *   <br>examples:<pre>
+     *       endWithWordIgnoreCase("Abcdef", "def") == true
+     *       endWithWordIgnoreCase("Abcdef", "ab") == false //not start with "ab"
+     *       </pre>
+     * @param sentence cannot be null
+     * @param word cannot be null, cannot be empty
+     */
+    public static boolean endWithWordIgnoreCase(String sentence, String word) {
+        return universalCompare(sentence, word, false, true, true);
+    }
+
     /**
      * Returns true if the {@code sentence} contains the {@code word}.
      *   Ignores case, matches if sentence contains word.
@@ -81,22 +108,21 @@ public class StringUtil {
      * @param word cannot be null, cannot be empty, must be a single word
      */
     public static boolean containsAny(String sentence, String word) {
-        requireNonNull(sentence);
-        requireNonNull(word);
+        return universalCompare(sentence, word, false, false, true);
+    }
 
-        String preppedWord = word.trim();
-        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
-        checkArgument(preppedWord.split("\\s+").length == 1, "Word parameter should be a single word");
-
-        String preppedSentence = sentence;
-        String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
-
-        for (String wordInSentence: wordsInPreppedSentence) {
-            if (wordInSentence.contains(preppedWord)) {
-                return true;
-            }
-        }
-        return false;
+    /**
+     * Returns true if the {@code sentence} contains the {@code word}.
+     *   Ignores case, matches if sentence contains word.
+     *   <br>examples:<pre>
+     *       exactWord("abc", "abc") == true
+     *       exactWord("ABcdef", "abc") == false //not a full word match
+     *       </pre>
+     * @param sentence cannot be null
+     * @param word cannot be null, cannot be empty, must be a single word
+     */
+    public static boolean exactWord(String sentence, String word) {
+        return universalCompare(sentence, word, true, true, true);
     }
     //@@author
 
