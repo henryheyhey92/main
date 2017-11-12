@@ -37,7 +37,7 @@ public class SortCommandTest {
 
     @Test
     public void execute_sortAddressBookByAddress_success() throws UniquePersonList.AddressBookIsEmpty,
-            LoadLookUpTableException{
+            LoadLookUpTableException {
         SortCommand sortCommand = prepareCommand("a", 0, model);
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.sortAddressBook(2, 0);
