@@ -73,7 +73,7 @@ public class FindEmailCommandTest {
     }
 
     /**
-     * Parses {@code userInput} into a {@code FindCommand}.
+     * Parses {@code userInput} into a {@code FindEmailCommand}.
      */
     private FindEmailCommand prepareCommand(String userInput) {
         FindEmailCommand command =
