@@ -16,6 +16,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.exceptions.LoadLookUpTableException;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for SortCommand.
@@ -26,7 +27,8 @@ public class SortCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_sortAddressBookByName_success() throws UniquePersonList.AddressBookIsEmpty {
+    public void execute_sortAddressBookByName_success() throws UniquePersonList.AddressBookIsEmpty,
+            LoadLookUpTableException {
         SortCommand sortCommand = prepareCommand("n", 0, model);
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.sortAddressBook(1, 0);
@@ -34,7 +36,8 @@ public class SortCommandTest {
     }
 
     @Test
-    public void execute_sortAddressBookByAddress_success() throws UniquePersonList.AddressBookIsEmpty {
+    public void execute_sortAddressBookByAddress_success() throws UniquePersonList.AddressBookIsEmpty,
+            LoadLookUpTableException{
         SortCommand sortCommand = prepareCommand("a", 0, model);
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.sortAddressBook(2, 0);

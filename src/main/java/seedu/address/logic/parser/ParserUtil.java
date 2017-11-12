@@ -39,7 +39,7 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_OPTION = "sort option is invalid.";
     private static final HashSet<Character> choices = new HashSet<Character>();
 
-    static{
+    static {
         choices.add('n');
         choices.add('p');
         choices.add('e');
@@ -100,12 +100,12 @@ public class ParserUtil {
      * the choice is an invalid one.
      */
     //@@author NUSe0032202
-    public static String parseChoice(String args) throws IllegalValueException{
-        String[] place_holder = args.trim().split("\\s+");
-        if(!choices.contains(place_holder[INDEX_CHOICE].charAt(INDEX_TARGET))){
+    public static String parseChoice(String args) throws IllegalValueException {
+        String[] placeHolder = args.trim().split("\\s+");
+        if (!choices.contains(placeHolder[INDEX_CHOICE].charAt(INDEX_TARGET))) {
             throw new IllegalValueException(MESSAGE_INVALID_CHOICE);
         } else {
-            return place_holder[INDEX_CHOICE];
+            return placeHolder[INDEX_CHOICE];
         }
     }
     //@@author
