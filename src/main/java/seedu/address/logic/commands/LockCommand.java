@@ -1,6 +1,5 @@
 package seedu.address.logic.commands;
 
-import javafx.stage.Stage;
 import seedu.address.LoginBox;
 
 import seedu.address.storage.Storage;
@@ -13,11 +12,15 @@ public class LockCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "lock";
     public static final String MESSAGE_SUCCESS = "Address book is unlock!";
+    private static LoginBox lock;
     protected Storage storage;
-    private boolean name = false;
-
-    public LockCommand(boolean name){
-        this.name = name;
+  
+    /**
+     * lock the application when command is inputted
+     */
+    public LockCommand() {
+        lock = new LoginBox();
+        lock.display ("AddressBook");
     }
 
     @Override

@@ -11,21 +11,21 @@ import seedu.address.logic.commands.CopyCommand;
 
 
 public class CopyCommandParserTest {
-    private CopyCommandParser parser =  new CopyCommandParser();
+    private CopyCommandParser parser = new CopyCommandParser();
 
     @Test
-    public void parse_validArgs_returnsCopyCommand(){
-        assertParseSuccess(parser," 1 n",new CopyCommand(Index.fromOneBased(1),"n"));
+    public void parse_validArgs_returnsCopyCommand() {
+        assertParseSuccess(parser, " 1 n", new CopyCommand(Index.fromOneBased(1), "n"));
     }
 
     @Test
-    public void parse_invalidArgs_failure(){
+    public void parse_invalidArgs_failure() {
         //invalid index specified
-        assertParseFailure(parser," @ n",String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+        assertParseFailure(parser, " @ n", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 CopyCommand.MESSAGE_USAGE));
 
         //invalid choice specified
-        assertParseFailure(parser," 1 ^%F",String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+        assertParseFailure(parser, " 1 ^%F", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 CopyCommand.POSSIBLE_CHOICES));
     }
 }

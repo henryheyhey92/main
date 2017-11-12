@@ -47,7 +47,7 @@ public class SelectBirthdayWindow extends UiPart<Region> {
     }
 
     /**
-     *  Shows the birthday picker window
+     *  Shows the birthday picker window.
      */
     public void show() {
         logger.fine("Showing birthday picker.");

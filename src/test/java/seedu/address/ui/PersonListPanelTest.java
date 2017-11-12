@@ -33,7 +33,7 @@ public class PersonListPanelTest extends GuiUnitTest {
     public void setUp() {
         Model model = new ModelManager();
         Logic logic = new LogicManager(model);
-        PersonListPanel personListPanel = new PersonListPanel(logic,TYPICAL_PERSONS);
+        PersonListPanel personListPanel = new PersonListPanel(logic, TYPICAL_PERSONS);
         uiPartRule.setUiPart(personListPanel);
 
         personListPanelHandle = new PersonListPanelHandle(getChildNode(personListPanel.getRoot(),

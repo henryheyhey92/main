@@ -12,18 +12,18 @@ public class SortCommandParserTest {
     private SortCommandParser parser = new SortCommandParser();
 
     @Test
-    public void parse_validArgs_returnsSortCommand(){
-        assertParseSuccess(parser,"a",new SortCommand("a",0));
+    public void parse_validArgs_returnsSortCommand() {
+        assertParseSuccess(parser, "a", new SortCommand("a", 0));
     }
 
     @Test
-    public void parse_invalidValue_failure(){
+    public void parse_invalidValue_failure() {
         //invalid sort option
-        assertParseFailure(parser," ^G&F",String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+        assertParseFailure(parser, " ^G&F", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 SortCommand.POSSIBLE_CHOICES));
 
         //invalid save option
-        assertParseFailure(parser,"a @V",String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                SortCommand.SAVE_OPTION ));
+        assertParseFailure(parser, "a @V", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                SortCommand.SAVE_OPTION));
     }
 }
