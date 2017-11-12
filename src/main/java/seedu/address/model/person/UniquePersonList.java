@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.commands.SortCommand.MESSAGE_EMPTY;
 import static seedu.address.logic.commands.SortName.OPTION_NAME;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -17,6 +18,7 @@ import seedu.address.logic.commands.SortAddress;
 import seedu.address.logic.commands.SortName;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.LoadLookUpTableException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
@@ -61,15 +63,19 @@ public class UniquePersonList implements Iterable<Person> {
      * @throws AddressBookIsEmpty
      */
     //@@author NUSe0032202
-    public void sort(int option) throws AddressBookIsEmpty {
-        if (!internalList.isEmpty()) {
-            if (option == OPTION_NAME) {
-                Collections.sort(internalList, new SortName());
+    public void sort(int option) throws AddressBookIsEmpty, LoadLookUpTableException {
+        try {
+            if (!internalList.isEmpty()) {
+                if (option == OPTION_NAME) {
+                    Collections.sort(internalList, new SortName());
+                } else {
+                    Collections.sort(internalList, new SortAddress());
+                }
             } else {
-                Collections.sort(internalList, new SortAddress());
+                throw new AddressBookIsEmpty();
             }
-        } else {
-            throw new AddressBookIsEmpty();
+        } catch (IOException e) {
+            throw new LoadLookUpTableException();
         }
     }
     //@@author
@@ -149,9 +155,11 @@ public class UniquePersonList implements Iterable<Person> {
     /**
      * Exception gets thrown if the addressbook is empty.
      */
+    //@@author NUSe0032202
     public static class AddressBookIsEmpty extends CommandException {
         protected AddressBookIsEmpty() {
             super(MESSAGE_EMPTY);
         }
     }
+    //@@author
 }

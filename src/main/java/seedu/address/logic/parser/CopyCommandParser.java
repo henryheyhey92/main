@@ -1,6 +1,5 @@
 package seedu.address.logic.parser;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.core.index.Index;
@@ -8,6 +7,9 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.CopyCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * Parses input arguments and creates a new CopyCommand object
+ */
 //@@author NUSe0032202
 public class CopyCommandParser implements Parser<CopyCommand> {
 
@@ -21,13 +23,18 @@ public class CopyCommandParser implements Parser<CopyCommand> {
      * @throws ParseException if the user input does not conform to the expected format
      */
     public CopyCommand parse(String args) throws ParseException {
-        requireNonNull(args);
 
         Index index;
         String choice;
 
+        //Detect empty arguments.
+        if (args.equals("")) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    CopyCommand.MESSAGE_USAGE));
+        }
+
         try {
-            index = ParserUtil.parseIndex(Character.toString(args.trim().charAt(INDEX_TARGET)));
+            index = ParserUtil.parseIndex(args.trim().substring(INDEX_TARGET, args.trim().indexOf(" ")));
         } catch (IllegalValueException ive) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, CopyCommand.MESSAGE_USAGE));
         }

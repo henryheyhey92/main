@@ -8,43 +8,65 @@ AddressBook - Level 4 is a desktop address book application used for teaching So
 
 *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] {give links to collated code files}
 
-=== Enhancement Added: Undo/Redo
+=== Enhancement Added: FindEmail
 
 ==== External behavior
 
 ---
-#Start of Extract [from: User Guide]#
+Finds persons whose email contain any of the given keywords. +
+Format: `findEmail KEYWORD`
 
-include::../UserGuide.adoc[tag=undoredo]
+****
+* The search is case insensitive. e.g. `hans` will match `Hans`
+* Partial word can also be searched. e.g. `john` will match `johndoe@example.com`
+* Only the email is searched.
+****
 
-#End of Extract#
+Examples:
+
+* `findEmail jane` +
+Returns `janedoe@example.com`
 
 ---
 
 ==== Justification
 
-{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+From time to time, we will receive email from unknown email address. This feature comes in handy to look up if it is from a friend.
 
 ==== Implementation
 
 ---
-#Start of Extract [from: Developer Guide]#
-
-include::../DeveloperGuide.adoc[tag=undoredo]
-
-#End of Extract#
+The find email mechanism is facilitated by regex. After finding matches, result will be stored in the filtered list that is showing on the UI.
+Further improvement might include allowing user to use flag(e.g. findEmail \f KEYWORD) to do advance search.
 
 ---
 
-=== Enhancement Proposed: Add command `remark`
+=== Enhancement Added: ChangeTheme
 
-{Explain similar to the Undo/Redo feature above.}
+==== External behavior
+
+---
+Change the UI theme through command or UI
+Command Format: `theme light/dark`
+UI: click "File > ____ theme"
+
+---
+
+==== Justification
+
+Address book is a personal application. By allowing user to change the color theme to meet their need, an more intimate connection is formed and it increases app sticky.
+
+==== Implementation
+
+---
+The change theme mechanism is implemented in both command and GUI level. By typing command `theme light/dark` or clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
+
+---
+
+=== Enhancement Proposed: Add command OutputCSV
+
+
 
 === Other contributions
 
-* Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-* Wrote additional tests to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
-
-== Project: PowerPointLabs
-
-{Optionally (not graded), you may include other projects in your portfolio.}
+* Updated the GUI color scheme

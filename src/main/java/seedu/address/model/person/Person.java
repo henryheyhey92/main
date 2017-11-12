@@ -29,8 +29,8 @@ public class Person implements ReadOnlyPerson {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address,Birthday birthday,Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Phone phone, Email email, Address address, Birthday birthday, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, address, birthday, tags);
         this.name = new SimpleObjectProperty<>(name);
         this.phone = new SimpleObjectProperty<>(phone);
         this.email = new SimpleObjectProperty<>(email);
@@ -45,11 +45,7 @@ public class Person implements ReadOnlyPerson {
      */
     public Person(ReadOnlyPerson source) {
         this(source.getName(), source.getPhone(), source.getEmail(), source.getAddress(),
-                source.getBirthday(),source.getTags());
-    }
-
-    public void setName(Name name) {
-        this.name.set(requireNonNull(name));
+                source.getBirthday(), source.getTags());
     }
 
     @Override
@@ -62,20 +58,22 @@ public class Person implements ReadOnlyPerson {
         return name.get();
     }
 
-    @Override
-    public ObjectProperty<Birthday> birthdayProperty(){return birthday;}
+    public void setName(Name name) {
+        this.name.set(requireNonNull(name));
+    }
 
     @Override
-    public Birthday getBirthday(){
+    public ObjectProperty<Birthday> birthdayProperty() {
+        return birthday;
+    }
+
+    @Override
+    public Birthday getBirthday() {
         return birthday.get();
     }
 
     public void setBirthday(Birthday birthday) {
         this.birthday.set(requireNonNull(birthday));
-    }
-
-    public void setPhone(Phone phone) {
-        this.phone.set(requireNonNull(phone));
     }
 
     @Override
@@ -88,8 +86,8 @@ public class Person implements ReadOnlyPerson {
         return phone.get();
     }
 
-    public void setEmail(Email email) {
-        this.email.set(requireNonNull(email));
+    public void setPhone(Phone phone) {
+        this.phone.set(requireNonNull(phone));
     }
 
     @Override
@@ -102,8 +100,8 @@ public class Person implements ReadOnlyPerson {
         return email.get();
     }
 
-    public void setAddress(Address address) {
-        this.address.set(requireNonNull(address));
+    public void setEmail(Email email) {
+        this.email.set(requireNonNull(email));
     }
 
     @Override
@@ -116,6 +114,10 @@ public class Person implements ReadOnlyPerson {
         return address.get();
     }
 
+    public void setAddress(Address address) {
+        this.address.set(requireNonNull(address));
+    }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -125,6 +127,14 @@ public class Person implements ReadOnlyPerson {
         return Collections.unmodifiableSet(tags.get().toSet());
     }
 
+    /**
+     * Replaces this person's tags with the tags in the argument tag set.
+     */
+    public void setTags(Set<Tag> replacement) {
+        tags.set(new UniqueTagList(replacement));
+    }
+    //@@author
+
     //@@author Labradorites
     @Override
     public String fullTag() {
@@ -133,17 +143,9 @@ public class Person implements ReadOnlyPerson {
 
         return builder.toString().replace("][", " ").replaceAll("[\\[\\]]", "");
     }
-    //@@author
 
     public ObjectProperty<UniqueTagList> tagProperty() {
         return tags;
-    }
-
-    /**
-     * Replaces this person's tags with the tags in the argument tag set.
-     */
-    public void setTags(Set<Tag> replacement) {
-        tags.set(new UniqueTagList(replacement));
     }
 
     @Override
@@ -156,7 +158,7 @@ public class Person implements ReadOnlyPerson {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, birthday, tags);
     }
 
     @Override

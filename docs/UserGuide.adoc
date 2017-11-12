@@ -57,7 +57,9 @@ Format: `help`
 
 === Changing theme : `Dark theme` / `Light theme`
 
-Change the UI theme when the user click "File > ____ theme"
+Change the UI theme through command or UI
+Command Format: `theme light/dark`
+UI: click "File > ____ theme"
 
 === Adding a person: `add`
 
@@ -72,18 +74,23 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
+// tag::sort[]
 === Sorting the addressbook: `sort`
 
 Sorts the addressbook by address or by name.User can specify if they want to save the sorted state. +
 Format: `s OPTION SAVE_OPTION`
 
-***
-* OPTION keyword allows to select to sort by name or address.
+****
+* OPTION keyword allows user to select to sort by name or address.
 * SAVE_OPTION keyword allows user to save the sorted state of the addressbook base on preference.
+****
+
+Examples:
+
 * To sort by name use `n`. Example `s n`.
 * To sort by address use `a`. Example `s a`.
 * To sort by name and save use `se`. Example `s n se`.
-***
+// end::sort[]
 
 === Listing all persons : `list`
 
@@ -92,9 +99,17 @@ Format: `list`
 
 === Listing all tags : `listTags`
 
-Shows a list of all tags in the address book. Tags listed are unique (no duplicates) and sorted alphabetically. +
-Format: `listTags`
+Shows a list of unique all tags in the AddressBook or persons currently displayed in PersonPanelList. +
+Tags listed are unique (no duplicates) and sorted alphabetically. +
+Format: `listTags [f]`
 
+***
+* `f`, is optional, allows users to choose between displaying all unique tags added to AddressBook or unique tags of persons currently listed in the PersonPanelList.
+* `listTags` displays list of all unique tags added to AddressBook.
+* `listTags f` displays list of all unique tags of persons listed in the PersonListPanel. `f` referring to "filtered".
+***
+
+//tag::copy[]
 === Copying person's information over to system clipboard : `copy`
 
 Copies the selected person's information over to the system clipboard.
@@ -110,6 +125,7 @@ Examples:
 * To copy a person's phone append the letter `p` after INDEX. Example 'c 1 p'.
 * To copy a person's email append the letter `e` after INDEX. Example 'c 1 e'.
 * To copy a person's address append the letter `a` after INDEX. Example 'c 1 a'.
+//end::copy[]
 
 === Editing a person : `edit`
 
@@ -151,7 +167,7 @@ Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
 
-=== Locating persons by phone: `findEmail`
+=== Locating persons by email: `findEmail`
 
 Finds persons whose email contain any of the given keywords. +
 Format: `findEmail KEYWORD`
@@ -398,7 +414,7 @@ e.g. `findPhone 000 111`
 * *Find Tag* : `findTag KEYWORD [MORE_KEYWORDS]` +
 e.g. `findTag neighbour family`
 * *List* : `list`
-* *List Tags* : `listTags`
+* *List Tags* : `listTags [f]`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`

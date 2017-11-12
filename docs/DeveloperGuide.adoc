@@ -216,16 +216,14 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 == Implementation
 
+// tag::sort[]
 === Sort Command mechanism
 
-Overview: The sort command is able to sort by name or by address. Name is sorted alphabetically while
-addresses are sorted by districts.
-
 How is it implemented: Sorting by name is done using the Java comparator with the compare method overridden
-in the SortName class. Comparison is via using the method compareToIgnoreCase(). For v1.3, sorting by address is done by
-using an arraylist lookup table for sorting with districts already pre-loaded. Example areas like 'Jurong', 'Clementi' and '
-Pasir Ris' in the context of Singapore will be added. The address string
-will be checked against the table and the table value would be used for comparison.
+in the SortName class. Comparison is via using the method compareToIgnoreCase(). For v1.5, street names in Singapore
+has been added into a csv file for easy manipulaition of table data if need be. The AddressData class is responsible for
+extracting the data from the csv file to the arraylist look-up table. A person's address will be checked against the table
+and the table value would be used for comparison.
 
 Why it is implemented this way: Sort by name is straightforward using the standard sorting approach however sorting
 by addresses is far more complicated. Using a lookup table offers a definite sorting approach as compared to other
@@ -234,6 +232,7 @@ stages, this approach may be reassessed for suitability.
 
 Alternatives Considered:
 -Java regex
+// end::sort[]
 
 === Copy Command mechanism
 
@@ -252,7 +251,7 @@ Further improvement might include allowing user to use flag(e.g. findEmail \f KE
 
 === Add change theme mechanism
 
-The change theme mechanism is implemented in the GUI level. By clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
+The change theme mechanism is implemented in both command and GUI level. By typing command `theme light/dark` or clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
 
 -`The findByLetter Implementation`;
 
@@ -321,15 +320,16 @@ Java file has been modified;
 -`FindCommandLetter.java`(*newly created); for the find letter command.
 // end::findletter[]
 
-=== The listTag implementation
+=== The listTags implementation
 
-listTag is able to seive out all unique tags that can be found in the AddressBook.
-listTag does not display duplicate tags that are tagged to the contacts in the AddressBook and is sorted alphabetically.
+`listTags` is able to seive out all unique tags that can be found in the AddressBook. ` f` can be appended to list unique tags of persons currently listed in the PersonListPanel.
+`listTags` does not display duplicate tags that are tagged to the contacts in the AddressBook and is sorted alphabetically.
+`listTags f` displays a list of unique tags of persons currently shown in the PersonListPanel.
 
 Java files that have been modified:
-- 'Model': Modified to include a signature in the Model interface for the getTagsList() method. Takes in no parameter and returns a List<Tag>.
-- 'ModelManager': Modified to include a getTagsList() method that takes in no parameter and returns a List<Tag> that contains all tags.
-- 'ListTagsCommand': Created to convert the List<Tag> to strings and be printed in the ResultsDisplay box.
+- 'Model': Modified to include a signature in the Model interface for the getFilteredTagsList(), getNormalTagsList() method. Takes in no parameter and returns a List<Tag>. getTagsListAsString() is added to retrieve the list of tags as String.
+- 'ModelManager': Modified to include the  getFilteredTagsList() and getNormalTagsList() methods that takes in no parameter and returns a List<Tag> that contains all tags. getTagsListAsString() takes in a List<Tag> and returns List<String>.
+- 'ListTagsCommand': Created to convert the List<Tag> to strings by calling the above functions and print the list of tags in the ResultsDisplay box.
 - 'Tag': modified to include an accessor for tagName.
 
 API : Logic.java

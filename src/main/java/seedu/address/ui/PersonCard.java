@@ -1,10 +1,10 @@
 package seedu.address.ui;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.HashMap;
 import java.util.Random;
 import java.util.logging.Logger;
-
-import com.google.common.eventbus.Subscribe;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,7 +14,6 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.logic.Logic;
 import seedu.address.model.person.ReadOnlyPerson;
 
@@ -39,7 +38,7 @@ public class PersonCard extends UiPart<Region> {
     public final ReadOnlyPerson person;
     private final Logger logger = LogsCenter.getLogger(this.getClass());
     private final Logic logic;
-    private CalendarTest calendar;
+    private SelectBirthdayWindow calendar;
     @FXML
     private HBox cardPane;
     @FXML
@@ -85,9 +84,13 @@ public class PersonCard extends UiPart<Region> {
         return tagColors.get(tagValue);
     }
 
+    /**
+     * Updates the birthday label to display the date picked and changes the specified person's birthday
+     */
     //@@author NUSe0032202
     @FXML
     private void showArgs() {
+        requireNonNull(calendar);
         birthday.setText(calendar.getBirthday());
         person.getBirthday().edit(calendar.getBirthday());
         logic.getModel().save();
@@ -100,7 +103,7 @@ public class PersonCard extends UiPart<Region> {
     //@@author NUSe0032202
     @FXML
     public void handleCalendar() {
-        calendar = new CalendarTest();
+        calendar = new SelectBirthdayWindow();
         calendar.show();
     }
     //@@author
@@ -155,11 +158,5 @@ public class PersonCard extends UiPart<Region> {
         PersonCard card = (PersonCard) other;
         return id.getText().equals(card.id.getText())
                 && person.equals(card.person);
-    }
-
-    @Subscribe
-    private void handleShowCalendarEvent(ShowHelpRequestEvent event) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handleCalendar();
     }
 }

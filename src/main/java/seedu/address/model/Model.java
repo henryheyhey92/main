@@ -1,13 +1,13 @@
 package seedu.address.model;
 
 import java.util.List;
-import java.util.Set;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.LoadLookUpTableException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
 
@@ -55,7 +55,7 @@ public interface Model {
      * @param person
      * @param choice
      */
-    void copy(ReadOnlyPerson person,String choice);
+    void copy(ReadOnlyPerson person, String choice);
 
     /**
      * Utility function to save the state of the addressbook.This function is only used when editing birthday's
@@ -69,13 +69,24 @@ public interface Model {
      *  option = 2 {sorts by address}
      */
 
-    void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty;
+    void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty,
+            LoadLookUpTableException;
 
     //@@author Labradorites
-    /*
+    /**
+     * Returns a unique tags list as {@code List<String>}
+     */
+    List<String> getTagsListAsString(List<Tag> tagStringList);
+
+    /**
      * Returns list of all unique tags present in AddressBook that are sorted alphabetically
      */
-    List<Tag> getTagsList();
+    List<Tag> getNormalTagsList();
+
+    /**
+     * Returns list of all unique tags currently present in PersonListPanel that are sorted alphabetically
+     */
+    List<Tag> getFilteredTagsList();
     //@@author
 
 }

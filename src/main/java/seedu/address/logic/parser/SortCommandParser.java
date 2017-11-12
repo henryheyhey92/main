@@ -1,6 +1,5 @@
 package seedu.address.logic.parser;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -29,7 +28,12 @@ public class SortCommandParser implements Parser<SortCommand> {
         final int noSave = 0;
 
         placeHolder = args.trim().split("\\s+");
-        requireNonNull(placeHolder[INDEX_OPTION]);
+
+        //Detect empty arguments.
+        if (placeHolder[INDEX_OPTION].equals("")) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                   SortCommand.MESSAGE_USAGE));
+        }
 
         try {
             option = ParserUtil.parseSortOption(placeHolder[INDEX_OPTION]);
@@ -41,7 +45,7 @@ public class SortCommandParser implements Parser<SortCommand> {
             return new SortCommand(option, noSave);
         }
 
-        if (placeHolder[INDEX_SAVE_OPTION].equals(SAVE)) {
+        if (placeHolder[INDEX_SAVE_OPTION].compareTo(SAVE) == 0) {
             return new SortCommand(option, save);
         } else {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.SAVE_OPTION));

@@ -9,10 +9,14 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.ReadOnlyPerson;
 
+/**
+ *  Copies the desired data field of a person over to the system clipboard
+ */
 //@@author NUSe0032202
 public class CopyCommand extends Command {
 
     public static final String COMMAND_WORD = "c";
+    public static final String COMMAND_ALIAS = "copy";
     public static final String CHOICE_NAME = "n";
     public static final String CHOICE_EMAIL = "e";
     public static final String CHOICE_PHONE = "p";
@@ -56,21 +60,29 @@ public class CopyCommand extends Command {
         model.copy(targetPerson, choice);
 
         switch (choice) {
-            case CHOICE_NAME:
-                return new CommandResult(MESSAGE_SUCCESS_NAME);
+        case CHOICE_NAME:
+            return new CommandResult(MESSAGE_SUCCESS_NAME);
 
-            case CHOICE_ADDRESS:
-                return new CommandResult(MESSAGE_SUCCESS_ADDRESS);
+        case CHOICE_ADDRESS:
+            return new CommandResult(MESSAGE_SUCCESS_ADDRESS);
 
-            case CHOICE_PHONE:
-                return new CommandResult(MESSAGE_SUCCESS_PHONE);
+        case CHOICE_PHONE:
+            return new CommandResult(MESSAGE_SUCCESS_PHONE);
 
-            case CHOICE_EMAIL:
-                return new CommandResult(MESSAGE_SUCCESS_EMAIL);
+        case CHOICE_EMAIL:
+            return new CommandResult(MESSAGE_SUCCESS_EMAIL);
 
-            default:
-                return new CommandResult("Error, this message should not be displayed");
+        default:
+            return new CommandResult("Error, this message should not be displayed");
         }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof CopyCommand // instanceof handles nulls
+                && this.index.equals(((CopyCommand) other).index))
+                && this.choice.equals(((CopyCommand) other).choice); // state check
     }
 }
 //@@author

@@ -15,6 +15,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Birthday;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -38,7 +39,7 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_OPTION = "sort option is invalid.";
     private static final HashSet<Character> choices = new HashSet<Character>();
 
-    static{
+    static {
         choices.add('n');
         choices.add('p');
         choices.add('e');
@@ -99,12 +100,12 @@ public class ParserUtil {
      * the choice is an invalid one.
      */
     //@@author NUSe0032202
-    public static String parseChoice(String args) throws IllegalValueException{
-        String[] place_holder = args.trim().split("\\s+");
-        if(!choices.contains(place_holder[INDEX_CHOICE].charAt(INDEX_TARGET))){
+    public static String parseChoice(String args) throws IllegalValueException {
+        String[] placeHolder = args.trim().split("\\s+");
+        if (!choices.contains(placeHolder[INDEX_CHOICE].charAt(INDEX_TARGET))) {
             throw new IllegalValueException(MESSAGE_INVALID_CHOICE);
         } else {
-            return place_holder[INDEX_CHOICE];
+            return placeHolder[INDEX_CHOICE];
         }
     }
     //@@author
@@ -125,6 +126,15 @@ public class ParserUtil {
     public static Optional<Email> parseEmail(Optional<String> email) throws IllegalValueException {
         requireNonNull(email);
         return email.isPresent() ? Optional.of(new Email(email.get())) : Optional.empty();
+    }
+
+    /**
+     * Parses a {@code Optional<String> birthday} into an {@code Optional<Birthday>} if {@code birthday} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<Birthday> parseBirthday(Optional<String> birthday) throws IllegalValueException {
+        requireNonNull(birthday);
+        return birthday.isPresent() ? Optional.of(new Birthday(birthday.get())) : Optional.empty();
     }
 
     /**

@@ -5,6 +5,7 @@ import java.util.Comparator;
 import seedu.address.model.Model;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.exceptions.LoadLookUpTableException;
 
 /**
  * Actual logic for sorting by name
@@ -28,9 +29,13 @@ public class SortName extends SortCommand implements Comparator<ReadOnlyPerson> 
     }
 
     @Override
-    public CommandResult execute() throws UniquePersonList.AddressBookIsEmpty {
-        model.sortAddressBook(OPTION_NAME, saveOption);
-        return new CommandResult(MESSAGE_SUCCESS_NAME);
+    public CommandResult executeUndoableCommand() throws UniquePersonList.AddressBookIsEmpty {
+        try {
+            model.sortAddressBook(OPTION_NAME, saveOption);
+            return new CommandResult(MESSAGE_SUCCESS_NAME);
+        } catch (LoadLookUpTableException le) {
+            return new CommandResult("This should never be displayed");
+        }
     }
 
     @Override
