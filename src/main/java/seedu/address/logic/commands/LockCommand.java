@@ -20,22 +20,21 @@ public class LockCommand extends UndoableCommand {
     protected Storage storage;
     private boolean name = false;
 
-    //    public LockCommand(){
-////        lock = new LoginBox();
-////        lock.display("AddressBook Login", 1);
-//
-//    }
-    public LockCommand(boolean name){
+    //public LockCommand(){
+    //lock = new LoginBox();
+    //lock.display("AddressBook Login", 1);
+    //}
+    public LockCommand(boolean name) {
         this.name = name;
     }
-    public boolean LockCommandget(){
+    public boolean LockCommandget() {
         return this.name;
     }
 
 
     @Override
     public CommandResult executeUndoableCommand() {
-            return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 
 }
