@@ -97,6 +97,7 @@ Examples:
 Shows a list of all persons in the address book. +
 Format: `list`
 
+// tag::listTags[]
 === Listing all tags : `listTags`
 
 Shows a list of unique all tags in the AddressBook or persons currently displayed in PersonPanelList. +
@@ -108,8 +109,9 @@ Format: `listTags [f]`
 * `listTags` displays list of all unique tags added to AddressBook.
 * `listTags f` displays list of all unique tags of persons listed in the PersonListPanel. `f` referring to "filtered".
 ***
+// end::listTags[]
 
-//tag::copy[]
+// tag::copy[]
 === Copying person's information over to system clipboard : `copy`
 
 Copies the selected person's information over to the system clipboard.
@@ -125,7 +127,7 @@ Examples:
 * To copy a person's phone append the letter `p` after INDEX. Example 'c 1 p'.
 * To copy a person's email append the letter `e` after INDEX. Example 'c 1 e'.
 * To copy a person's address append the letter `a` after INDEX. Example 'c 1 a'.
-//end::copy[]
+// end::copy[]
 
 === Editing a person : `edit`
 
@@ -183,6 +185,7 @@ Examples:
 * `findEmail jane` +
 Returns `janedoe@example.com`
 
+// tag::findPhone[]
 === Locating persons by phone: `findPhone`
 
 Finds persons whose phones contain any of the given keywords. +
@@ -200,7 +203,9 @@ Examples:
 Returns `10001` and `191000`
 * `find 111 222 333` +
 Returns any person having phone numbers `1111`, `0222`, or `9333`
+// end::findPhone[]
 
+// tag::findTag[]
 === Locating persons by phone: `findTag`
 
 Finds persons whose tags contain any of the given keywords. +
@@ -218,6 +223,8 @@ Examples:
 Returns `friends`
 * `findTag friends family neighbours` +
 Returns any person having tags `friends`, `family`, or `neighbour`
+// end::findTag[]
+
 // tag::findletter[]
 === Locating persons by name: `Findletter`
 
