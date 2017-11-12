@@ -20,7 +20,6 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
-import seedu.address.logic.commands.LockCommand;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -42,16 +41,14 @@ import seedu.address.ui.UiManager;
 public class MainApp extends Application {
 
     public static final Version VERSION = new Version(1, 3, 0, true);
-
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
-    public LockCommand result;
-    protected Ui ui;
-    protected Logic logic;
-    protected Storage storage;
-    protected Model model;
     protected Config config;
+    protected Logic logic;
+    protected Model model;
+    protected Storage storage;
+    protected Ui ui;
     protected UserPrefs userPrefs;
-    public Stage window;
+    private Stage window;
 
     @Override
     public void init() throws Exception {
@@ -188,17 +185,14 @@ public class MainApp extends Application {
         logger.info("Starting AddressBook " + MainApp.VERSION);
         window = primaryStage;
         boolean answer = LoginBox.display("AddressBook Login", 0);
-        if(answer) {
-            //this line causing the problem
-           // boolean result2 = result.LockCommandget();
+        if (answer) {
+
             ui.start(primaryStage);
-//            if(result2){
-//                LoginBox.display("AddressBook Login", 0);
-//            }
-                window.setOnCloseRequest(e -> {
-                    e.consume();
-                    stop();
-                });
+
+            window.setOnCloseRequest(e -> {
+                e.consume();
+                stop();
+            });
 
         }
 
@@ -206,11 +200,11 @@ public class MainApp extends Application {
 
     @Override
     public void stop() {
-        boolean answer = ConfirmBox.display("Exit Check Protocol","Confirm on exiting the program?");
+        boolean answer = ConfirmBox.display("Exit Check Protocol", "Confirm on exiting the program?");
 
-        if(answer) {
+        if (answer) {
             //GoodByeBox.display("Title", "Good bye and have a nice day");
-        logger.info("============================ [ Stopping Address Book ] =============================");
+            logger.info("============================ [ Stopping Address Book ] =============================");
 
             ui.stop();
             try {

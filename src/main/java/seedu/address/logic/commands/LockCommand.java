@@ -1,12 +1,10 @@
 package seedu.address.logic.commands;
 
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import seedu.address.LoginBox;
 
-import seedu.address.MainApp;
 import seedu.address.storage.Storage;
-import seedu.address.ui.Ui;
+
 
 /**
  * Clears the address book.
@@ -37,11 +35,7 @@ public class LockCommand extends UndoableCommand {
 
     @Override
     public CommandResult executeUndoableCommand() {
-//        if(answer) {
             return new CommandResult(MESSAGE_SUCCESS);
-//        }else{
-//            return new CommandResult(MESSAGE_FAIL);
-//        }
     }
 
 }

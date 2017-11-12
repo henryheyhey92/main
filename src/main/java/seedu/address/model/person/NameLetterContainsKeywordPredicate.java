@@ -5,7 +5,10 @@ import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
 
-public class NameLetterContainsKeywordPredicate implements Predicate<ReadOnlyPerson>{
+/**
+ *  return the name that matches the key letter
+ */
+public class NameLetterContainsKeywordPredicate implements Predicate<ReadOnlyPerson> {
     private final List<String> keywords;
 
     public NameLetterContainsKeywordPredicate(List<String> keywords) {

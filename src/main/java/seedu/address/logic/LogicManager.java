@@ -51,7 +51,7 @@ public class LogicManager extends ComponentManager implements Logic {
     }
 
     @Override
-    public Model getModel(){
+    public Model getModel() {
         return  model;
     }
 
