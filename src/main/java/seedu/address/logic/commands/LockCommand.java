@@ -14,7 +14,6 @@ public class LockCommand extends UndoableCommand {
     public static final String MESSAGE_SUCCESS = "Address book is unlock!";
     private static LoginBox lock;
     protected Storage storage;
-  
     /**
      * lock the application when command is inputted
      */
