@@ -131,5 +131,4 @@ include::../DeveloperGuide.adoc[tag=lock]
 * Wrote additional tests to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
 
 == Project: PowerPointLabs
-
 {Optionally (not graded), you may include other projects in your portfolio.}
