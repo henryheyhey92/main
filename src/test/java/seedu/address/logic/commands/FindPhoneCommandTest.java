@@ -34,9 +34,9 @@ public class FindPhoneCommandTest {
     @Test
     public void equals() {
         PhoneContainsKeywordsPredicate firstPredicate =
-                new PhoneContainsKeywordsPredicate(Collections.singletonList("first"));
+                new PhoneContainsKeywordsPredicate(Collections.singletonList("123"));
         PhoneContainsKeywordsPredicate secondPredicate =
-                new PhoneContainsKeywordsPredicate(Collections.singletonList("second"));
+                new PhoneContainsKeywordsPredicate(Collections.singletonList("567"));
 
         FindPhoneCommand findFirstCommand = new FindPhoneCommand(firstPredicate);
         FindPhoneCommand findSecondCommand = new FindPhoneCommand(secondPredicate);
@@ -49,7 +49,7 @@ public class FindPhoneCommandTest {
         assertTrue(findFirstCommand.equals(findFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(findFirstCommand.equals(1));
+        assertFalse(findFirstCommand.equals("first"));
 
         // null -> returns false
         assertFalse(findFirstCommand.equals(null));
