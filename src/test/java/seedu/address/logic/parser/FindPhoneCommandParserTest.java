@@ -27,7 +27,7 @@ public class FindPhoneCommandParserTest {
         // no leading and trailing whitespaces
         FindPhoneCommand expectedFindPhoneCommand =
                 new FindPhoneCommand(new PhoneContainsKeywordsPredicate(Arrays.asList("85355255", "22222222")));
-        assertParseSuccess(parser, "85355255 22222222", expectedFindPhoneCommand);
+        assertParseSuccess(parser, " 85355255 22222222", expectedFindPhoneCommand);
 
         // multiple whitespaces between keywords
         assertParseSuccess(parser, " \n 85355255 \n \t 22222222  \t", expectedFindPhoneCommand);

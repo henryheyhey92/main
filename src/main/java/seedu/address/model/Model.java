@@ -72,7 +72,6 @@ public interface Model {
     void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty,
             LoadLookUpTableException;
 
-    //@@author Labradorites
     /**
      * Returns a unique tags list as {@code List<String>}
      */
@@ -87,6 +86,5 @@ public interface Model {
      * Returns list of all unique tags currently present in PersonListPanel that are sorted alphabetically
      */
     List<Tag> getFilteredTagsList();
-    //@@author
 
 }
