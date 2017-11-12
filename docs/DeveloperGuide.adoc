@@ -253,8 +253,7 @@ Further improvement might include allowing user to use flag(e.g. findEmail \f KE
 
 The change theme mechanism is implemented in both command and GUI level. By typing command `theme light/dark` or clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
 
--`The findByLetter Implementation`;
-
+// tag::findPhone[]
 === Add findPhone mechanism
 
 The findPhone mechanism is able to search for persons whose phone numbers contain any number being searched.
@@ -270,7 +269,9 @@ Java files that have been modified:
 - `FindPhoneCommand`
 - `FindPhoneCommandParser`
 - Some test units have been updated.
+// end::findPhone[]
 
+// tag::findTag[]
 === Add `findTag mechanism`
 
 The findTag mechanism is able to search for persons whose tags contain any keywords being searched.
@@ -287,6 +288,7 @@ Java files that have been modified:
 - `FindTagCommandParser.java`: Newly created.
 - `Person.java` : Altered to get tags as a string.
 - `ReadOnlyPerson.java`: Altered to get tags as a string.
+// end::findTag[]
 
 === The add birthday mechanism
 
@@ -300,6 +302,7 @@ Clicking on the person's contact will search for selected contact's address on G
 image::searchAddressUI.png[width="728"]
 
 Further improvements might include using command line to search for address or just clicking on address line in person's contact.
+
 // tag::findletter[]
 === The findByLetter Implementation
 
@@ -320,6 +323,7 @@ Java file has been modified;
 -`FindCommandLetter.java`(*newly created); for the find letter command.
 // end::findletter[]
 
+// tag::listTags[]
 === The listTags implementation
 
 `listTags` is able to seive out all unique tags that can be found in the AddressBook. ` f` can be appended to list unique tags of persons currently listed in the PersonListPanel.
@@ -331,6 +335,7 @@ Java files that have been modified:
 - 'ModelManager': Modified to include the  getFilteredTagsList() and getNormalTagsList() methods that takes in no parameter and returns a List<Tag> that contains all tags. getTagsListAsString() takes in a List<Tag> and returns List<String>.
 - 'ListTagsCommand': Created to convert the List<Tag> to strings by calling the above functions and print the list of tags in the ResultsDisplay box.
 - 'Tag': modified to include an accessor for tagName.
+// end::listTags[]
 
 API : Logic.java
 
@@ -383,6 +388,7 @@ if user name & password matches the input, user get to access the application.
 image::Login.png[width="800"]
 // end::lock[]
 
+// tag::undoredo[]
 === Undo/Redo mechanism
 
 The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modifies the state of the address book (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.

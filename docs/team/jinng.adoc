@@ -21,7 +21,7 @@ Returns any person having phone numbers 1111, 0222, or 9333
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=undoredo]
+include::../UserGuide.adoc[tag=findPhone]
 
 #End of Extract#
 
@@ -38,7 +38,7 @@ Hence with findPhone, user is able to help check if the number happens to be in 
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::../DeveloperGuide.adoc[tag=findPhone]
 
 #End of Extract#
 
@@ -57,7 +57,7 @@ Person whose tags contains any of the keyword
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=undoredo]
+include::../UserGuide.adoc[tag=findTag]
 
 #End of Extract#
 
@@ -74,7 +74,7 @@ Hence with findPhone, user is able to help check if the number happens to be in 
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::../DeveloperGuide.adoc[tag=findTag]
 
 #End of Extract#
 
@@ -89,7 +89,7 @@ Lists unique tags in AddressBook by preference. List of tags is displayed in Res
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=undoredo]
+include::../UserGuide.adoc[tag=listTags]
 
 #End of Extract#
 
@@ -107,7 +107,7 @@ Hence with findPhone, user is able to help check if the number happens to be in 
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::../DeveloperGuide.adoc[tag=listTags]
 
 #End of Extract#
 
