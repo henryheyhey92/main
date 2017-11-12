@@ -121,8 +121,7 @@ public class AddressBookParser {
             return new UndoCommand();
 
         case LockCommand.COMMAND_WORD:
-            boolean lock = true;
-            return new LockCommand(lock);
+            return new LockCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
