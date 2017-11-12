@@ -52,16 +52,16 @@ public abstract class AddressBookSystemTest {
         COMMAND_BOX_ERROR_STYLE = Arrays.asList("text-input", "text-field", CommandBox.ERROR_STYLE_CLASS);
     }
 
+    @BeforeClass
+    public static void setupBeforeClass() {
+        SystemTestSetupHelper.initializeStage();
+    }
+
     @ClassRule
     public static ClockRule clockRule = new ClockRule();
     private MainWindowHandle mainWindowHandle;
     private TestApp testApp;
     private SystemTestSetupHelper setupHelper;
-
-    @BeforeClass
-    public static void setupBeforeClass() {
-        SystemTestSetupHelper.initializeStage();
-    }
 
     @Before
     public void setUp() {
