@@ -98,6 +98,7 @@ public class AddressBookParser {
             return new ListTagsCommandParser().parse(arguments);
 
         case CopyCommand.COMMAND_WORD:
+        case CopyCommand.COMMAND_ALIAS:
             return new CopyCommandParser().parse(arguments);
 
         case HelpCommand.COMMAND_WORD:
@@ -113,6 +114,7 @@ public class AddressBookParser {
             return new SelectCommandParser().parse(arguments);
 
         case SortCommand.COMMAND_WORD:
+        case SortCommand.COMMAND_ALIAS:
             return new SortCommandParser().parse(arguments);
 
         case UndoCommand.COMMAND_WORD:

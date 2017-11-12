@@ -13,6 +13,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 public class SortCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "s";
+    public static final String COMMAND_ALIAS = "sort";
     public static final String CHOICE_NAME = "n";
     public static final String CHOICE_ADDRESS = "a";
 

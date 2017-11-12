@@ -16,6 +16,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class CopyCommand extends Command {
 
     public static final String COMMAND_WORD = "c";
+    public static final String COMMAND_ALIAS = "copy";
     public static final String CHOICE_NAME = "n";
     public static final String CHOICE_EMAIL = "e";
     public static final String CHOICE_PHONE = "p";
