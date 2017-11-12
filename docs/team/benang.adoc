@@ -46,7 +46,7 @@ include::../DeveloperGuide.adoc[tag=sort]
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=copy]
+include::../UserGuide.adoc[tag= copy]
 
 #End of Extract#
 

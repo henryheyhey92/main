@@ -253,8 +253,7 @@ Further improvement might include allowing user to use flag(e.g. findEmail \f KE
 
 The change theme mechanism is implemented in both command and GUI level. By typing command `theme light/dark` or clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
 
--`The findByLetter Implementation`;
-
+// tag::findPhone[]
 === Add findPhone mechanism
 
 The findPhone mechanism is able to search for persons whose phone numbers contain any number being searched.
@@ -270,7 +269,9 @@ Java files that have been modified:
 - `FindPhoneCommand`
 - `FindPhoneCommandParser`
 - Some test units have been updated.
+// end::findPhone[]
 
+// tag::findTag[]
 === Add `findTag mechanism`
 
 The findTag mechanism is able to search for persons whose tags contain any keywords being searched.
@@ -287,6 +288,7 @@ Java files that have been modified:
 - `FindTagCommandParser.java`: Newly created.
 - `Person.java` : Altered to get tags as a string.
 - `ReadOnlyPerson.java`: Altered to get tags as a string.
+// end::findTag[]
 
 === The add birthday mechanism
 
@@ -300,7 +302,8 @@ Clicking on the person's contact will search for selected contact's address on G
 image::searchAddressUI.png[width="728"]
 
 Further improvements might include using command line to search for address or just clicking on address line in person's contact.
-// tag::findletter
+
+// tag::findletter[]
 === The findByLetter Implementation
 
 Find all person that is related to the input character.
@@ -318,18 +321,21 @@ Java file has been modified;
 -`AddressBookParser.java`; for the case.
 
 -`FindCommandLetter.java`(*newly created); for the find letter command.
-// end::findletter
+// end::findletter[]
 
-=== The listTag implementation
+// tag::listTags[]
+=== The listTags implementation
 
-listTag is able to seive out all unique tags that can be found in the AddressBook.
-listTag does not display duplicate tags that are tagged to the contacts in the AddressBook and is sorted alphabetically.
+`listTags` is able to seive out all unique tags that can be found in the AddressBook. ` f` can be appended to list unique tags of persons currently listed in the PersonListPanel.
+`listTags` does not display duplicate tags that are tagged to the contacts in the AddressBook and is sorted alphabetically.
+`listTags f` displays a list of unique tags of persons currently shown in the PersonListPanel.
 
 Java files that have been modified:
-- 'Model': Modified to include a signature in the Model interface for the getTagsList() method. Takes in no parameter and returns a List<Tag>.
-- 'ModelManager': Modified to include a getTagsList() method that takes in no parameter and returns a List<Tag> that contains all tags.
-- 'ListTagsCommand': Created to convert the List<Tag> to strings and be printed in the ResultsDisplay box.
+- 'Model': Modified to include a signature in the Model interface for the getFilteredTagsList(), getNormalTagsList() method. Takes in no parameter and returns a List<Tag>. getTagsListAsString() is added to retrieve the list of tags as String.
+- 'ModelManager': Modified to include the  getFilteredTagsList() and getNormalTagsList() methods that takes in no parameter and returns a List<Tag> that contains all tags. getTagsListAsString() takes in a List<Tag> and returns List<String>.
+- 'ListTagsCommand': Created to convert the List<Tag> to strings by calling the above functions and print the list of tags in the ResultsDisplay box.
 - 'Tag': modified to include an accessor for tagName.
+// end::listTags[]
 
 API : Logic.java
 
@@ -349,7 +355,7 @@ image::FBL2.png[width="800"]
 
 feature has implemented, but writeup still in progress...
 
-// tag::exitcheck
+// tag::exitcheck[]
 === Program exit checker implementation
 
 This feature is to give the user a confirmation on closing the application.
@@ -366,9 +372,9 @@ ConfirmBox will return true or false value of the user intention to close or con
 image::exitprogramchecker.png[width="800"]
 
 The above is a illustration of how exit program funs.
-// end::exitcheck
+// end::exitcheck[]
 
-// tag::lock
+// tag::lock[]
 === Passcode lock implementation
 
 The following implementation is to add security features to the application
@@ -380,8 +386,9 @@ if user name & password matches the input, user get to access the application.
 -draft execution: will do a while loop in the MainApp class.
 
 image::Login.png[width="800"]
-// end::lock
+// end::lock[]
 
+// tag::undoredo[]
 === Undo/Redo mechanism
 
 The undo/redo mechanism is facilitated by an `UndoRedoStack`, which resides inside `LogicManager`. It supports undoing and redoing of commands that modifies the state of the address book (e.g. `add`, `edit`). Such commands will inherit from `UndoableCommand`.

@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.LoadLookUpTableException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
 
@@ -54,7 +55,7 @@ public interface Model {
      * @param person
      * @param choice
      */
-    void copy(ReadOnlyPerson person,String choice);
+    void copy(ReadOnlyPerson person, String choice);
 
     /**
      * Utility function to save the state of the addressbook.This function is only used when editing birthday's
@@ -68,11 +69,12 @@ public interface Model {
      *  option = 2 {sorts by address}
      */
 
-    void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty;
+    void sortAddressBook (int option, int saveOption) throws UniquePersonList.AddressBookIsEmpty,
+            LoadLookUpTableException;
 
     //@@author Labradorites
     /**
-     * Returns unique tags list as List<String>
+     * Returns a unique tags list as {@code List<String>}
      */
     List<String> getTagsListAsString(List<Tag> tagStringList);
 

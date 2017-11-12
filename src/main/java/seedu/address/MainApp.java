@@ -9,7 +9,6 @@ import com.google.common.eventbus.Subscribe;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.EventsCenter;
@@ -42,16 +41,14 @@ import seedu.address.ui.UiManager;
 public class MainApp extends Application {
 
     public static final Version VERSION = new Version(1, 3, 0, true);
-
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
-
-    protected Ui ui;
-    protected Logic logic;
-    protected Storage storage;
-    protected Model model;
     protected Config config;
+    protected Logic logic;
+    protected Model model;
+    protected Storage storage;
+    protected Ui ui;
     protected UserPrefs userPrefs;
-    Stage window;
+    private Stage window;
 
     @Override
     public void init() throws Exception {
@@ -184,26 +181,30 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         logger.info("Starting AddressBook " + MainApp.VERSION);
         window = primaryStage;
-        boolean answer = LoginBox.display("AddressBook Login");
-        if(answer) {
+        boolean answer = LoginBox.display("AddressBook Login", 0);
+        if (answer) {
+
             ui.start(primaryStage);
+
             window.setOnCloseRequest(e -> {
                 e.consume();
                 stop();
             });
+
         }
 
     }
 
     @Override
     public void stop() {
-        boolean answer = ConfirmBox.display("Exit Check Protocol","Confirm on exiting the program?");
+        boolean answer = ConfirmBox.display("Exit Check Protocol", "Confirm on exiting the program?");
 
-        if(answer) {
+        if (answer) {
             //GoodByeBox.display("Title", "Good bye and have a nice day");
-        logger.info("============================ [ Stopping Address Book ] =============================");
+            logger.info("============================ [ Stopping Address Book ] =============================");
 
             ui.stop();
             try {
@@ -214,7 +215,9 @@ public class MainApp extends Application {
             Platform.exit();
             System.exit(0);
         }
+
     }
+
 
     @Subscribe
     public void handleExitAppRequestEvent(ExitAppRequestEvent event) {

@@ -14,6 +14,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.LoadLookUpTableException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.tag.UniqueTagList;
@@ -91,7 +92,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         // in the person list.
         persons.add(newPerson);
     }
-    public void sort(int option)throws UniquePersonList.AddressBookIsEmpty {
+    public void sort(int option)throws UniquePersonList.AddressBookIsEmpty, LoadLookUpTableException {
         persons.sort(option);
     }
 

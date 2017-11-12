@@ -97,11 +97,21 @@ Examples:
 Shows a list of all persons in the address book. +
 Format: `list`
 
+// tag::listTags[]
 === Listing all tags : `listTags`
 
-Shows a list of all tags in the address book. Tags listed are unique (no duplicates) and sorted alphabetically. +
-Format: `listTags`
+Shows a list of unique all tags in the AddressBook or persons currently displayed in PersonPanelList. +
+Tags listed are unique (no duplicates) and sorted alphabetically. +
+Format: `listTags [f]`
 
+***
+* `f`, is optional, allows users to choose between displaying all unique tags added to AddressBook or unique tags of persons currently listed in the PersonPanelList.
+* `listTags` displays list of all unique tags added to AddressBook.
+* `listTags f` displays list of all unique tags of persons listed in the PersonListPanel. `f` referring to "filtered".
+***
+// end::listTags[]
+
+// tag::copy[]
 === Copying person's information over to system clipboard : `copy`
 
 Copies the selected person's information over to the system clipboard.
@@ -117,6 +127,7 @@ Examples:
 * To copy a person's phone append the letter `p` after INDEX. Example 'c 1 p'.
 * To copy a person's email append the letter `e` after INDEX. Example 'c 1 e'.
 * To copy a person's address append the letter `a` after INDEX. Example 'c 1 a'.
+// end::copy[]
 
 === Editing a person : `edit`
 
@@ -174,6 +185,7 @@ Examples:
 * `findEmail jane` +
 Returns `janedoe@example.com`
 
+// tag::findPhone[]
 === Locating persons by phone: `findPhone`
 
 Finds persons whose phones contain any of the given keywords. +
@@ -191,7 +203,9 @@ Examples:
 Returns `10001` and `191000`
 * `find 111 222 333` +
 Returns any person having phone numbers `1111`, `0222`, or `9333`
+// end::findPhone[]
 
+// tag::findTag[]
 === Locating persons by phone: `findTag`
 
 Finds persons whose tags contain any of the given keywords. +
@@ -209,7 +223,9 @@ Examples:
 Returns `friends`
 * `findTag friends family neighbours` +
 Returns any person having tags `friends`, `family`, or `neighbour`
-// tag::findletter
+// end::findTag[]
+
+// tag::findletter[]
 === Locating persons by name: `Findletter`
 
 Finds persons whose names contain any of the given keywords. +
@@ -229,7 +245,7 @@ Examples:
 Returns `John` and `John Doe`
 * `Findletter B` +
 Returns any person having names `Betsy`, `Bean`, or `Ben`
-// end::findletter
+// end::findletter[]
 === Deleting a person : `delete`
 
 Deletes the specified person from the address book. +
@@ -363,14 +379,14 @@ image::get2.png[width="800"]
 === Number of person in list
 
 At the bottom of the addressbook, application will display the number of person in list.
-// tag::exitcheck
+// tag::exitcheck[]
 === Exit program checker
 
 When user attempt to close the application, input "exit" command or close the application by accident,
 a window will pop out to make sure that user is firm on closing the application.
-// end::exitcheck
+// end::exitcheck[]
 
-// tag::lock
+// tag::lock[]
 === Login Page
 
 User have to enter user name and password to access the application.
@@ -383,7 +399,7 @@ Password: 1234
 Input the following to enter the application:
 User name: NUS
 Password: 1234
-// end::lock
+// end::lock[]
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
@@ -405,7 +421,7 @@ e.g. `findPhone 000 111`
 * *Find Tag* : `findTag KEYWORD [MORE_KEYWORDS]` +
 e.g. `findTag neighbour family`
 * *List* : `list`
-* *List Tags* : `listTags`
+* *List Tags* : `listTags [f]`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
