@@ -3,17 +3,13 @@ package seedu.address;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-
-import static java.util.Objects.requireNonNull;
-import static javafx.stage.Modality.NONE;
-
 
 //@@author henryheyhey92
 /**
@@ -31,13 +27,11 @@ public class LoginBox {
      *
      */
     public static boolean display(String title, int pass) {
-
         //create window
-        if(pass == 1) {
+        if (pass == 1) {
             window.initModality(Modality.WINDOW_MODAL);
         }
         window.setTitle(title);
-
         //create Grid
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(20, 20, 20, 20));
@@ -75,23 +69,20 @@ public class LoginBox {
         grid.getChildren().addAll(nameLabel, nameInput, passwordLabel, passwordInput, yesButton);
         Scene scene = new Scene(grid, 350, 200);
         window.setScene(scene);
-        enter();
+        window.showAndWait();
 
 
         return answer;
         //Clicking will set answer and cloe window
-    }
-    private static void enter(){
-        window.showAndWait();
     }
 
     /**
      * to create a exit checker
      */
     private static void stop() {
-        boolean answer = ConfirmBox.display("Exit Check Protocol","Confirm on exiting the program?");
+        boolean answer = ConfirmBox.display("Exit Check Protocol", "Confirm on exiting the program?");
 
-        if(answer) {
+        if (answer) {
             Platform.exit();
             System.exit(0);
         }
@@ -103,20 +94,21 @@ public class LoginBox {
      * @param pass
      * @return true or false
      */
-    private static boolean isInt(TextField name, TextField pass){
+    private static boolean isInt(TextField name, TextField pass) {
         String name2 = name.getText();
         String pass2 = pass.getText();
-        try{
-            if(name2.compareTo("NUS")==0 ) {
+        try {
+            if (name2.compareTo("NUS") == 0) {
                 if (pass2.compareTo("1234") == 0) {
                     nameInput.setText("");
                     passwordInput.setText("");
                     return true;
                 }
-            }else
+            } else {
                 return false;
-        }catch(NumberFormatException e){
-           return false;
+            }
+        } catch (NumberFormatException e) {
+            return false;
         }
         return false;
     }
@@ -131,7 +123,7 @@ public class LoginBox {
             window.close();
         }
     }
-}//@@author
+} //@@author
 
 
 

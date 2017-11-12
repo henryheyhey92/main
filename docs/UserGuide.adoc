@@ -218,7 +218,7 @@ Examples:
 Returns `friends`
 * `findTag friends family neighbours` +
 Returns any person having tags `friends`, `family`, or `neighbour`
-// tag::findletter
+// tag::findletter[]
 === Locating persons by name: `Findletter`
 
 Finds persons whose names contain any of the given keywords. +
@@ -238,7 +238,7 @@ Examples:
 Returns `John` and `John Doe`
 * `Findletter B` +
 Returns any person having names `Betsy`, `Bean`, or `Ben`
-// end::findletter
+// end::findletter[]
 === Deleting a person : `delete`
 
 Deletes the specified person from the address book. +
@@ -372,14 +372,14 @@ image::get2.png[width="800"]
 === Number of person in list
 
 At the bottom of the addressbook, application will display the number of person in list.
-// tag::exitcheck
+// tag::exitcheck[]
 === Exit program checker
 
 When user attempt to close the application, input "exit" command or close the application by accident,
 a window will pop out to make sure that user is firm on closing the application.
-// end::exitcheck
+// end::exitcheck[]
 
-// tag::lock
+// tag::lock[]
 === Login Page
 
 User have to enter user name and password to access the application.
@@ -392,7 +392,7 @@ Password: 1234
 Input the following to enter the application:
 User name: NUS
 Password: 1234
-// end::lock
+// end::lock[]
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
