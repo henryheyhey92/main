@@ -18,15 +18,15 @@ import seedu.address.commons.core.LogsCenter;
  */
 
 //@@author NUSe0032202
-public class CalendarTest extends UiPart<Region> {
+public class SelectBirthdayWindow extends UiPart<Region> {
 
-    private static final Logger logger = LogsCenter.getLogger(CalendarTest.class);
+    private static final Logger logger = LogsCenter.getLogger(SelectBirthdayWindow.class);
     private final Stage dialogStage;
     private String birthdate;
     @FXML
     private DatePicker birthday;
 
-    public CalendarTest() {
+    public SelectBirthdayWindow() {
         super("Calendar.fxml");
         Scene scene = new Scene(getRoot(), 300, 100);
         dialogStage = createDialogStage("", null, scene);

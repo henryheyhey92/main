@@ -38,7 +38,7 @@ public class PersonCard extends UiPart<Region> {
     public final ReadOnlyPerson person;
     private final Logger logger = LogsCenter.getLogger(this.getClass());
     private final Logic logic;
-    private CalendarTest calendar;
+    private SelectBirthdayWindow calendar;
     @FXML
     private HBox cardPane;
     @FXML
@@ -103,7 +103,7 @@ public class PersonCard extends UiPart<Region> {
     //@@author NUSe0032202
     @FXML
     public void handleCalendar() {
-        calendar = new CalendarTest();
+        calendar = new SelectBirthdayWindow();
         calendar.show();
     }
     //@@author
