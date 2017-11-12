@@ -9,7 +9,6 @@ import com.google.common.eventbus.Subscribe;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.EventsCenter;
@@ -50,7 +49,6 @@ public class MainApp extends Application {
     protected Ui ui;
     protected UserPrefs userPrefs;
     private Stage window;
-    public Scene scene1, scene2;
 
     @Override
     public void init() throws Exception {
@@ -186,7 +184,7 @@ public class MainApp extends Application {
 
         logger.info("Starting AddressBook " + MainApp.VERSION);
         window = primaryStage;
-        boolean answer = LoginBox.display("AddressBook Login", 0);
+        boolean answer = LoginBox.display("AddressBook Login");
         if (answer) {
 
             ui.start(primaryStage);
