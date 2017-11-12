@@ -14,7 +14,7 @@ public class LockCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "lock";
     public static final String MESSAGE_SUCCESS = "Address book is unlock!";
     public static final String MESSAGE_FAIL = "Address book is lock";
-    public static LoginBox lock;
+    private static LoginBox lock;
     private static Stage window = new Stage();
     //public static boolean answer;
     protected Storage storage;
@@ -27,7 +27,7 @@ public class LockCommand extends UndoableCommand {
     public LockCommand(boolean name) {
         this.name = name;
     }
-    public boolean LockCommandget() {
+    public boolean lockCommandGet() {
         return this.name;
     }
 
