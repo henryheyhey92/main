@@ -1,11 +1,11 @@
 package seedu.address;
 
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Modality;
 import javafx.scene.layout.VBox;
-import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -14,8 +14,14 @@ import javafx.stage.Stage;
  */
 //@@author henryheyhey92
 public class ConfirmBox {
-    static boolean answer;
+    private static boolean answer;
 
+    /**
+     * To display the Confirm exit box
+     * @param title
+     * @param message
+     * @return
+     */
     public static boolean display(String title, String message) {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
