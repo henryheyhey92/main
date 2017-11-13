@@ -60,7 +60,7 @@ public class SortCommand extends UndoableCommand {
 
             //In the event the user filters the addressbook and no Person is shown, the message gets shown to the
             //user after the sort command is executed.
-            //hello
+            //hello test
             if (model.getFilteredPersonList().isEmpty()) {
                 return new CommandResult("Sorting has been done on addressbook, please list all "
                         + "contacts to see the changes");
