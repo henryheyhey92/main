@@ -27,7 +27,8 @@ public class PhoneContainsKeywordsPredicateTest {
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        PhoneContainsKeywordsPredicate firstPredicateCopy = new PhoneContainsKeywordsPredicate(firstPredicateKeywordList);
+        PhoneContainsKeywordsPredicate firstPredicateCopy =
+                new PhoneContainsKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -70,7 +71,8 @@ public class PhoneContainsKeywordsPredicateTest {
         assertFalse(predicate.test(new PersonBuilder().withPhone("91234567").build()));
 
         // Keywords match name, email and address, but does not match phone
-        predicate = new PhoneContainsKeywordsPredicate(Arrays.asList("Alice", "09876", "alice@email.com", "Main", "Street"));
+        predicate = new PhoneContainsKeywordsPredicate(Arrays.asList("Alice", "09876",
+                "alice@email.com", "Main", "Street"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").build()));
     }
