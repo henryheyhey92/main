@@ -21,7 +21,7 @@ public class GoogleAddressCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_SUCCESS = "Search %1$s on GoogleMaps";
+    public static final String MESSAGE_SUCCESS = "Searched %1$s on GoogleMaps";
 
     private final Index targetIndex;
 
@@ -40,5 +40,12 @@ public class GoogleAddressCommand extends Command {
         ReadOnlyPerson personToSearch = lastShownList.get(targetIndex.getZeroBased());
         EventsCenter.getInstance().post(new GoogleAddressEvent(personToSearch));
         return new CommandResult(String.format(MESSAGE_SUCCESS, personToSearch.getName()));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof GoogleAddressCommand // instanceof handles nulls
+                && this.targetIndex.equals(((GoogleAddressCommand) other).targetIndex)); // state check
     }
 }
