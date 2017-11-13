@@ -27,7 +27,7 @@ public class FindTagCommandSystemTest extends AddressBookSystemTest {
          */
         String command = "   " + FindTagCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_CLASSMATES + "   ";
         Model expectedModel = getModel();
-        ModelHelper.setFilteredList(expectedModel, HOON, IDA);// Tags of HOON and IDA contain "classmates"
+        ModelHelper.setFilteredList(expectedModel, HOON, IDA); // Tags of HOON and IDA contain "classmates"
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
