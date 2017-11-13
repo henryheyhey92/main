@@ -4,15 +4,15 @@ import seedu.address.commons.events.BaseEvent;
 import seedu.address.ui.PersonCard;
 
 /**
- * Represents a selection change in the Person List Panel
+ * Represents GoogleAddressCommand executed
  */
 //@@author Labradorites
-public class PersonAddressSelectionChangedEvent extends BaseEvent {
+public class GoogleAddressEvent extends BaseEvent {
 
 
     private final PersonCard newSelection;
 
-    public PersonAddressSelectionChangedEvent(PersonCard newSelection) {
+    public GoogleAddressEvent(PersonCard newSelection) {
         this.newSelection = newSelection;
     }
 

@@ -73,9 +73,15 @@ public class BrowserPanel extends UiPart<Region> {
         browser = null;
     }
 
-    //@@author Labradorites
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        loadPersonPage(event.getNewSelection().person);
+    }
+
+    //@@author Labradorites
+    @Subscribe
+    private void handleGoogleAddressEvent(PersonPanelSelectionChangedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         loadAddressPage(event.getNewSelection().person);
     }
