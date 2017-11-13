@@ -106,7 +106,7 @@ include::../DeveloperGuide.adoc[tag=listTags]
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=findTag]
+include::../UserGuide.adoc[tag=gAddress]
 
 #End of Extract#
 
@@ -123,7 +123,7 @@ Being able to check his friend's address on Google Maps at ease makes it easier 
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=findTag]
+include::../DeveloperGuide.adoc[tag=gAddress]
 
 #End of Extract#
 
