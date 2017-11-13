@@ -13,11 +13,11 @@ public class CliSyntax {
     public static final Prefix PREFIX_BIRTHDAY = new Prefix("b/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
-    public static final Prefix PREFIX_NAME_BOLD = new Prefix("N/");
-    public static final Prefix PREFIX_PHONE_BOLD = new Prefix("P/");
-    public static final Prefix PREFIX_EMAIL_BOLD = new Prefix("E/");
-    public static final Prefix PREFIX_ADDRESS_BOLD = new Prefix("A/");
-    public static final Prefix PREFIX_BIRTHDAY_BOLD = new Prefix("B/");
-    public static final Prefix PREFIX_TAG_BOLD = new Prefix("T/");
+    public static final Prefix PREFIX_NAME_UPPER = new Prefix("N/");
+    public static final Prefix PREFIX_PHONE_UPPER = new Prefix("P/");
+    public static final Prefix PREFIX_EMAIL_UPPER = new Prefix("E/");
+    public static final Prefix PREFIX_ADDRESS_UPPER = new Prefix("A/");
+    public static final Prefix PREFIX_BIRTHDAY_UPPER = new Prefix("B/");
+    public static final Prefix PREFIX_TAG_UPPER = new Prefix("T/");
 
 }

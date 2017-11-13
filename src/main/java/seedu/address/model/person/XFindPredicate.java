@@ -1,14 +1,14 @@
 package seedu.address.model.person;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS_BOLD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS_UPPER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL_BOLD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL_UPPER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME_BOLD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME_UPPER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE_BOLD;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG_BOLD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE_UPPER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG_UPPER;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -31,27 +31,27 @@ public class XFindPredicate implements Predicate<ReadOnlyPerson> {
 
     @Override
     public boolean test(ReadOnlyPerson person) {
-        if (prefix == PREFIX_ADDRESS_BOLD) {
+        if (prefix == PREFIX_ADDRESS_UPPER) {
             return keywords.stream()
                     .anyMatch(keyword -> StringUtil.containsAny(person.getAddress().toString(), keyword));
         }
 
-        if (prefix == PREFIX_EMAIL_BOLD) {
+        if (prefix == PREFIX_EMAIL_UPPER) {
             return keywords.stream()
                     .anyMatch(keyword -> StringUtil.containsAny(person.getEmail().toString(), keyword));
         }
 
-        if (prefix == PREFIX_NAME_BOLD) {
+        if (prefix == PREFIX_NAME_UPPER) {
             return keywords.stream()
                     .anyMatch(keyword -> StringUtil.containsAny(person.getName().toString(), keyword));
         }
 
-        if (prefix == PREFIX_PHONE_BOLD) {
+        if (prefix == PREFIX_PHONE_UPPER) {
             return keywords.stream()
                     .anyMatch(keyword -> StringUtil.containsAny(person.getPhone().toString(), keyword));
         }
 
-        if (prefix == PREFIX_TAG_BOLD) {
+        if (prefix == PREFIX_TAG_UPPER) {
             return keywords.stream()
                     .anyMatch(keyword -> StringUtil.containsAny(person.getTags().toString(), keyword));
         }
