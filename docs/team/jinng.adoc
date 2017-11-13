@@ -69,7 +69,7 @@ include::../DeveloperGuide.adoc[tag=findTag]
 ---
 
 === Enhancement Added: List all tags added to AddressBook and all tags of most recent listing
-.
+
 ==== External behavior
 
 ---
