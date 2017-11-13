@@ -10,7 +10,10 @@ import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_A;
 
 import org.junit.Test;
 
-import seedu.address.logic.commands.*;
+import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.FindCommandLetter;
+import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 
 
@@ -35,7 +38,7 @@ public class FindLetterCommandSystemTest extends AddressBookSystemTest {
         assertSelectedCardUnchanged();
 
         /* Case: find person where person list is not displaying the person we are finding -> 1 person found */
-        command = FindCommandLetter.COMMAND_WORD + " "+ "C";
+        command = FindCommandLetter.COMMAND_WORD + " " + "C";
         ModelHelper.setFilteredList(expectedModel, CARL);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
@@ -64,7 +67,7 @@ public class FindLetterCommandSystemTest extends AddressBookSystemTest {
         command = "lEtTer Meier";
         assertCommandFailure(command, MESSAGE_UNKNOWN_COMMAND);
 
-         /* Case: mixed case command word -> rejected */
+        /* Case: mixed case command word -> rejected */
         command = "lEtTer k";
         assertCommandFailure(command, MESSAGE_UNKNOWN_COMMAND);
     }

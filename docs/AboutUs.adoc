@@ -43,7 +43,7 @@ Responsibilities: Storage; Code quality; Integration
 image::labradorites.png[width="150", align="left"]
 {empty}[https://github.com/Labradorites[github]] [<<jinng#, portfolio>>]
 
-Role: Team lead +
+Role: Team member +
 Responsibilities: Logic; UI; Deliverables
 
 '''
