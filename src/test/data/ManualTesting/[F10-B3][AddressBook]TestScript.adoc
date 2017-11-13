@@ -108,6 +108,7 @@ Format: `letter KEYLETTER
 * The search is non case sensitive. e.g. `H` will match `Hans` and `h` will not match `Hans`
 * The person related to the letter will be display on the left panel.
 ****
+[discrete]
 
 === Positive Test Cases
 
@@ -120,18 +121,93 @@ It will display "2 persons listed!"
 
 === Negative Test Cases
 
- `FindEmail`
+ `letter`
 ** *Expected output* +
 Invalid command format!
-find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
+find: Finds all persons whose names contain any of the specified keywords ( non case-sensitive) and displays them as a list with index numbers.
 Parameters: KEYWORD [MORE_KEYWORDS]...
-. `findEmail lex`
+. `letter A`
 ** *Expected output* +
 It will display "0 persons listed!"
 
 === Login Page Box
 
+User are require to input, User name and password to access the application.
+
+[discrete]
 === Positive Test Cases
+
+input Username with `NUS`
+input Password with `1234`
+** *Expected output* +
+The application launch.
+
+[discrete]
 
 === Negative Test Cases
 
+input Username with `NTU`
+input Password with `4567`
+** *Expected output* +
+Remains at the Login in box.
+
+input Username with `SMU`
+input Password with `8911`
+** *Expected output* +
+Remains at the Login in box.
+
+[discrete]
+
+=== Lock Command
+
+Input lock command to the commandline Textfield, it will pause the application
+and prevent the user from using it.
+[discrete]
+
+=== Positive Test Cases
+`lock`
+** *Expected output* +
+The login page will pop out
+
+`lock + [some other word]
+** *Expected output* +
+The login page will pop out
+
+[discrete]
+=== negative Test Cases
+
+** *Expected output* +
+Unknown Command will return to the message box.
+
+When input is `lll lock`
+** *Expected output* +
+Unknown Command will return to the message box.
+
+=== Exit program checker
+
+This is to prevent user from exiting the program by accident.
+User can either click on the close button or in the command Textfield type in exit
+
+[discrete]
+=== Positive Test Cases
+
+input `exit`
+** *Expected output* +
+A pop window occur, asking if user wants to exit the program or not to exit.
+if Yes, application close.
+if no, unfreeze the application.
+
+[discrete]
+=== Negative Test Cases
+
+input `eXit`
+** *Expected output* +
+Unknown Command will return to the message box.
+
+input `ex0it`
+** *Expected output* +
+Unknown Command will return to the message box.
+
+input `11 exit`
+** *Expected output* +
+Unknown Command will return to the message box.
