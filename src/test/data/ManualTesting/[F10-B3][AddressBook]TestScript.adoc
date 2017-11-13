@@ -98,3 +98,74 @@ It will display "Invalid command format!"
 . `xFind T/ friends n/ alex`
 ** *Expected output* +
 It will display Invalid command format! xFind: only one parameter is allowed"
+
+== Find Phone Command
+
+Finds persons whose phones contain any of the given keywords. +
+Format: `findPhone KEYWORD [MORE_KEYWORDS]`
+
+****
+* Only the phone number is searched.
+* Numbers containing keywords will be matched e.g. `111` will match `911100`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `222 333` will return `0222`, `9333`
+****
+
+[discrete]
+=== Positive Test Cases
+. `findPhone 22`
+** *Expected output* +
+It will display "1 persons listed!" and list person with phone number containing "22".
+
+. `findPhone 22 10`
+** *Expected output* +
+It will display "3 persons listed!" and list persons with phone numbers containing "22" and/or "10".
+
+[discrete]
+=== Negative Test Cases
+. `findPhone`
+** *Expected output* +
+It will display "Invalid command format!" and command usage message.
+
+=== Negative Test Cases
+. `findPhone `
+** *Expected output* +
+Invalid command format!
+findPhone: Finds all persons whose phone contain any of the specified numbers() and displays them as a list with index numbers.
+Parameters: KEYWORD [MORE_KEYWORDS]...
+Example: findPhone 999 111 99998888
+
+. `findPhone 0000000000000`
+** *Expected output* +
+It will display "0 persons listed!" as no one with phone number containing 0000000000000 is found.
+
+== Find Tag Command
+discrete]
+=== Positive Test Cases
+. `findTag friends`
+** *Expected output* +
+It will display "3 persons listed!" and list person with the tag "friends".
+
+. `findTag friends family`
+** *Expected output* +
+It will display "8 persons listed!" and list persons with tags "friends" and/or "family".
+
+. `findTag Friends`
+** *Expected output* +
+It will display "3 persons listed!" and list persons with tags "friends".
+
+[discrete]
+=== Negative Test Cases
+. `findTag`
+** *Expected output* +
+Invalid command format!
+findTag: Finds all persons whose tags contain the specified keywords (case-sensitive) and displays them as a list with index numbers.
+Parameters: KEYWORD [MORE_KEYWORDS]...
+Example: findTag neighbours
+
+. `findTag frien`
+** *Expected output* +
+It will display "0 persons listed!" as no one with tag matching frien is found.
+
+== List Tags Command
+
+== Google Address Command
