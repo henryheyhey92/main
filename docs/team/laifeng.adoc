@@ -18,9 +18,9 @@ Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. 
 
 Examples:
 
-* `Findletter J` +
+* `letter J` +
 Returns `John` and `John Doe`
-* `Findletter B` +
+* `letter B` +
 Returns any person having names `Betsy`, `Bean`, or `Ben`
 
 
@@ -93,7 +93,9 @@ User name: NUS
 Password: 1234
 
 Input the following to enter the application:
+
 User name: NUS
+
 Password: 1234
 
 ==== External behavior
@@ -124,6 +126,7 @@ include::../DeveloperGuide.adoc[tag=lock]
 === Enhancement: Lock command
 This is an enhancement to improve the security of the address. When user taking short break, user can lock
 the application for the time being, so that no one can access while leaving the computer on. User can always unlock the application when return from break.
+
 ==== External behavior
 
 ---
