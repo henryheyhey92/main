@@ -1,0 +1,100 @@
+== Find Email Command
+
+Finds persons whose email start with any of the given keywords. +
+Format: `findEmail KEYWORD [MORE_KEYWORDS]`
+
+****
+* The search is case insensitive. e.g. `hans` will match `Hans`
+* Partial word can also be searched. e.g. `john` will match `johndoe@example.com`
+* Only the email is searched.
+****
+
+[discrete]
+=== Positive Test Cases
+. `findEmail alex`
+** *Expected output* +
+Display help window.
+It will display "1 persons listed!"
+
+. `findEmail alex john`
+** *Expected output* +
+Display help window.
+It will display "2 persons listed!"
+
+
+[discrete]
+=== Negative Test Cases
+. `FindEmail`
+** *Expected output* +
+It will display "Unknown command"
+
+. `findEmail lex`
+** *Expected output* +
+It will display "0 persons listed!"
+
+. `findEmail`
+** *Expected output* +
+It will display "Invalid command format!"
+
+== Change Theme Command
+
+Change the UI theme through command or UI
+Command Format: `theme light/dark`
+UI: click "File > ____ theme"
+
+[discrete]
+=== Positive Test Cases
+. `theme light`
+** *Expected output* +
+Display help window.
+It will display "Changed color theme."
+
+
+[discrete]
+=== Negative Test Cases
+. `theme`
+** *Expected output* +
+It will display "Invalid command format!"
+
+== Advance Find Command
+
+Find persons whose (address / name / email / phone/ tag) (contain / start with) any of the given keywords.+
+
+Format: `xFind [A/ N/ E/ P/ T/ a/ n/ e/ p/ t/] KEYWORD [MORE_KEYWORDS]`
+****
+* a/: the command finds matching address start with ARGS
+* n/: the command finds matching names start with ARGS
+* e/: the command finds matching emails start with ARGS
+* p/: the command finds matching phone numbers start with ARGS
+* t/: the command finds matching tags start with ARGS
+* A/ N/ E/ P/ T/: the command finds matching [according to the command] containing ARGS
+****
+
+****
+* The search is case insensitive. e.g `A` will match `a`
+* One tag can only be used per request e.g `a/ avenue t/friends` is illegal
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `n/ H` will return `Hans Gruber`, `Ho Yang`
+****
+
+[discrete]
+=== Positive Test Cases
+. `xFind N/ alex john`
+** *Expected output* +
+Display help window.
+It will display "2 persons listed!"
+
+. `xFind T/ friends`
+** *Expected output* +
+Display help window.
+It will display "2 persons listed!"
+
+
+[discrete]
+=== Negative Test Cases
+. `xFind`
+** *Expected output* +
+It will display "Invalid command format!"
+
+. `xFind T/ friends n/ alex`
+** *Expected output* +
+It will display Invalid command format! xFind: only one parameter is allowed"
