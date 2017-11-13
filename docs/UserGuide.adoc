@@ -274,6 +274,24 @@ Returns any person having names starting with `john` and `jasmin`
 * `xFind P/ 456` +
 Returns any person having phone number containg `456`
 
+// tag::googleAddress[]
+=== Searching person's address on Google Maps `gAddress`
+
+Searches person's address on Google Maps with respect to `INDEX` keyed in. +
+Format: `gAddress INDEX`
+
+****
+* Only the address is searched on Google Maps according to index keyed in.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* 1, 2, 3 ...
+****
+
+* `gAddres 1` +
+BrowserPanel now shows searched address of person at index 1 in Google Maps.
+* `gAddress 3` +
+BrowserPanel now shows searched address of person at index 3 in Google Maps
+// end::googleAddress[]
+
 === Deleting a person : `delete`
 
 Deletes the specified person from the address book. +
@@ -389,11 +407,6 @@ Format: `exit`
 Address book data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
 
-=== Click on contact to search address
-
-Clicking on contact in list will search for its address in Google Maps.
-image::searchAddressUI.png[width="800"]
-
 
 === Adding a birthday for a person
 
@@ -454,6 +467,8 @@ e.g. `findTag neighbour family`
 e.g. `xFind N/ John Jasmin`
 * *List* : `list`
 * *List Tags* : `listTags [f]`
+* *Google Address* : `gAddress INDEX` +
+e.g. `gAddress 1`
 * *Help* : `help`
 * *Select* : `select INDEX` +
 e.g.`select 2`
@@ -466,7 +481,7 @@ e.g.`select 2`
 * * findEmail `Since v1.2`
 * * findPhone `Since v1.2`
 * * letter `Since v1.2`
-* * Google search Address when contact is selected `Since v1.2`
+* * Google search Address when contact is selected `Since v1.2` `Converted to gAddress in V1.5`
 * * Sort by address `Since v1.2`
 * * Copy to clipboard `Since v1.3`
 * * findTag `Since v1.3`
@@ -477,6 +492,7 @@ e.g.`select 2`
 * * Change UI theme `Since v1.4`
 * * Add birthday calendar `Since v1.4`
 * * Advance find `Since v1.5`
+* * Google search address by CLI `Since v1.5`
 
 == Coming soon in V2.0
 * * Transition pop-up window when closing AddressBook
