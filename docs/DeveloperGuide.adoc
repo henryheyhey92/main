@@ -244,17 +244,17 @@ is used as the target field has to be transferred which is supported by StingSel
 
 Why it is implemented this way: This approach was chosen as it is as it is the most straightforward way
 
-=== Add findEmail mechanism
+=== findEmail Command mechanism
 
 The find email mechanism is facilitated by regex. After finding matches, result will be stored in the filtered list that is showing on the UI.
-Further improvement might include allowing user to use flag(e.g. findEmail \f KEYWORD) to do advance search.
+Further improvement might include allowing user to use flag(e.g. findEmail f/ KEYWORD) to do advance search.
 
-=== Add change theme mechanism
+=== theme Command mechanism
 
-The change theme mechanism is implemented in both command and GUI level. By typing command `theme light/dark` or clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
+The change theme mechanism is implemented in both command and GUI level by leveraging service bus. By typing command `theme light/dark` or clicking the menu item "Dark theme" or "Light theme", it triggers an internal function "setTheme" and change the theme accordingly.
 
 // tag::findPhone[]
-=== Add findPhone mechanism
+=== findPhone Command mechanism
 
 The findPhone mechanism is able to search for persons whose phone numbers contain any number being searched.
 
@@ -272,7 +272,7 @@ Java files that have been modified:
 // end::findPhone[]
 
 // tag::findTag[]
-=== Add `findTag mechanism`
+=== findTag Command mechanism
 
 The findTag mechanism is able to search for persons whose tags contain any keywords being searched.
 
@@ -289,6 +289,17 @@ Java files that have been modified:
 - `Person.java` : Altered to get tags as a string.
 - `ReadOnlyPerson.java`: Altered to get tags as a string.
 // end::findTag[]
+
+=== xFind Command mechanism
+
+The xFind mechanism is able to search for persons whose Find persons whose (address / name / email / phone/ tag) (contain / start with) any of the given keywords.
+
+Format: `xFind [A/ N/ E/ P/ T/ a/ n/ e/ p/ t/] KEYWORD [MORE_KEYWORDS]`
+
+`A/` is for address search, `N/` is for name search, etc.
+Upper case letter indicates the search will look for result containing any of the given keywords.
+Lower case letter indicates the search will look for result starting with
+any of the given keywords.
 
 === The add birthday mechanism
 
