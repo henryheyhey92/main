@@ -263,12 +263,12 @@ Format: `findPhone KEYWORD [MORE_KEYWORDS]`
 
 As long as contact has phone number that contains KEYWORD [MORE_KEYWORDS], it will be matched and displayed.
 
-Java files that have been modified:
-- `PhoneContainsKeywordsPredicate.java`
-- `AddressBookParser.java`
-- `FindPhoneCommand`
-- `FindPhoneCommandParser`
-- Some test units have been updated.
+Java files that have been modified: +
+- `PhoneContainsKeywordsPredicate.java` +
+- `AddressBookParser.java` +
+- `FindPhoneCommand` +
+- `FindPhoneCommandParser` +
+- Some test units have been updated. +
 // end::findPhone[]
 
 // tag::findTag[]
@@ -281,13 +281,16 @@ Format: `findTag KEYWORD [MORE_KEYWORDS]`
 
 As long as contact has tags that contains KEYWORD [MORE_KEYWORDS], it will be matched and displayed.
 
-Java files that have been modified:
-- `TagContainsKeywordsPredicate.java`: Newly created
-- `AddressBookParser.java`: Edited to include findTag command.
-- `FindTagCommand.java`: Newly created.
-- `FindTagCommandParser.java`: Newly created.
-- `Person.java` : Altered to get tags as a string.
-- `ReadOnlyPerson.java`: Altered to get tags as a string.
+Java files that have been modified: +
+- `TagContainsKeywordsPredicate.java`: Newly created. +
+- `AddressBookParser.java`: Edited to include findTag command. +
+- `FindTagCommand.java`: Newly created. +
+- `FindTagCommandParser.java`: Newly created. +
+- `Person.java` : Altered to get tags as a string. +
+- `ReadOnlyPerson.java`: Altered to get tags as a string. +
+
+image::findTagLogic.png[width="600"]
+
 // end::findTag[]
 
 === xFind Command mechanism
@@ -335,6 +338,8 @@ Java file has been modified;
 -`AddressBookParser.java`; for the case.
 
 -`FindCommandLetter.java`(*newly created); for the find letter command.
+
+image::FBL2.png[width="800"]
 // end::findletter[]
 
 // tag::listTags[]
@@ -345,10 +350,10 @@ Java file has been modified;
 `listTags f` displays a list of unique tags of persons currently shown in the PersonListPanel.
 
 Java files that have been modified:
-- 'Model': Modified to include a signature in the Model interface for the getFilteredTagsList(), getNormalTagsList() method. Takes in no parameter and returns a List<Tag>. getTagsListAsString() is added to retrieve the list of tags as String.
-- 'ModelManager': Modified to include the  getFilteredTagsList() and getNormalTagsList() methods that takes in no parameter and returns a List<Tag> that contains all tags. getTagsListAsString() takes in a List<Tag> and returns List<String>.
-- 'ListTagsCommand': Created to convert the List<Tag> to strings by calling the above functions and print the list of tags in the ResultsDisplay box.
-- 'Tag': modified to include an accessor for tagName.
+- 'Model': Modified to include a signature in the Model interface for the getFilteredTagsList(), getNormalTagsList() method. Takes in no parameter and returns a List<Tag>. getTagsListAsString() is added to retrieve the list of tags as String. +
+- 'ModelManager': Modified to include the  getFilteredTagsList() and getNormalTagsList() methods that takes in no parameter and returns a List<Tag> that contains all tags. getTagsListAsString() takes in a List<Tag> and returns List<String>. +
+- 'ListTagsCommand': Created to convert the List<Tag> to strings by calling the above functions and print the list of tags in the ResultsDisplay box. +
+- 'Tag': modified to include an accessor for tagName. +
 // end::listTags[]
 
 API : Logic.java
@@ -362,8 +367,6 @@ The command execution can affect the Model (e.g. find a person) and/or raise eve
 The result of the command execution is encapsulated as a CommandResult object which is passed back to the Ui.
 
 Given below is the Sequence Diagram for interactions within the Logic component for the execute("Letter A") API call.
-
-image::FBL2.png[width="800"]
 
 === Person number in list implementation
 
