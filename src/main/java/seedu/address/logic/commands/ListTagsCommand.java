@@ -46,4 +46,11 @@ public class ListTagsCommand extends Command {
 
         return new CommandResult(String.format(MESSAGE_SUCCESS, String.join("\n", listOfTags)));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ListTagsCommand // instanceof handles nulls
+                && this.option.equals(((ListTagsCommand) other).option)); // state check
+    }
 }
