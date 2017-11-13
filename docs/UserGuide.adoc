@@ -452,9 +452,17 @@ User name: NUS
 Password: 1234
 
 Input the following to enter the application:
-User name: NUS
-Password: 1234
+default User name: NUS
+default Password: 1234
 // end::lock[]
+// tag::unlock[]
+=== Lock Command
+
+User can type in 'lock' to the command line.
+It will block user from using the application.
+Follow by the pop out of the login page, user will have to input the password again to access the application.
+// end::unlock[]
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
