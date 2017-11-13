@@ -11,7 +11,7 @@ public class FindEmailCommand extends Command {
 
     public static final String COMMAND_WORD = "findEmail";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds persons whose email contain any of the "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds persons whose email start with any of the "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " john doe johnny";
