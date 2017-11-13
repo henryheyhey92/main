@@ -589,6 +589,7 @@ if user name & password matches the input, user get to access the application.
 
 image::Login.png[width="800"]
 // end::lock[]
+
 // tag::unlock[]
 === Lock Command implementation
 
