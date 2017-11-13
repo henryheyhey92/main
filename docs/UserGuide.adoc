@@ -41,6 +41,9 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 .  Refer to the link:#features[Features] section below for details of each command.
 
 == Features
+*Note!! user have to enter the User name and Password before starting the application.
+default User name: NUS
+default Password: 1234
 
 ====
 *Command Format*
