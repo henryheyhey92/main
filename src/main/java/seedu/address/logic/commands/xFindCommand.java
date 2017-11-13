@@ -11,7 +11,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE_BOLD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG_BOLD;
 
-import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.XFindPredicate;
 
 
@@ -23,7 +22,8 @@ public class XFindCommand extends Command {
 
     public static final String COMMAND_WORD = "xFind";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": More powerful find feature, can find everything containing the keywords "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": More powerful find feature, "
+            + "can find everything containing the keywords\n"
             + "Parameters: "
             + PREFIX_NAME_BOLD + "NAME or "
             + PREFIX_PHONE_BOLD + "PHONE or "

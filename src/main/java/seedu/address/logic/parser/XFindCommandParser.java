@@ -15,7 +15,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG_BOLD;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.XFindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.XFindPredicate;
@@ -33,8 +32,8 @@ public class XFindCommandParser implements Parser<XFindCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public XFindCommand parse(String args) throws ParseException {
-        Prefix[] prefixes = {PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG,
-                PREFIX_NAME_BOLD, PREFIX_PHONE_BOLD, PREFIX_EMAIL_BOLD, PREFIX_ADDRESS_BOLD, PREFIX_TAG_BOLD};
+        Prefix[] prefixes = {PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_NAME_BOLD,
+                PREFIX_PHONE_BOLD, PREFIX_EMAIL_BOLD, PREFIX_ADDRESS_BOLD, PREFIX_TAG_BOLD};
 
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, prefixes);
 

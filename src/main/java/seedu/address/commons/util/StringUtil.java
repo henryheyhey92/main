@@ -46,7 +46,8 @@ public class StringUtil {
      * @param sentence cannot be null
      * @param word cannot be null, cannot be empty
      */
-    private static boolean universalCompare(String sentence, String word, boolean startWith, boolean endWith, boolean ignoreCase) {
+    private static boolean universalCompare(String sentence, String word, boolean startWith,
+                                            boolean endWith, boolean ignoreCase) {
         requireNonNull(sentence);
         requireNonNull(word);
 
@@ -60,11 +61,11 @@ public class StringUtil {
         checkArgument(preppedWord.split("\\s+").length == 1, "Word parameter should be a single word");
 
         String regex = preppedWord;
-        if (!startWith) { regex = String.format(".*" + regex); }
-        if (!endWith) { regex = String.format(regex + ".*"); }
+        if (!startWith) regex = String.format(".*" + regex);
+        if (!endWith) regex = String.format(regex + ".*");
         regex = String.format("^" + regex + "$");
 
-        if (sentence.matches(regex)) { return true; }
+        if (sentence.matches(regex)) return true;
         return false;
     }
 
