@@ -20,13 +20,7 @@ public class GoogleAddressCommandParser implements Parser<GoogleAddressCommand> 
      * @throws ParseException if the user input does not conform the expected format
      */
     public GoogleAddressCommand parse(String args) throws ParseException {
-        //String trimmedArgs = args.trim();
-        /*
-        if (trimmedArgs.isEmpty())) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoogleAddressCommand.MESSAGE_USAGE));
-        }
-*/
+
         try {
             Index index = ParserUtil.parseIndex(args);
             return new GoogleAddressCommand(index);
@@ -35,7 +29,6 @@ public class GoogleAddressCommandParser implements Parser<GoogleAddressCommand> 
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, GoogleAddressCommand.MESSAGE_USAGE));
         }
 
-        //return new GoogleAddressCommand(trimmedArgs);
     }
 
 }

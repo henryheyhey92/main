@@ -31,7 +31,7 @@ public class SelectCommand extends Command {
 
     @Override
     public CommandResult execute() throws CommandException {
-        
+
         List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
