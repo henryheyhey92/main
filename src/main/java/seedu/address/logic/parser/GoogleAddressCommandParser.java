@@ -9,7 +9,6 @@ import seedu.address.logic.commands.GoogleAddressCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 //@@author Labradorites
-
 /**
  * Parses input arguments and creates a new GoogleAddressCommand object
  */

@@ -1,7 +1,7 @@
 package seedu.address.commons.events.ui;
 
 import seedu.address.commons.events.BaseEvent;
-import seedu.address.ui.PersonCard;
+import seedu.address.model.person.ReadOnlyPerson;
 
 /**
  * Represents GoogleAddressCommand executed
@@ -10,10 +10,10 @@ import seedu.address.ui.PersonCard;
 public class GoogleAddressEvent extends BaseEvent {
 
 
-    private final PersonCard newSelection;
+    private final ReadOnlyPerson personToSearch;
 
-    public GoogleAddressEvent(PersonCard newSelection) {
-        this.newSelection = newSelection;
+    public GoogleAddressEvent(ReadOnlyPerson personToSearch) {
+        this.personToSearch = personToSearch;
     }
 
     @Override
@@ -21,7 +21,7 @@ public class GoogleAddressEvent extends BaseEvent {
         return this.getClass().getSimpleName();
     }
 
-    public PersonCard getNewSelection() {
-        return newSelection;
+    public ReadOnlyPerson getPersonToSearch() {
+        return personToSearch;
     }
 }
