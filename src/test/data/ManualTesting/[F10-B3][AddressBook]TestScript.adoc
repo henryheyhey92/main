@@ -114,6 +114,7 @@ Format: `letter KEYLETTER
 . `letter A`
 ** *Expected output* +
 Display help window.
+
 It will display "2 persons listed!"
 
 [discrete]
@@ -137,8 +138,11 @@ User are require to input, User name and password to access the application.
 === Positive Test Cases
 
 input Username with `NUS`
+
 input Password with `1234`
+
 ** *Expected output* +
+
 The application launch.
 
 [discrete]
@@ -146,13 +150,19 @@ The application launch.
 === Negative Test Cases
 
 input Username with `NTU`
+
 input Password with `4567`
+
 ** *Expected output* +
+
 Remains at the Login in box.
 
 input Username with `SMU`
+
 input Password with `8911`
+
 ** *Expected output* +
+
 Remains at the Login in box.
 
 [discrete]
@@ -165,50 +175,68 @@ and prevent the user from using it.
 
 === Positive Test Cases
 `lock`
+
 ** *Expected output* +
+
 The login page will pop out
 
 `lock + [some other word]
+
 ** *Expected output* +
+
 The login page will pop out
 
 [discrete]
 === negative Test Cases
 
-** *Expected output* +
+** *Expected output*
+
 Unknown Command will return to the message box.
 
 When input is `lll lock`
+
 ** *Expected output* +
+
 Unknown Command will return to the message box.
 
 === Exit program checker
 
 This is to prevent user from exiting the program by accident.
+
 User can either click on the close button or in the command Textfield type in exit
 
 [discrete]
 === Positive Test Cases
 
 input `exit`
+
 ** *Expected output* +
+
 A pop window occur, asking if user wants to exit the program or not to exit.
+
 if Yes, application close.
+
 if no, unfreeze the application.
 
 [discrete]
 === Negative Test Cases
 
 input `eXit`
+
 ** *Expected output* +
+
 Unknown Command will return to the message box.
 
 input `ex0it`
+
 ** *Expected output* +
+
 Unknown Command will return to the message box.
 
 input `11 exit`
+
 ** *Expected output* +
+
 Unknown Command will return to the message box.
 
 === Copy Command
@@ -323,7 +351,6 @@ It will display "Invalid command format!
 ** *Expected output* +
 It will display "Invalid command format!
                  Invalid input for save option, to save please use keyword -> se "
-                 
 == Find Phone Command
 
 Finds persons whose phones contain any of the given keywords. +
@@ -348,6 +375,7 @@ It will display "3 persons listed!" and list persons with phone numbers containi
 
 [discrete]
 === Negative Test Cases
+
 . `findPhone`
 ** *Expected output* +
 It will display "Invalid command format!" and command usage message.
