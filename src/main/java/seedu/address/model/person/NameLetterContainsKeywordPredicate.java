@@ -22,11 +22,11 @@ public class NameLetterContainsKeywordPredicate implements Predicate<ReadOnlyPer
         //String letter = person.getName().fullName;
         if (keywords.isEmpty()) {
             return keywords.stream()
-                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(" ", keyword));
         }
         if (keywords.get(0).length() > 1) {
             return keywords.stream()
-                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase("", keyword));
         } else {
             String letter2 = String.valueOf(person.getName().fullName.charAt(0));
             //System.out.println(letter2.length());

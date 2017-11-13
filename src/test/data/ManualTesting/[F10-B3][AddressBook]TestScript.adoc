@@ -98,3 +98,40 @@ It will display "Invalid command format!"
 . `xFind T/ friends n/ alex`
 ** *Expected output* +
 It will display Invalid command format! xFind: only one parameter is allowed"
+
+=== Find Letter Command
+
+Finds persons whose name start with character that matches key alphabet letter. +
+Format: `letter KEYLETTER
+
+****
+* The search is non case sensitive. e.g. `H` will match `Hans` and `h` will not match `Hans`
+* The person related to the letter will be display on the left panel.
+****
+
+=== Positive Test Cases
+
+. `letter A`
+** *Expected output* +
+Display help window.
+It will display "2 persons listed!"
+
+[discrete]
+
+=== Negative Test Cases
+
+ `FindEmail`
+** *Expected output* +
+Invalid command format!
+find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
+Parameters: KEYWORD [MORE_KEYWORDS]...
+. `findEmail lex`
+** *Expected output* +
+It will display "0 persons listed!"
+
+=== Login Page Box
+
+=== Positive Test Cases
+
+=== Negative Test Cases
+
