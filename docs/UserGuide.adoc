@@ -286,7 +286,7 @@ Format: `gAddress INDEX`
 * The index *must be a positive integer* 1, 2, 3 ...
 ****
 
-* `gAddres 1` +
+* `gAddress 1` +
 BrowserPanel now shows searched address of person at index 1 in Google Maps.
 * `gAddress 3` +
 BrowserPanel now shows searched address of person at index 3 in Google Maps
