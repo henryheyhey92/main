@@ -21,6 +21,7 @@ public class ListTagsCommand extends Command {
             + "2. To list all tags of persons currently shown below: " + COMMAND_WORD + " " + FILTERED + "\n";
 
     private String option;
+    List<String> listOfTags = null;
 
     public ListTagsCommand(String argument) {
         this.option = argument;
@@ -28,8 +29,6 @@ public class ListTagsCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        List<String> listOfTags = null;
-
         requireNonNull(model);
 
         switch (option) {
@@ -45,7 +44,6 @@ public class ListTagsCommand extends Command {
             return new CommandResult(MESSAGE_NO_TAGS);
         }
 
-        System.out.println(listOfTags);
         return new CommandResult(String.format(MESSAGE_SUCCESS, String.join("\n", listOfTags)));
     }
 }

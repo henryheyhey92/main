@@ -7,7 +7,6 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 AddressBook - Level 4 is a desktop address book application which stores the contact, email, address of the user contact personnel. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java.
 
 *Code contributed*: [https://github.com/CS2103AUG2017-F10-B3/main/blob/master/collated/main/henryheyhey92.md [Functional]]
-[https://github.com[Test code]]
 {give links to collated code files}
 
 === Enhancement Added: Find contact by first Alphabet letter
@@ -132,5 +131,4 @@ include::../DeveloperGuide.adoc[tag=lock]
 * Wrote additional tests to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
 
 == Project: PowerPointLabs
-
 {Optionally (not graded), you may include other projects in your portfolio.}
