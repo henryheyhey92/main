@@ -128,7 +128,3 @@ include::../DeveloperGuide.adoc[tag=gAddress]
 #End of Extract#
 
 ---
-
-=== Other contributions
-
-==
