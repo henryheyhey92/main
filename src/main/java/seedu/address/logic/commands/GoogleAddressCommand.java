@@ -10,6 +10,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.ReadOnlyPerson;
 
 //@@author Labradorites
+/**
+ * Searches index of person selected in Google Maps and displays searched results in browser to the user.
+ * Index must be a positive integer and must be an index on the list shown.
+ */
 public class GoogleAddressCommand extends Command {
     public static final String COMMAND_WORD = "gAddress";
 
