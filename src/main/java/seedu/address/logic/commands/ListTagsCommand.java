@@ -20,11 +20,15 @@ public class ListTagsCommand extends Command {
             + "1. To list all tags available in AddressBook: " + COMMAND_WORD + "\n"
             + "2. To list all tags of persons currently shown below: " + COMMAND_WORD + " " + FILTERED + "\n";
 
+    private List<String> listOfTags = null;
     private String option;
-    List<String> listOfTags = null;
 
     public ListTagsCommand(String argument) {
         this.option = argument;
+    }
+
+    public List<String> getListOfTags() {
+        return listOfTags;
     }
 
     @Override
