@@ -15,6 +15,9 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 
+
+//@@author henryheyhey92
+//reused
 public class FindLetterCommandSystemTest extends AddressBookSystemTest {
 
     @Test
@@ -68,7 +71,7 @@ public class FindLetterCommandSystemTest extends AddressBookSystemTest {
         /* Case: mixed case command word -> rejected */
         command = "lEtTer k";
         assertCommandFailure(command, MESSAGE_UNKNOWN_COMMAND);
-    }
+    } //@@author
 
     /**
      * Executes {@code command} and verifies that the command box displays an empty string, the result display

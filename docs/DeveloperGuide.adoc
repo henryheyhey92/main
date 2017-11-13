@@ -393,14 +393,27 @@ The above is a illustration of how exit program funs.
 
 The following implementation is to add security features to the application
 
-initial draft idea:
-
 if user name & password matches the input, user get to access the application.
 
 -draft execution: will do a while loop in the MainApp class.
 
 image::Login.png[width="800"]
 // end::lock[]
+// tag::unlock[]
+=== Lock Command implementation
+
+The following implementation is to further enhance the security features of the application.
+When the keyword 'lock' is type onto the commandline textfield, it will lock and freeze the application from being use.
+
+It goes from LogicManager>AddressBookParser>LockCommand>LoginBox.java
+A success message would be return upon the unlock of the application.
+the execution method will return the message.
+
+the following is the implementation image.
+
+image::Lockcommand.png[width="800"]
+
+// end::unlock[]
 
 // tag::undoredo[]
 === Undo/Redo mechanism
