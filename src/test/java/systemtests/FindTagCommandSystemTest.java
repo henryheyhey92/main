@@ -2,15 +2,10 @@ package systemtests;
 
 import static seedu.address.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.AMY;
-import static seedu.address.testutil.TypicalPersons.BENSON;
-import static seedu.address.testutil.TypicalPersons.BOB;
 import static seedu.address.testutil.TypicalPersons.CARL;
 import static seedu.address.testutil.TypicalPersons.DANIEL;
 import static seedu.address.testutil.TypicalPersons.HOON;
 import static seedu.address.testutil.TypicalPersons.IDA;
-import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_84;
 import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_CLASSMATES;
 
 import org.junit.Test;
@@ -32,7 +27,7 @@ public class FindTagCommandSystemTest extends AddressBookSystemTest {
          */
         String command = "   " + FindTagCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_CLASSMATES + "   ";
         Model expectedModel = getModel();
-        ModelHelper.setFilteredList(expectedModel, HOON, IDA);// Tags of HOON and IDA contain "classmates"
+        ModelHelper.setFilteredList(expectedModel, HOON, IDA); // Tags of HOON and IDA contain "classmates"
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 

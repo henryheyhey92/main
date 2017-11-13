@@ -272,7 +272,7 @@ Java files that have been modified:
 // end::findPhone[]
 
 // tag::findTag[]
-=== Add `findTag mechanism`
+=== Add findTag mechanism
 
 The findTag mechanism is able to search for persons whose tags contain any keywords being searched.
 
