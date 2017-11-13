@@ -120,13 +120,13 @@ It will display "1 persons listed!" and list person with phone number containing
 ** *Expected output* +
 It will display "3 persons listed!" and list persons with phone numbers containing "22" and/or "10".
 
+
 [discrete]
 === Negative Test Cases
 . `findPhone`
 ** *Expected output* +
 It will display "Invalid command format!" and command usage message.
 
-=== Negative Test Cases
 . `findPhone `
 ** *Expected output* +
 Invalid command format!
@@ -139,7 +139,17 @@ Example: findPhone 999 111 99998888
 It will display "0 persons listed!" as no one with phone number containing 0000000000000 is found.
 
 == Find Tag Command
-discrete]
+
+Finds persons whose tags contain any of the given keywords. +
+Format: `findTag KEYWORD [MORE_KEYWORDS]`
+
+****
+* Only the tag is searched.
+* Tags containing keywords will be matched e.g. `friends` will match `friends`
+* Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `friends family` will return `friends`
+****
+
+[discrete]
 === Positive Test Cases
 . `findTag friends`
 ** *Expected output* +
@@ -152,6 +162,7 @@ It will display "8 persons listed!" and list persons with tags "friends" and/or 
 . `findTag Friends`
 ** *Expected output* +
 It will display "3 persons listed!" and list persons with tags "friends".
+
 
 [discrete]
 === Negative Test Cases
@@ -168,4 +179,109 @@ It will display "0 persons listed!" as no one with tag matching frien is found.
 
 == List Tags Command
 
+Shows a list of unique all tags in the AddressBook or persons currently displayed in PersonPanelList. +
+Tags listed are unique (no duplicates) and sorted alphabetically. +
+Format: `listTags [f]`
+
+***
+* `f`, is optional, allows users to choose between displaying all unique tags added to AddressBook or unique tags of persons currently listed in the PersonPanelList.
+* `listTags` displays list of all unique tags added to AddressBook.
+* `listTags f` displays list of all unique tags of persons listed in the PersonListPanel. `f` referring to "filtered".
+***
+
+[discrete]
+=== Positive Test Cases
+. `list` +
+`listTags`
+** *Expected output* +
+List all tags:
+bestfriend
+brother
+classmates
+colleagues
+family
+father
+friend
+friends
+mother
+neighbours
+projectmate
+
+. `findPhone 10` +
+`listTags f`
+** *Expected output* +
+List all tags:
+family
+neighbours
+
+
+[discrete]
+=== Negative Test Cases
+. `listTags s`
+** *Expected output* +
+Invalid command format!
+listTags: Finds tags according to choice.
+1. To list all tags available in AddressBook: listTags
+2. To list all tags of persons currently shown below: listTags f
+
+. `listTags F`
+** *Expected output* +
+Invalid command format!
+listTags: Finds tags according to choice.
+1. To list all tags available in AddressBook: listTags
+2. To list all tags of persons currently shown below: listTags f
+
+. `findPhone 1111` +
+`listTags f`
+** *Expected output* +
+There are no tags available.
+
 == Google Address Command
+
+Searches person's address on Google Maps with respect to `INDEX` keyed in. +
+Format: `gAddress INDEX`
+
+****
+* Only the address is searched on Google Maps according to index keyed in.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* 1, 2, 3 ...
+****
+
+[discrete]
+=== Positive Test Cases
+. `list` +
+`gAddress 1`
+** *Expected output* +
+It will display "Searched aaron lee on GoogleMaps".
+Browser Panel will display person's address being searched on Google Maps.
+
+
+[discrete]
+=== Negative Test Cases
+. `gAddress`
+** *Expected output* +
+Invalid command format!
+gAddress: Searches for person's address in GoogleMaps.
+Parameters: INDEX (must be a positive integer)
+Example: gAddress 1
+
+. `list` +
+`gAddress 0`
+** *Expected output* +
+Invalid command format!
+gAddress: Searches for person's address in GoogleMaps.
+Parameters: INDEX (must be a positive integer)
+Example: gAddress 1
+
+. `list` +
+`gAddress -1`
+** *Expected output* +
+Invalid command format!
+gAddress: Searches for person's address in GoogleMaps.
+Parameters: INDEX (must be a positive integer)
+Example: gAddress 1
+
+. `list` +
+`gAddress 22`
+** *Expected output* +
+The person index provided is invalid
