@@ -18,9 +18,9 @@ Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. 
 
 Examples:
 
-* `Findletter J` +
+* `letter J` +
 Returns `John` and `John Doe`
-* `Findletter B` +
+* `letter B` +
 Returns any person having names `Betsy`, `Bean`, or `Ben`
 
 
@@ -69,7 +69,7 @@ include::../UserGuide.adoc[tag=exitcheck]
 
 ==== Justification
 
-User might exit the program by accident. This is to seek  confirmation from the user that he/she wish to exit from
+User might exit the program by accident. This is to seek confirmation from the user that he/she wish to exit from
 the program.
 
 ==== Implementation
@@ -93,7 +93,9 @@ User name: NUS
 Password: 1234
 
 Input the following to enter the application:
+
 User name: NUS
+
 Password: 1234
 
 ==== External behavior
@@ -124,6 +126,7 @@ include::../DeveloperGuide.adoc[tag=lock]
 === Enhancement: Lock command
 This is an enhancement to improve the security of the address. When user taking short break, user can lock
 the application for the time being, so that no one can access while leaving the computer on. User can always unlock the application when return from break.
+
 ==== External behavior
 
 ---
@@ -151,11 +154,3 @@ include::../DeveloperGuide.adoc[tag=unlock]
 
 ---
 
-
-=== Other contributions
-
-* Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-* Wrote additional tests to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
-
-== Project: PowerPointLabs
-{Optionally (not graded), you may include other projects in your portfolio.}
