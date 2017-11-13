@@ -98,3 +98,116 @@ It will display "Invalid command format!"
 . `xFind T/ friends n/ alex`
 ** *Expected output* +
 It will display Invalid command format! xFind: only one parameter is allowed"
+=== Copy Command
+
+Copies the selected person's information over to the system clipboard.
+Format: `copy INDEX [CHOICE]` , for quick input use the letter `c` instead of `copy`.
+
+****
+* Both fields after commnad word input `copy` or `c` must be provided.
+* To access the copied data, simply use `ctrl v` to paste the copied data.
+****
+
+Examples:
+
+* `c 1 n` +
+Copies the topmost person's name.
+* `c 2 p` +
+Copies the second topmost person's phone number.
+* `copy 2 e` +
+Copies the second topmost person's email.
+* `copy 2 a` +
+Copies the second topmost person's address.
+=== Positive Test Case
+. `copy 1 n`
+** *Expected output* +
+It will display "Person's name has been copied to the clipboard"
+Use ctrl-v to check whether correct data has been copied.
+
+. `copy 2 a`
+** *Expected output* +
+It will display "Person's address has been copied to the clipboard"
+Use ctrl-v to check whether correct data has been copied.
+=== Negative Test Case
+. `c`
+** *Expected output* +
+It will display "Invalid command format!
+                 c: Copies the details of the person identified by index number used in the last person listing. Data would be copied to the system clipboard.
+                 Parameters: INDEX (must be a positive integer) PREFIX
+                 Example: c 1 n"
+. `c &% n`
+** *Expected output* +
+It will display "Invalid command format!
+                 c: Copies the details of the person identified by index number used in the last person listing. Data would be copied to the system clipboard.
+                 Parameters: INDEX (must be a positive integer) PREFIX
+                 Example: c 1 n"
+. `c 1 %^f`
+** *Expected output* +
+It will display " Invalid command format!
+                  Invalid choice input,the valid choices to be copied are:
+                  1. n (name)
+                  2. a (address)
+                  3. e (email)
+                  4. p (phone)
+=== Sort Command
+
+Sorts the addressbook by address or by name.User can specify if they want to save the sorted state. +
+Format: `sort OPTION SAVE_OPTION` , for quick input use the letter `s` instead of `sort`.
+
+****
+* OPTION keyword allows the user to select whether to sort the addressbook by name or by address.
+* SAVE_OPTION keyword allows the user to save the sorted state of the addressbook and it is an optional input.
+* The sort command is tied to the undo/redo mechanism to facilitate convenience in the event the user enters the wrong sort option.
+* To change or edit the lookup table data, locate the .csv file in `\main\src\main\resources\tables` folder and do the necessary changes on the file.
+* All changes to the .csv file have to conform to the present format which is each value starts on a new line.
+* *DO NOT RENAME THE FILE OR CHANGE THE FILE LOCATION BEFORE BUILDING THE JAR FILE.*
+****
+
+Examples:
+
+* `s n` +
+Sorts the addressbook by name alphabetically.
+* `sort a` +
+Sorts the addressbook by address, in particular by the street name.
+* `s n se` +
+Sorts the addressbook by name and saves the sorted state of the addressbook.
+* `s n` followed by `undo` +
+Sorts the addressbook by name alphabetically.The next input undoes the sort reverting the addressbook to the previous state.
+
+== Positive Test Case
+. `s a`
+** *Expected output* +
+It will display "The address book has been sorted alphabetically according to address"
+Person list panel would be sorted according to the address by their street names.
+
+. `sort n`
+** *Expected output* +
+It will display "The address book has been sorted alphabetically according to name"
+Person list panel would be sorted according to name alphabetically.
+
+. `sort n se`
+** *Expected output* +
+It will display "The address book has been sorted alphabetically according to name"
+Person list panel would be sorted according to name alphabetically.Re-launching the app would still
+reflect the sorted state of the addressbook.
+
+== Negative Test Case
+. `s`
+** *Expected output* +
+It will display "Invalid command format!
+                 s: Sorts the addressbook by name or by address, the state of the addressbook can be saved if specified explicitly.
+                 Parameters: SORT_OPTION(must be one of the valid choices)  SAVE_OPTION(optional field)
+                 Example: s a se"
+. `s t%$`
+** *Expected output* +
+It will display "Invalid command format!
+                 Invalid choice input,the valid choices to be sorted are:
+                 1. n (name)
+                 2. a (address)"
+. `s a TY`
+** *Expected output* +
+It will display "Invalid command format!
+                 Invalid input for save option, to save please use keyword -> se "
+
+
+
