@@ -69,7 +69,7 @@ include::../UserGuide.adoc[tag=exitcheck]
 
 ==== Justification
 
-User might exit the program by accident. This is to seek  confirmation from the user that he/she wish to exit from
+User might exit the program by accident. This is to seek confirmation from the user that he/she wish to exit from
 the program.
 
 ==== Implementation

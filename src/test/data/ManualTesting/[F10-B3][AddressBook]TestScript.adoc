@@ -323,7 +323,6 @@ It will display "Invalid command format!
 ** *Expected output* +
 It will display "Invalid command format!
                  Invalid input for save option, to save please use keyword -> se "
-                 
 == Find Phone Command
 
 Finds persons whose phones contain any of the given keywords. +
