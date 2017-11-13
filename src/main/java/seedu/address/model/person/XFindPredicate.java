@@ -80,7 +80,7 @@ public class XFindPredicate implements Predicate<ReadOnlyPerson> {
 
         // if (prefix == PREFIX_TAG)
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.startWithWordIgnoreCase(person.getTags().toString(), keyword));
+                .anyMatch(keyword -> StringUtil.containsAny(person.getTags().toString(), keyword));
     }
 
     @Override
