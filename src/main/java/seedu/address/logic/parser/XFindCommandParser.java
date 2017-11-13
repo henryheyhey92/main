@@ -33,7 +33,7 @@ public class XFindCommandParser implements Parser<XFindCommand> {
      */
     public XFindCommand parse(String args) throws ParseException {
         Prefix[] prefixes = {PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_NAME_BOLD,
-                PREFIX_PHONE_BOLD, PREFIX_EMAIL_BOLD, PREFIX_ADDRESS_BOLD, PREFIX_TAG_BOLD};
+            PREFIX_PHONE_BOLD, PREFIX_EMAIL_BOLD, PREFIX_ADDRESS_BOLD, PREFIX_TAG_BOLD};
 
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, prefixes);
 
