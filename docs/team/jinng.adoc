@@ -8,14 +8,8 @@ AddressBook - Level 4 is a desktop address book application used for teaching So
 
 *Code contributed*: [https://github.com/CS2103AUG2017-F10-B3/main/blob/master/collated/main/Labradorites.md] [https://github.com/CS2103AUG2017-F10-B3/main/blob/master/collated/test/Labradorites.md] {give links to collated code files}
 
-=== Enhancement Added: findPhone
-Finds persons whose phones contain any of the given keywords.
-This search function is able to take in more than 1 keyword by separating each of them with a space.
-Person whose number contains any of the keyword
-* findPhone 000
-Returns 10001 and 191000
-* find 111 222 333
-Returns any person having phone numbers 1111, 0222, or 9333
+=== Enhancement Added: Search for persons whose phone numbers contains searched keywords
+
 ==== External behavior
 
 ---
@@ -44,14 +38,8 @@ include::../DeveloperGuide.adoc[tag=findPhone]
 
 ---
 
-=== Enhancement Added: findTag
-Finds persons whose tags contain any of the given keywords.
-This search function is able to take in more than 1 keyword by separating each of them with a space.
-Person whose tags contains any of the keyword
-* findTag friends
-  Returns friends
-*findTag friends family neighbours
- Returns any person having tags friends, family, or neighbour
+=== Enhancement Added: Search for persons whose tags exactly matches searched keywords
+
 ==== External behavior
 
 ---
@@ -67,7 +55,7 @@ include::../UserGuide.adoc[tag=findTag]
 
 Allowing the user to search for his contacts by tags introduces more flexibility and user-friendliness of AddressBook.
 User is able to filter and see his a group of his contact that are of the same tag which he can then use for relating people or to mass send messages by groups.
-Hence with findPhone, user is able to help check if the number happens to be in his AddressBook.
+Hence with findTag, user is able to help check if the number happens to be in his AddressBook.
 
 ==== Implementation
 
@@ -80,10 +68,8 @@ include::../DeveloperGuide.adoc[tag=findTag]
 
 ---
 
-=== Enhancement Added: listTags [f]
-Lists unique tags in AddressBook by preference. List of tags is displayed in ResultsBox.
-*  `listTags` lists all unique tags added to AddressBook.
-* `listTags f` displays unique list of tags of persons currently displayed in the PersonListPanel.
+=== Enhancement Added: List all tags added to AddressBook and all tags of most recent listing
+.
 ==== External behavior
 
 ---
@@ -100,7 +86,7 @@ include::../UserGuide.adoc[tag=listTags]
 Allowing the user to list tags in 2 ways introduces more flexibility and user-friendliness of AddressBook.
 With listTags, user can see all tags that he has added to AddressBook and can refer to his old tags if he wants to reuse the same name.
 With listTags f, user is able to filter and see a range of tags which he can then use for relating people.
-Hence with findPhone, user is able to help check if the number happens to be in his AddressBook.
+Hence with listTags, user is able to help check if the number happens to be in his AddressBook.
 
 ==== Implementation
 
@@ -113,12 +99,36 @@ include::../DeveloperGuide.adoc[tag=listTags]
 
 ---
 
-=== Enhancement Proposed: -
+=== Enhancement Added: Search for person's address according to searched index
 
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=findTag]
+
+#End of Extract#
+
+---
+
+==== Justification
+
+Allowing users to search for his friends' address on Google Maps at his fingertips makes visiting friends convenient.
+User may want to visit his friend and want to know the surroundings of his friend's neighbourhood so that he does not get lost.
+Being able to check his friend's address on Google Maps at ease makes it easier for him to travel to his friend's house.
+
+==== Implementation
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=findTag]
+
+#End of Extract#
+
+---
 
 === Other contributions
 
-
-== Project: PowerPointLabs
-
-{Optionally (not graded), you may include other projects in your portfolio.}
+==
