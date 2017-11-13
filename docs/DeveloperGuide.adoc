@@ -321,6 +321,8 @@ Person whose index is keyed in will have its address searched in the browser pan
 
 image::gAddressUI.png[width="800"]
 
+image::gAddressEvent.png[width="800"]
+
 // end::gAddress[]
 
 // tag::findletter[]
