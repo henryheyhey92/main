@@ -2,15 +2,15 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS_BOLD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS_UPPER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL_BOLD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL_UPPER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME_BOLD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME_UPPER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE_BOLD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE_UPPER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG_BOLD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG_UPPER;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
@@ -32,8 +32,8 @@ public class XFindCommandParser implements Parser<XFindCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public XFindCommand parse(String args) throws ParseException {
-        Prefix[] prefixes = {PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_NAME_BOLD,
-            PREFIX_PHONE_BOLD, PREFIX_EMAIL_BOLD, PREFIX_ADDRESS_BOLD, PREFIX_TAG_BOLD};
+        Prefix[] prefixes = {PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG, PREFIX_NAME_UPPER,
+            PREFIX_PHONE_UPPER, PREFIX_EMAIL_UPPER, PREFIX_ADDRESS_UPPER, PREFIX_TAG_UPPER};
 
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, prefixes);
 
