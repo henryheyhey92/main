@@ -4,9 +4,9 @@ import seedu.address.LoginBox;
 
 import seedu.address.storage.Storage;
 
-
+//@@author henryheyhey92
 /**
- * Clears the address book.
+ * lock application
  */
 public class LockCommand extends UndoableCommand {
 
@@ -27,4 +27,4 @@ public class LockCommand extends UndoableCommand {
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
-}
+} //@@author

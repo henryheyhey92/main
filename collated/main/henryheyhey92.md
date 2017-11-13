@@ -48,6 +48,31 @@ public class ConfirmBox {
 }
 
 ```
+###### /java/seedu/address/logic/commands/LockCommand.java
+``` java
+/**
+ * lock application
+ */
+public class LockCommand extends UndoableCommand {
+
+    public static final String COMMAND_WORD = "lock";
+    public static final String MESSAGE_SUCCESS = "Address book is unlock!";
+    private static LoginBox lock;
+    protected Storage storage;
+    /**
+     * lock the application when command is inputted
+     */
+    public LockCommand() {
+        lock = new LoginBox();
+        lock.display ("AddressBook");
+    }
+
+    @Override
+    public CommandResult executeUndoableCommand() {
+        return new CommandResult(MESSAGE_SUCCESS);
+    }
+
+```
 ###### /java/seedu/address/LoginBox.java
 ``` java
 /**
@@ -147,4 +172,44 @@ public class LoginBox {
         }
         return false;
     }
+```
+###### /java/seedu/address/model/person/NameLetterContainsKeywordPredicate.java
+``` java
+//reused
+/**
+ *  return the name that matches the key letter
+ */
+public class NameLetterContainsKeywordPredicate implements Predicate<ReadOnlyPerson> {
+    private final List<String> keywords;
+
+    public NameLetterContainsKeywordPredicate(List<String> keywords) {
+        this.keywords = keywords;
+    }
+
+    @Override
+    public boolean test(ReadOnlyPerson person) {
+
+        //String letter = person.getName().fullName;
+        if (keywords.isEmpty()) {
+            return keywords.stream()
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+        }
+        if (keywords.get(0).length() > 1) {
+            return keywords.stream()
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+        } else {
+            String letter2 = String.valueOf(person.getName().fullName.charAt(0));
+            //System.out.println(letter2.length());
+            return keywords.stream()
+                    .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(letter2, keyword));
+        }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof NameLetterContainsKeywordPredicate // instanceof handles nulls
+                && this.keywords.equals(((NameLetterContainsKeywordPredicate) other).keywords)); // state check
+    }
+
 ```

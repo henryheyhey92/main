@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
-
+//@@author henryheyhey92
+//reused
 /**
  *  return the name that matches the key letter
  */
@@ -41,4 +42,4 @@ public class NameLetterContainsKeywordPredicate implements Predicate<ReadOnlyPer
                 && this.keywords.equals(((NameLetterContainsKeywordPredicate) other).keywords)); // state check
     }
 
-}
+} //@@author
